@@ -35,7 +35,7 @@ class SettingAdminController extends Controller
      */
     public function read()
     {
-    $path = Storage::disk('engine')->getDriver()->getAdapter()->applyPathPrefix('/.env');
+    $path = Storage::disk('root')->getDriver()->getAdapter()->applyPathPrefix('/.env');
 
         $data =
         [
@@ -85,16 +85,16 @@ class SettingAdminController extends Controller
      */
     public function update(SettingAdminUpdateRequest $Request)
     {
-    $path = Storage::disk('engine')->getDriver()->getAdapter()->applyPathPrefix('/.env');
+    $path = Storage::disk('root')->getDriver()->getAdapter()->applyPathPrefix('/.env');
     $data = $this->_read($path, true);
 
         if(isset($data[$Request->input('label')])) $data[$Request->input('label')] = $Request->input('value');
 
-    Storage::disk('engine')->put('/.env', '');
+    Storage::disk('root')->put('/.env', '');
 
         foreach($data as $k => $v)
         {
-        Storage::disk('engine')->append('/.env', $k.'='.$v);
+        Storage::disk('root')->append('/.env', $k.'='.$v);
         }
 
         Log::info('Обновление настроек.',

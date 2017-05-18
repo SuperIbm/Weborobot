@@ -45,11 +45,6 @@ return [
 
         'root' => [
             'driver' => 'local',
-            'root' => base_path().'/../',
-        ],
-
-        'engine' => [
-            'driver' => 'local',
             'root' => base_path(),
         ],
 
