@@ -6,7 +6,7 @@ Ext.application
 	name: 'AdminSection',
 	id: "AdminSection",
 	
-	appFolder: 'engine/app/Modules/AdminSection/Admin/js',
+	appFolder: 'app/Modules/AdminSection/Admin/js',
 	views: ["Panel"],
 	controllers: ['AdminSection']
 	}

@@ -48,7 +48,7 @@ class ModuleTableSeeder extends Seeder
                             'nameComponent' => 'get',
                             'labelComponent' => 'Установить',
                             'pathToCss' => NULL,
-                            'pathToJs' => 'engine/app/Modules/Infoblock/Admin/js/component/get/js/index.js',
+                            'pathToJs' => 'app/Modules/Infoblock/Admin/js/component/get/js/index.js',
                             'status' => 1
                         )
                 )
@@ -73,11 +73,11 @@ class ModuleTableSeeder extends Seeder
                     'idModule' => $idModule,
                     'labelSection' => 'Инфоблоки',
                     'bundle' => 'CONTENT',
-                    'iconSmall' => 'engine/app/Modules/Infoblock/Admin/images/icon_small.png',
-                    'iconBig' => 'engine/app/Modules/Infoblock/Admin/images/icon_big.png',
+                    'iconSmall' => 'app/Modules/Infoblock/Admin/images/icon_small.png',
+                    'iconBig' => 'app/Modules/Infoblock/Admin/images/icon_big.png',
                     'menuLeft' => 1,
-                    'pathToCss' => 'engine/app/Modules/Infoblock/Admin/css/main.css',
-                    'pathToJs' => 'engine/app/Modules/Infoblock/Admin/js/index.js',
+                    'pathToCss' => 'app/Modules/Infoblock/Admin/css/main.css',
+                    'pathToJs' => 'app/Modules/Infoblock/Admin/js/index.js',
                     'weight' => 1,
                     'status' => 1,
                 )

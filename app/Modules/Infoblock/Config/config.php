@@ -9,10 +9,10 @@ return
     'section' =>
         [
         "bundle" => "Контент",
-        "iconSmall" => "engine/app/Modules/Infoblock/Admin/images/icon_small.png",
-        "iconBig" => "engine/app/Modules/Infoblock/Admin/images/icon_big.png",
-        "pathToCss" => "engine/app/Modules/Infoblock/Admin/css/main.css",
-        "pathToJs" => "engine/app/Modules/Infoblock/Admin/js/index.js",
+        "iconSmall" => "app/Modules/Infoblock/Admin/images/icon_small.png",
+        "iconBig" => "app/Modules/Infoblock/Admin/images/icon_big.png",
+        "pathToCss" => "app/Modules/Infoblock/Admin/css/main.css",
+        "pathToJs" => "app/Modules/Infoblock/Admin/js/index.js",
         "menuLeft" => true,
         'weight' => 1
         ],
@@ -23,7 +23,7 @@ return
             'nameComponent' => 'get',
             'labelComponent' => 'Установить',
             'pathToCss' => NULL,
-            'pathToJs' => 'engine/app/Modules/Infoblock/Admin/js/component/get/js/index.js',
+            'pathToJs' => 'app/Modules/Infoblock/Admin/js/component/get/js/index.js',
             ]
         ],
     'templates' =>

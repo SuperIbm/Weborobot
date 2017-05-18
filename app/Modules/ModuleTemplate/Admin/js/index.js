@@ -4,7 +4,7 @@ Ext.application
 	name: 'ModuleTemplate',
 	id: "ModuleTemplate",
 	
-	appFolder: 'engine/app/Modules/ModuleTemplate/Admin/js',
+	appFolder: 'app/Modules/ModuleTemplate/Admin/js',
 	views: ["Panel"],
 	controllers: ["Module", "ModuleTemplate"],
 	

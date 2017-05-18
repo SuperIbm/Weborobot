@@ -82,7 +82,7 @@ Ext.define('Page.view.PageUpdatePageComponentTree',
 						{
 						text: nodeDropCurrent.parentNode.getData().text + ": " + nodeDropCurrent.getData().text,
 						leaf: true,
-						icon: "engine/app/Modules/Page/admin/images/icon_PageComponent_small.png",
+						icon: "app/Modules/Page/admin/images/icon_PageComponent_small.png",
 						allowDrop: true,
 						nameModule: nodeDropCurrent.getData().nameModule,
 						nameBundle: nodeDropCurrent.getData().nameBundle,

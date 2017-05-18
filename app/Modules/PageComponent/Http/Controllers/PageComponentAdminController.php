@@ -151,7 +151,7 @@ private $_Module;
                     'expanded' => true,
                     'leaf' => false,
                     'allowDrag' => false,
-                    'icon' => 'engine/app/Modules/Page/admin/images/icon_Block_small.png',
+                    'icon' => 'app/Modules/Page/admin/images/icon_Block_small.png',
                     'allowDrop' => true,
                     'idPage' => $Request->input('idPage'),
                     'children' => []
@@ -193,7 +193,7 @@ private $_Module;
                             'id' => $pageComponents[$y]['idPageComponent'],
                             'idPageComponent' => $pageComponents[$y]['idPageComponent'],
                             'text' => $module['labelModule'].': '.$pageComponents[$y]['labelComponent'],
-                            'icon' => 'engine/app/Modules/Page/admin/images/icon_PageComponent_small.png',
+                            'icon' => 'app/Modules/Page/admin/images/icon_PageComponent_small.png',
                             'leaf' => true,
                             'allowDrop' => false,
                             'nameModule' => $module['nameModule'],

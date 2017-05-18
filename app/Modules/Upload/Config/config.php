@@ -9,10 +9,10 @@ return
     'section' =>
     [
     "bundle" => "Система",
-    "iconSmall" => "engine/app/Modules/Upload/Admin/images/icon_small.png",
-    "iconBig" => "engine/app/Modules/Upload/Admin/images/icon_big.png",
-    "pathToCss" => "engine/app/Modules/Upload/Admin/css/main.css",
-    "pathToJs" => "engine/app/Modules/Upload/Admin/js/index.js",
+    "iconSmall" => "app/Modules/Upload/Admin/images/icon_small.png",
+    "iconBig" => "app/Modules/Upload/Admin/images/icon_big.png",
+    "pathToCss" => "app/Modules/Upload/Admin/css/main.css",
+    "pathToJs" => "app/Modules/Upload/Admin/js/index.js",
     "menuLeft" => false,
     'weight' => 2
     ],
@@ -21,9 +21,9 @@ return
         [
         'actionWidget' => 'upload',
         'labelWidget' => 'Обновления',
-        'icon' => 'engine/app/Modules/Upload/Admin/images/icon_small.png',
+        'icon' => 'app/Modules/Upload/Admin/images/icon_small.png',
         'pathToCss' => NULL,
-        'pathToJs' => 'engine/app/Modules/Upload/Admin/js/widget/upload/js/index.js',
+        'pathToJs' => 'app/Modules/Upload/Admin/js/widget/upload/js/index.js',
         'def' => "Да"
         ]
     ]

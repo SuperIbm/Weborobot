@@ -36,7 +36,7 @@ Ext.define('Filesystem.view.FilesystemFileGrid',
 			width: '7%',
 				renderer: function(value, meta, record)
 				{
-					if(value == "dir") return "<img src='engine/app/Modules/Admin/Admin/images/icon_folder.png' />";
+					if(value == "dir") return "<img src='app/Modules/Admin/Admin/images/icon_folder.png' />";
 					else if(value == "file")
 					{
 					var pathIcon = Admin.getApplication().getPathToIcoByFormat(record.get("extension"));

@@ -10,7 +10,7 @@ var Admin = Ext.application
 	{
 	name: 'Admin',
 	
-	appFolder: 'engine/app/Modules/Admin/Admin/js',
+	appFolder: 'app/Modules/Admin/Admin/js',
 	controllers: ['Enter', 'App'],
 
 	locals: ["ru", "en"],
@@ -1051,7 +1051,7 @@ var Admin = Ext.application
 		},
 		getPathToIcoByFormat: function(format)
 		{
-		var folderToImage = "engine/app/Modules/Filesystem/Admin/images/";
+		var folderToImage = "app/Modules/Filesystem/Admin/images/";
 						
 			switch(format)
 			{
@@ -1098,7 +1098,7 @@ var Admin = Ext.application
 			case "tpl": return folderToImage + "icon_page_tpl.png";	
 			case "tmp": return folderToImage + "icon_page_tmp.png";	
 			
-			default: return 'engine/app/Modules/Admin/Admin/images/icon_page.png';
+			default: return 'app/Modules/Admin/Admin/images/icon_page.png';
 			}	
 		},
 		launch: function()

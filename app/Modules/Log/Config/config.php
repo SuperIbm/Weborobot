@@ -9,10 +9,10 @@ return
     'section' =>
     [
     "bundle" => "Система",
-    "iconSmall" => "engine/app/Modules/Log/Admin/images/icon_small.png",
-    "iconBig" => "engine/app/Modules/Log/Admin/images/icon_big.png",
-    "pathToCss" => "engine/app/Modules/Log/Admin/css/main.css",
-    "pathToJs" => "engine/app/Modules/Log/Admin/js/index.js",
+    "iconSmall" => "app/Modules/Log/Admin/images/icon_small.png",
+    "iconBig" => "app/Modules/Log/Admin/images/icon_big.png",
+    "pathToCss" => "app/Modules/Log/Admin/css/main.css",
+    "pathToJs" => "app/Modules/Log/Admin/js/index.js",
     "menuLeft" => false,
     'weight' => 1
     ],
@@ -20,9 +20,9 @@ return
     [
     'actionWidget' => 'log',
     'labelWidget' => 'Журнал логов',
-    'icon' => 'engine/app/Modules/Log/Admin/images/icon_small.png',
+    'icon' => 'app/Modules/Log/Admin/images/icon_small.png',
     'pathToCss' => NULL,
-    'pathToJs' => 'engine/app/Modules/Log/Admin/js/widget/log/js/index.js',
+    'pathToJs' => 'app/Modules/Log/Admin/js/widget/log/js/index.js',
     'def' => "Да"
     ]
 ];

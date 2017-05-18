@@ -2,7 +2,7 @@
 Ext.Loader.loadScript
 (
 	{
-	url: "engine/node_modules/jquery.maskedinput/src/jquery.maskedinput.js"
+	url: "node_modules/jquery.maskedinput/src/jquery.maskedinput.js"
 	}
 );
 

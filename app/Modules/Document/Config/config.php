@@ -47,7 +47,7 @@ return [
 		],
 		'local' =>
 		[
-		'path' => 'engine/storage/app/public/documents/',
+		'path' => 'storage/app/public/documents/',
 		'pathSource' => storage_path('app/public/documents/'),
 		],
 		'ftp' =>
@@ -59,7 +59,7 @@ return [
 		],
 		'http' =>
 		[
-		'read' => 'http://loc.weborobot.ru/engine/storage/app/public/documents/',
+		'read' => 'http://loc.weborobot.ru/storage/app/public/documents/',
 		'create' => 'http://loc.weborobot.ru/doc/create/',
 		'update' => 'http://loc.weborobot.ru/doc/update/',
 		'destroy' => 'http://loc.weborobot.ru/doc/destroy/',

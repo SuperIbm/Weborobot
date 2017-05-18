@@ -44,11 +44,11 @@ class ModuleTableSeeder extends Seeder
                     'idModule' => $idModule,
                     'labelSection' => 'Виджеты',
                     'bundle' => 'MANEGER',
-                    'iconSmall' => 'engine/app/Modules/Widget/Admin/images/icon_small.png',
-                    'iconBig' => 'engine/app/Modules/Widget/Admin/images/icon_big.png',
+                    'iconSmall' => 'app/Modules/Widget/Admin/images/icon_small.png',
+                    'iconBig' => 'app/Modules/Widget/Admin/images/icon_big.png',
                     'menuLeft' => 0,
-                    'pathToCss' => 'engine/app/Modules/Widget/Admin/css/main.css',
-                    'pathToJs' => 'engine/app/Modules/Widget/Admin/js/index.js',
+                    'pathToCss' => 'app/Modules/Widget/Admin/css/main.css',
+                    'pathToJs' => 'app/Modules/Widget/Admin/js/index.js',
                     'weight' => 6
                 )
             );

@@ -1,32 +1,32 @@
 // Подгрузим CSS библиотеки
 $('HEAD')
-.append('<link type="text/css" rel="stylesheet" href="engine/node_modules/codemirror/lib/codemirror.css" />')
-.append('<link type="text/css" rel="stylesheet" href="engine/node_modules/codemirror/addon/hint/show-hint.css" />');
+.append('<link type="text/css" rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css" />')
+.append('<link type="text/css" rel="stylesheet" href="node_modules/codemirror/addon/hint/show-hint.css" />');
 
 // Подгрузим саму библиотеку
 var libers = 
 [
-"engine/node_modules/codemirror/lib/codemirror.js",
+"node_modules/codemirror/lib/codemirror.js",
 
-"engine/node_modules/codemirror/mode/javascript/javascript.js",
-"engine/node_modules/codemirror/mode/xml/xml.js",
-"engine/node_modules/codemirror/mode/htmlmixed/htmlmixed.js",
-"engine/node_modules/codemirror/mode/php/php.js",
-"engine/node_modules/codemirror/mode/sql/sql.js",
-"engine/node_modules/codemirror/mode/css/css.js",
-"engine/node_modules/codemirror/mode/smarty/smarty.js",
-"engine/node_modules/codemirror/mode/clike/clike.js",
+"node_modules/codemirror/mode/javascript/javascript.js",
+"node_modules/codemirror/mode/xml/xml.js",
+"node_modules/codemirror/mode/htmlmixed/htmlmixed.js",
+"node_modules/codemirror/mode/php/php.js",
+"node_modules/codemirror/mode/sql/sql.js",
+"node_modules/codemirror/mode/css/css.js",
+"node_modules/codemirror/mode/smarty/smarty.js",
+"node_modules/codemirror/mode/clike/clike.js",
 
-"engine/node_modules/codemirror/addon/fold/foldcode.js",
-"engine/node_modules/codemirror/addon/fold/xml-fold.js",
-"engine/node_modules/codemirror/addon/edit/matchbrackets.js",
-"engine/node_modules/codemirror/addon/edit/closebrackets.js",
-"engine/node_modules/codemirror/addon/edit/closetag.js",
+"node_modules/codemirror/addon/fold/foldcode.js",
+"node_modules/codemirror/addon/fold/xml-fold.js",
+"node_modules/codemirror/addon/edit/matchbrackets.js",
+"node_modules/codemirror/addon/edit/closebrackets.js",
+"node_modules/codemirror/addon/edit/closetag.js",
 
-"engine/node_modules/codemirror/addon/hint/show-hint.js",
-"engine/node_modules/codemirror/addon/hint/xml-hint.js",
-"engine/node_modules/codemirror/addon/hint/html-hint.js",
-"engine/node_modules/codemirror/addon/hint/javascript-hint.js"
+"node_modules/codemirror/addon/hint/show-hint.js",
+"node_modules/codemirror/addon/hint/xml-hint.js",
+"node_modules/codemirror/addon/hint/html-hint.js",
+"node_modules/codemirror/addon/hint/javascript-hint.js"
 ];
 
 for(var i = 0; i < libers.length; i++)

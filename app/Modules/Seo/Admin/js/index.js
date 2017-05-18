@@ -4,7 +4,7 @@ Ext.application
 	name: 'Seo',
 	id: "Seo",
 	
-	appFolder: 'engine/app/Modules/Seo/Admin/js',
+	appFolder: 'app/Modules/Seo/Admin/js',
 	views: ["Panel"],
 	controllers: ["Seo"],
 	

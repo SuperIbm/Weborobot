@@ -11,7 +11,7 @@ Ext.define('Filesystem.store.Dir',
         pathFull: "/",
         expanded: true,
         leaf: false,
-        icon: "engine/app/Modules/Admin/Admin/images/icon_folder.png",
+        icon: "app/Modules/Admin/Admin/images/icon_folder.png",
         allowDrop: true
         },
 	

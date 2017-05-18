@@ -76,7 +76,7 @@ class FilesystemDirAdminController extends Controller
         'pathFull' => $pathFull,
         'expanded' => false,
         'leaf' => false,
-        'icon' => 'engine/app/Modules/Admin/Admin/images/icon_folder.png'
+        'icon' => 'app/Modules/Admin/Admin/images/icon_folder.png'
         ];
     }
 

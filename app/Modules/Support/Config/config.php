@@ -9,10 +9,10 @@ return
     'section' =>
     [
     "bundle" => "Система",
-    "iconSmall" => "engine/app/Modules/Support/Admin/images/icon_small.png",
-    "iconBig" => "engine/app/Modules/Support/Admin/images/icon_big.png",
-    "pathToCss" => "engine/app/Modules/Support/Admin/css/main.css",
-    "pathToJs" => "engine/app/Modules/Support/Admin/js/index.js",
+    "iconSmall" => "app/Modules/Support/Admin/images/icon_small.png",
+    "iconBig" => "app/Modules/Support/Admin/images/icon_big.png",
+    "pathToCss" => "app/Modules/Support/Admin/css/main.css",
+    "pathToJs" => "app/Modules/Support/Admin/js/index.js",
     "menuLeft" => false,
     'weight' => 3
     ]

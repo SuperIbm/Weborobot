@@ -27,7 +27,7 @@ Ext.define('Sitemap.view.Panel',
 			xtype: "button",
 			text: "Сканировать",
 			action: "scan",
-			icon: "engine/app/Modules/Sitemap/Admin/images/icon_scan.png"
+			icon: "app/Modules/Sitemap/Admin/images/icon_scan.png"
 			}
 		],
 		fbar:

@@ -1,12 +1,12 @@
 Ext.Loader.loadScript
 (
 	{
-	url: "engine/bower_modules/extjs/build/packages/ux/classic/ux-debug.js"
+	url: "bower_modules/extjs/build/packages/ux/classic/ux-debug.js"
 	}
 );
 
-Ext.Loader.setPath('Ext.ux.DataView.Draggable', 'engine/bower_modules/extjs/packages/ux/classic/ux-debug.js');
-Ext.Loader.setPath('Ext.ux.DataView.DragSelector', 'engine/bower_modules/extjs/packages/ux/classic/ux-debug.js');
+Ext.Loader.setPath('Ext.ux.DataView.Draggable', 'bower_modules/extjs/packages/ux/classic/ux-debug.js');
+Ext.Loader.setPath('Ext.ux.DataView.DragSelector', 'bower_modules/extjs/packages/ux/classic/ux-debug.js');
 
 Ext.define("Admin.view.ux.ImagesZone",
 	{

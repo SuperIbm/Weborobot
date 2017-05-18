@@ -4,7 +4,7 @@ Ext.application
 	name: 'Infoblock',
 	id: "Infoblock",
 	
-	appFolder: 'engine/app/Modules/Infoblock/admin/js',
+	appFolder: 'app/Modules/Infoblock/admin/js',
 	views: ["Panel"],
 	controllers: ['Infoblock'],
 

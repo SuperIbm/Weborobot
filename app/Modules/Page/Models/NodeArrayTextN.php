@@ -37,7 +37,7 @@ private $_pagesUpdate = Array();
  * @since 1.0
  * @version 1.0
  */
-private $_dir = 'engine/app/Modules/Admin/admin/images/';
+private $_dir = 'app/Modules/Admin/admin/images/';
 
     /**
      * Конструктор.

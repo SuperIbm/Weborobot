@@ -8,10 +8,10 @@ return [
     'section' =>
     [
     "bundle" => "Продвижение",
-    "iconSmall" => "engine/app/Modules/Seo/Admin/images/icon_small.png",
-    "iconBig" => "engine/app/Modules/Seo/Admin/images/icon_big.png",
-    "pathToCss" => "engine/app/Modules/Seo/Admin/css/main.css",
-    "pathToJs" => "engine/app/Modules/Seo/Admin/js/index.js",
+    "iconSmall" => "app/Modules/Seo/Admin/images/icon_small.png",
+    "iconBig" => "app/Modules/Seo/Admin/images/icon_big.png",
+    "pathToCss" => "app/Modules/Seo/Admin/css/main.css",
+    "pathToJs" => "app/Modules/Seo/Admin/js/index.js",
     "menuLeft" => false,
     'weight' => 0
     ],
@@ -22,7 +22,7 @@ return [
         'nameComponent' => 'get',
         'labelComponent' => 'Установить',
         'pathToCss' => NULL,
-        'pathToJs' => 'engine/app/Modules/Seo/Admin/js/component/get/js/index.js',
+        'pathToJs' => 'app/Modules/Seo/Admin/js/component/get/js/index.js',
         ]
     ],
     'widgets' =>
@@ -30,9 +30,9 @@ return [
         [
         'actionWidget' => 'seo',
         'labelWidget' => 'Статистика посещения',
-        'icon' => 'engine/app/Modules/Seo/Admin/images/icon_small.png',
+        'icon' => 'app/Modules/Seo/Admin/images/icon_small.png',
         'pathToCss' => NULL,
-        'pathToJs' => 'engine/app/Modules/Seo/Admin/js/widget/seo/js/index.js',
+        'pathToJs' => 'app/Modules/Seo/Admin/js/widget/seo/js/index.js',
         'def' => "Да"
         ]
     ],

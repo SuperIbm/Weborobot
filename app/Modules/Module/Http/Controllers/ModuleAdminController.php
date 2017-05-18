@@ -277,7 +277,7 @@ private $_Component;
                 $dataWithComponents[$y]['text'] = $data[$i]['labelModule'];
                 $dataWithComponents[$y]['leaf'] = false;
                 $dataWithComponents[$y]['children'] = [];
-                $dataWithComponents[$y]['icon'] = 'engine/app/Modules/Module/Admin/images/icon_small.png';
+                $dataWithComponents[$y]['icon'] = 'app/Modules/Module/Admin/images/icon_small.png';
                 $y++;
                 }
             }

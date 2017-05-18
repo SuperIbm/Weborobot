@@ -65,7 +65,7 @@ Ext.define('User.view.UserAccountGrid',
 			filter: "image",
 				renderer: function(val)
 				{
-					if(val) return "<img src='engine/app/Modules/Admin/Admin/images/icon_image.png' width='15' height='15' />";
+					if(val) return "<img src='app/Modules/Admin/Admin/images/icon_image.png' width='15' height='15' />";
 					else return "";		
 				}
 			},

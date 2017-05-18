@@ -26,7 +26,7 @@ Ext.define('Admin.view.AppMenuLeft',
 	
 		initComponent: function()
 		{
-		var pathImage = Admin.getApplication().Access.getUserImage() == false ? 'engine/app/Modules/Admin/Admin/images/imageUserEmpty.jpg' : Admin.getApplication().Access.getUserImage()["path"];
+		var pathImage = Admin.getApplication().Access.getUserImage() == false ? 'app/Modules/Admin/Admin/images/imageUserEmpty.jpg' : Admin.getApplication().Access.getUserImage()["path"];
 		
 			this.items = 
 			[

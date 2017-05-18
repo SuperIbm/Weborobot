@@ -1,6 +1,6 @@
 // Подгрузим CSS библиотеки
 $('HEAD')
-.append('<link type="text/css" rel="stylesheet" href="engine/app/Modules/Admin/Admin/css/jPicker.css?" />');
+.append('<link type="text/css" rel="stylesheet" href="app/Modules/Admin/Admin/css/jPicker.css?" />');
 
 
 // Бибиотека для создания системы выбора цвета

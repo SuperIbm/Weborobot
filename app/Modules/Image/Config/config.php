@@ -46,7 +46,7 @@ return [
 		],
 		'local' =>
 		[
-		'path' => 'engine/storage/app/public/images/',
+		'path' => 'storage/app/public/images/',
 		'pathSource' => storage_path('app/public/images/'),
 		],
 		'ftp' =>
@@ -58,7 +58,7 @@ return [
 		],
 		'http' =>
 		[
-		'read' => 'http://loc.weborobot.ru/engine/storage/app/public/images/',
+		'read' => 'http://loc.weborobot.ru/storage/app/public/images/',
 		'create' => 'http://loc.weborobot.ru/img/create/',
 		'update' => 'http://loc.weborobot.ru/img/update/',
 		'destroy' => 'http://loc.weborobot.ru/img/destroy/',

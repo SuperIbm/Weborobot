@@ -9,10 +9,10 @@ return
     'section' =>
     [
     "bundle" => "Управление",
-    "iconSmall" => "engine/app/Modules/Widget/Admin/images/icon_small.png",
-    "iconBig" => "engine/app/Modules/Widget/Admin/images/icon_big.png",
-    "pathToCss" => "engine/app/Modules/Widget/Admin/css/main.css",
-    "pathToJs" => "engine/app/Modules/Widget/Admin/js/index.js",
+    "iconSmall" => "app/Modules/Widget/Admin/images/icon_small.png",
+    "iconBig" => "app/Modules/Widget/Admin/images/icon_big.png",
+    "pathToCss" => "app/Modules/Widget/Admin/css/main.css",
+    "pathToJs" => "app/Modules/Widget/Admin/js/index.js",
     "menuLeft" => false,
     'weight' => 6
     ]

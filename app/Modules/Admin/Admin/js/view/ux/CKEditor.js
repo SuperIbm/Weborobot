@@ -1,11 +1,11 @@
 // Подгрузим саму библиотеку
 var elems = document.getElementsByTagName("BASE");
-window.CKEDITOR_BASEPATH = elems[0].href + "engine/bower_modules/ckeditor/";
+window.CKEDITOR_BASEPATH = elems[0].href + "bower_modules/ckeditor/";
 
 Ext.Loader.loadScript
 (
 	{
-	url: "engine/bower_modules/ckeditor/ckeditor.js"
+	url: "bower_modules/ckeditor/ckeditor.js"
 	}
 );
 
@@ -73,7 +73,7 @@ Ext.define("Admin.view.ux.CKEditor",
 
 		Ext.apply(this.config.CKConfig, defConfig);
 		
-		CKEDITOR.basePath = baseHref + "engine/bower_modules/ckeditor/";
+		CKEDITOR.basePath = baseHref + "bower_modules/ckeditor/";
         CKEDITOR.base = baseHref;
 		CKEDITOR.replace(this.id, this.config.CKConfig);
 		CKEDITOR.instances[this.id].setData(value);

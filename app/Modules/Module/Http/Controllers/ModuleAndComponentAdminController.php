@@ -101,7 +101,7 @@ private $_Component;
                 $dataWithComonents[$y]['text'] = $data[$i]['labelModule'];
                 $dataWithComonents[$y]['leaf'] = false;
                 $dataWithComonents[$y]['children'] = [];
-                $dataWithComonents[$y]['icon'] = 'engine/app/Modules/Module/Admin/images/icon_small.png';
+                $dataWithComonents[$y]['icon'] = 'app/Modules/Module/Admin/images/icon_small.png';
 
                 $dataWithComonents[$y]['children'] = [];
 
@@ -113,7 +113,7 @@ private $_Component;
                         'leaf' => true,
                         'allowDrag' => true,
                         'allowDrop' => false,
-                        'icon' => 'engine/app/Modules/Page/admin/images/icon_Component_small.png',
+                        'icon' => 'app/Modules/Page/admin/images/icon_Component_small.png',
                         'nameModule' => $data[$i]['nameModule'],
                         'nameComponent' => $components[$z]['nameComponent'],
                         'labelComponent' => $components[$z]['labelComponent'],

@@ -47,7 +47,7 @@ class ModuleTableSeeder extends Seeder
                             'nameComponent' => 'get',
                             'labelComponent' => 'Установить',
                             'pathToCss' => NULL,
-                            'pathToJs' => 'engine/app/Modules/Seo/Admin/js/component/get/js/index.js',
+                            'pathToJs' => 'app/Modules/Seo/Admin/js/component/get/js/index.js',
                             'status' => 1
                         )
                 )
@@ -59,9 +59,9 @@ class ModuleTableSeeder extends Seeder
                             'idModule' => $idModule,
                             'actionWidget' => 'seo',
                             'labelWidget' => 'Статистика посещения',
-                            'icon' => 'engine/app/Modules/Seo/Admin/images/icon_small.png',
+                            'icon' => 'app/Modules/Seo/Admin/images/icon_small.png',
                             'pathToCss' => '',
-                            'pathToJs' => 'engine/app/Modules/Seo/Admin/js/widget/seo/js/index.js',
+                            'pathToJs' => 'app/Modules/Seo/Admin/js/widget/seo/js/index.js',
                             'def' => 1,
                             'status' => 1,
                         )
@@ -73,11 +73,11 @@ class ModuleTableSeeder extends Seeder
                     'idModule' => $idModule,
                     'labelSection' => 'Статистика посещения',
                     'bundle' => 'SEO',
-                    'iconSmall' => 'engine/app/Modules/Seo/Admin/images/icon_small.png',
-                    'iconBig' => 'engine/app/Modules/Seo/Admin/images/icon_big.png',
+                    'iconSmall' => 'app/Modules/Seo/Admin/images/icon_small.png',
+                    'iconBig' => 'app/Modules/Seo/Admin/images/icon_big.png',
                     'menuLeft' => 0,
-                    'pathToCss' => 'engine/app/Modules/Seo/Admin/css/main.css',
-                    'pathToJs' => 'engine/app/Modules/Seo/Admin/js/index.js',
+                    'pathToCss' => 'app/Modules/Seo/Admin/css/main.css',
+                    'pathToJs' => 'app/Modules/Seo/Admin/js/index.js',
                     'weight' => 0,
                     'status' => 1,
                 )
