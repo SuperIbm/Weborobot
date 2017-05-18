@@ -1,0 +1,16 @@
+{
+    "name": "Upload",
+    "alias": "upload",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 27,
+    "providers": [
+        "App\\Modules\\Upload\\Providers\\UploadServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

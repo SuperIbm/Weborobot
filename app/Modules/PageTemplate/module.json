@@ -1,0 +1,15 @@
+{
+    "name": "PageTemplate",
+    "alias": "pagetemplate",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 20,
+    "providers": [
+        "App\\Modules\\PageTemplate\\Providers\\PageTemplateServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "start.php"
+    ]
+}

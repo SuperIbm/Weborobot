@@ -1,0 +1,15 @@
+{
+    "name": "AdminSection",
+    "alias": "adminsection",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 2,
+    "providers": [
+        "App\\Modules\\AdminSection\\Providers\\AdminSectionServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "start.php"
+    ]
+}

@@ -1,0 +1,20 @@
+.icon_Seo_char_small
+{
+background-image: url(../images/icon_small_char.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_Seo_table_small
+{
+background-image: url(../images/icon_small_table.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_Seo_save_small
+{
+background-image: url(../images/icon_small_save.png);
+background-repeat: no-repeat;
+background-position: center center;
+}

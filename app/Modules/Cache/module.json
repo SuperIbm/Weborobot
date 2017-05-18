@@ -1,0 +1,16 @@
+{
+    "name": "Cache",
+    "alias": "cache",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 4,
+    "providers": [
+        "App\\Modules\\Cache\\Providers\\CacheServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

@@ -1,0 +1,43 @@
+.icon_Page_Content_small
+{
+background-image: url(../images/icon_Content_small.png?15);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_Page_Setting_small
+{
+background-image: url(../images/icon_Setting_small.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_Page_Component_small
+{
+background-image: url(../images/icon_Component_small.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_Page_Template_small
+{
+background-image: url(../images/icon_Template_small.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+
+.icon_Page_PageComponent_small
+{
+background-image: url(../images/icon_PageComponent_small.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+
+.icon_Page_PageTemplate_small
+{
+background-image: url(../../../PageTemplate/admin/images/icon_small.png);
+background-repeat: no-repeat;
+background-position: center center;
+}

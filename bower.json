@@ -1,0 +1,25 @@
+{
+  "name": "weborobot",
+  "description": "CMS Weborobot",
+  "main": "index.js",
+  "authors": [
+    "Timofey Inchagov"
+  ],
+  "license": "MIT",
+  "homepage": "weborobot.ru",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies":
+  {
+    "extjs": "latest",
+    "rouble.font": "latest",
+    "carouFredSel": "latest",
+    "ckeditor": "#full/latest",
+    "semantic": "latest"
+  }
+}

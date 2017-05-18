@@ -1,0 +1,86 @@
+{
+    "data":
+    {
+        "PageTemplate":
+        [
+            {
+            "version": "1.6",
+            "date": "2015-05-01",
+                "actions":
+                {
+                    "creates":
+                    {
+                        "components":
+                        [
+                            {
+							"nameBundle": "",
+							"nameComponent": "",
+							"labelComponent": "",
+							"pathToCss": "",
+							"pathToJs": ""
+                            }
+                        ],
+                        "templates":
+                        [
+                            {
+							"labelTemplate": "",
+							"htmlTpl": ""
+                            }
+                        ],
+                        "widgets":
+                        [
+                            {
+							"actionWidget": "",
+							"labelWidget": "",
+							"icon": "",
+							"pathToCss": "",
+							"pathToJs": "",
+							"def": ""
+                            }
+                        ],
+						"sections":
+						[
+							{
+							"labelSection": "Шаблоны страниц",
+							"bundle": "Управление",
+							"iconSmall": "engine/app/Modules/PageTemplate/Admin/images/icon_small.png",
+							"iconBig": "engine/app/Modules/PageTemplate/Admin/images/icon_big.png",
+							"pathToCss": "engine/app/Modules/PageTemplate/Admin/css/main.css",
+							"pathToJs": "engine/app/Modules/PageTemplate/Admin/js/index.js"
+							}
+						]
+                    },
+					"destroies":
+                    {
+                        "components":
+                        [
+                            {
+							"nameBundle": "",
+							"nameComponent": ""
+                            }
+                        ],
+                        "templates":
+                        [
+                            {
+							"labelTemplate": ""
+                            }
+                        ],
+                        "widgets":
+                        [
+                            {
+							"actionWidget": ""
+                            }
+                        ],
+						"sections":
+						[
+							{
+							"labelSection": ""
+							}
+						]
+                    }
+                }
+            }
+        ]
+    },
+"success": true
+}

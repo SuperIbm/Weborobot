@@ -1,0 +1,503 @@
+/* Подгрузка рубля */
+@font-face
+{
+font-family: 'ALSRublRegular';
+src: url('../../../../../bower_modules/rouble.font/fonts/rouble.eot');
+src: local('ALS Rubl'),
+local('ALSRubl'),
+url('../../../../../bower_modules/rouble.font/fonts/rouble.woff') format('woff'),
+url('../../../../../bower_modules/rouble.font/fonts/rouble.ttf') format('truetype'),
+url('../../../../../bower_modules/rouble.font/fonts/rouble.svg#ALSRubl') format('svg');
+}
+
+/* Подгрузка иконок */
+@font-face
+{
+font-family: 'Icons';
+src: url("../../../../../bower_modules/semantic/dist/themes/default/assets/fonts/icons.eot");
+src: url("../../../../../bower_modules/semantic/dist/themes/default/assets/fonts/icons.eot?#iefix") format('embedded-opentype'),
+url("../../../../../bower_modules/semantic/dist/themes/default/assets/fonts/icons.woff2") format('woff2'),
+url("../../../../../bower_modules/semantic/dist/themes/default/assets/fonts/icons.woff") format('woff'),
+url("../../../../../bower_modules/semantic/dist/themes/default/assets/fonts/icons.ttf") format('truetype'),
+url("../../../../../bower_modules/semantic/dist/themes/default/assets/fonts/icons.svg#icons") format('svg');
+font-style: normal;
+font-weight: normal;
+font-variant: normal;
+}
+
+/* Исправление основного шаблона */
+.x-form-text-default
+{
+padding: 3px 6px 6px;
+}
+
+/* Стандартные классы */
+
+BODY.x-body
+{
+background-color: #1c4d99;
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+BODY.wait
+{
+cursor: wait;
+}
+
+/* Обои */
+.wallpaper_1,
+.wallpaper_2,
+.wallpaper_3,
+.wallpaper_4,
+.wallpaper_5
+{
+background-position: center center;
+background-repeat: no-repeat;
+}
+
+.wallpaper_1
+{
+background-image: url(../images/wallpapers/1.jpg);
+}
+
+.wallpaper_2
+{
+background-image: url(../images/wallpapers/2.jpg);
+}
+
+.wallpaper_3
+{
+background-image: url(../images/wallpapers/3.jpg);
+}
+
+.wallpaper_4
+{
+background-image: url(../images/wallpapers/4.jpg);
+}
+
+.wallpaper_5
+{
+background-image: url(../images/wallpapers/5.jpg);
+}
+
+.needsForm
+{
+color: #ff0000;
+margin-left: 5px;
+font-size: smaller;
+}
+
+
+
+/* Набор иконок для входа */
+.icon_enter
+{
+background-image:url(../images/icon_enter.png?);
+background-repeat: no-repeat;
+}
+
+.icon_treeSide
+{
+background-image: url(../images/icon_treeSide.png?111);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+
+/* Вспомогательные икноки */
+.icon_create
+{
+background-image: url(../images/icon_button_create.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_update
+{
+background-image: url(../images/icon_button_update.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_delete
+{
+background-image: url(../images/icon_button_delete.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_search
+{
+background-image: url(../images/icon_button_search.png?111);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_widget
+{
+background-image: url(../images/icon_button_widgets.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+/* Дополнительные иконки для тригеров */
+.x-form-select-trigger
+{
+background: #ffffff url(../images/x-form-select-trigger.png?45) no-repeat scroll 0 center;
+width: 22px;
+}
+
+.x-form-random-trigger
+{
+background: #ffffff url(../images/x-form-random-trigger.png?495) no-repeat scroll 0 center;
+width: 22px;
+}
+
+.x-form-clean-trigger
+{
+background: #ffffff url(../images/x-form-clean-trigger.png?4959) no-repeat scroll 0 center;
+width: 22px;
+}
+
+.x-form-load-trigger
+{
+background: #ffffff url(../images/x-form-load-trigger.png?49569) no-repeat scroll 0 center;
+width: 22px;
+}
+
+/* Верхняя шапка */
+.header
+{
+background-color: transparent;
+}
+
+.header .button
+{
+background-image: none;
+background-color: #16376b;
+border: 1px solid #102c57;
+color: #ffffff;
+}
+
+.header .nameCms
+{
+color: #ffffff;
+font-size: 18pt;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+.icon_menu
+{
+background-image: url(../images/icon_menu.png?78939);
+}
+
+.icon_out
+{
+background-image: url(../images/icon_exit.png);
+}
+
+.icon_home
+{
+background-image: url(../images/icon_home.png);
+}
+
+.icon_destroy_cache
+{
+background-image: url(../images/icon_eraser.png);
+}
+
+.icon_application
+{
+background-image: url(../images/icon_application.png?111);
+}
+
+
+/* Левое меню */
+.menuLeft
+{
+background-color: transparent;
+border-width: 0;
+}
+
+.menuLeft .x-btn-icon-el
+{
+width: 60px;
+height: 30px;
+background-color: transparent;
+}
+
+.icon_big_exit
+{
+background-image: url(../images/icon_big_exit.png?45);
+}
+
+
+
+.menuLeft .button
+{
+cursor: pointer;
+}
+
+.menuLeft .button .x-btn-icon-el
+{
+opacity: 0.9;
+}
+
+.menuLeft .button.overCls .x-btn-icon-el
+{
+opacity: 1;
+}
+
+.menuLeft .image
+{
+
+}
+
+.menuLeft .button .x-btn-inner,
+.menuLeft .image .x-btn-inner
+{
+color: #ffffff;
+font-size: 7pt;
+line-height: 13px;
+font-weight: normal;
+text-overflow: unset;
+white-space: normal;
+text-shadow: 2px 2px 4px #000000;
+padding-bottom: 4px;
+}
+
+.menuLeft .image .x-btn-icon-el
+{
+width: 60px;
+height: 120px;
+background-size: 60px 60px;
+background-repeat: no-repeat;
+border: 1px solid #ffffff;
+border-radius: 5px;
+}
+
+
+/* Иконки для пакетов разделов */
+.bundle_content
+{
+background-image: url(../images/bundle_content.png?45);
+}
+
+.bundle_services
+{
+background-image: url(../images/bundle_services.png?45);
+}
+
+.bundle_sales
+{
+background-image: url(../images/bundle_sales.png?45);
+}
+
+.bundle_seo
+{
+    background-image: url(../images/bundle_seo.png?45);
+}
+
+.bundle_maneger
+{
+background-image: url(../images/bundle_maneger.png?45);
+}
+
+.bundle_system
+{
+background-image: url(../images/bundle_system.png?45);
+}
+
+
+/* Нижняя часть */
+.footer, .footer .x-panel-body
+{
+background-color: transparent;
+}
+
+.footer .text
+{
+text-align: right;
+font-size: 9pt;
+color: #ffffff;
+}
+
+.footer .text A
+{
+color: #ffffff;
+}
+
+/* Для панели меню */
+.panelMenu
+{
+
+}
+
+.panelMenu .dataview-item
+{
+vertical-align: top;
+display: inline-block;
+width: 85px;
+height: 75px;
+margin-right: 5px;
+margin-bottom: 5px;
+padding: 5px;
+border: 1px solid #ffffff;
+}
+
+.panelMenu .dataview-item.over
+{
+background-color: #efefef;
+border: 1px solid #dddddd;
+}
+
+.panelMenu .dataview-item.x-item-selected
+{
+background-color: #dfedff;
+border: 1px solid #6593cf;
+}
+
+.panelMenu .dataview-item .icon
+{
+width: 75px;
+height: 32px;
+background-position: center center;
+background-repeat: no-repeat;
+margin-bottom: 5px;
+text-align: center;
+}
+
+.panelMenu .dataview-item .label
+{
+text-align: center;
+font-size: 8pt;
+line-height: 13px;
+}
+
+
+/* Для загрузчика налету */
+.imagesZone
+{
+position: relative;
+}
+
+.imagesZone .imagesZone-item
+{
+float: left;
+padding: 8px;
+margin: 8px 8px 4px 8px;
+position: relative;
+z-index: 2;
+}
+
+.imagesZone .imagesZone-item.isFake,
+.imagesZone .imagesZone-item.isFake.x-item-selected,
+.imagesZone .imagesZone-item.isFake.x-item-selected.x-view-item-focused,
+.imagesZone .imagesZone-item.isFake.x-view-item-focused
+{
+outline: 2px dashed #cccccc!important;
+background-color: #ffffff;
+}
+
+.imagesZone .imagesZone-item.isFake IMG,
+.imagesZone .imagesZone-item.isFake .label
+{
+opacity: 0.3;
+}
+
+.imagesZone .imagesZone-item .imagesZone-label
+{
+font-size: 12px;
+font-weight: normal;
+text-align: center;
+padding-top: 5px;
+margin: 0;
+}
+
+.imagesZone .imagesZone-item.x-item-selected,
+.imagesZone .imagesZone-item.x-item-selected.x-view-item-focused
+{
+background-color: #dfedff;
+outline: 1px dashed #6593cf!important;
+}
+
+.imagesZone .imagesZone-item.x-view-item-focused
+{
+outline: 1px dashed #cccccc!important;
+}
+
+.imagesZone .imagesZone-item-over
+{
+background-color: #eeeeee;
+}
+
+.imagesZone .imagesZone-item.light
+{
+border: 1px solid #ff0000;
+}
+
+.imagesZone .icon
+{
+width: 100px;
+height: 100px;
+display: none;
+font-family: 'Icons';
+font-size: 60pt;
+position: absolute;
+line-height: 100%;
+text-align: center;
+left: calc(50% - 50px);
+top: calc(50% - 50px);
+}
+
+.imagesZone .icon.active,
+.imagesZone .icon.noSupport
+{
+display: block;
+}
+
+.imagesZone .icon.active:after
+{
+content: "\f058";
+color: #8bc34a;
+}
+
+.imagesZone .icon.noSupport:after
+{
+content: "\f056";
+color: #ff0000;
+}
+
+
+/* Для анимированных панелей */
+.x-portal-body {
+    padding: 0 0 0 8px;
+}
+.x-portal .x-panel-dd-spacer {
+    border: 2px dashed #99bbe8;
+    background: #f6f6f6;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    margin-bottom: 10px;
+}
+.x-portlet {
+    margin-bottom:10px;
+    padding: 1px;
+}
+.x-portlet .x-panel-body {
+    background: #fff;
+}
+.portlet-content {
+    color: black;
+    padding: 10px;
+    font-size: 11px;
+}
+
+.CodeMirror
+{
+border: 1px solid #c1c1c1;
+}
+
+

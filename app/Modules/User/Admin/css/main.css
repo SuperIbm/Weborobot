@@ -1,0 +1,28 @@
+.icon_User_Account_small
+{
+background-image: url(../images/icon_User_Account_small.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_User_Group_small
+{
+background-image: url(../images/icon_Group_small.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_User_Role_small
+{
+background-image: url(../images/icon_Role_small.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_User_BlockIp_small
+{
+background-image: url(../images/icon_BlockIp_small.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+

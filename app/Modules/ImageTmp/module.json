@@ -1,0 +1,16 @@
+{
+    "name": "ImageTmp",
+    "alias": "imagetmp",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 12,
+    "providers": [
+        "App\\Modules\\ImageTmp\\Providers\\ImageTmpServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

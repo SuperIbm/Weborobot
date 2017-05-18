@@ -1,0 +1,16 @@
+{
+    "name": "Infoblock",
+    "alias": "infoblock",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 13,
+    "providers": [
+        "App\\Modules\\Infoblock\\Providers\\InfoblockServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

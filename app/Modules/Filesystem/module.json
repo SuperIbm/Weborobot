@@ -1,0 +1,15 @@
+{
+    "name": "Filesystem",
+    "alias": "filesystem",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 9,
+    "providers": [
+        "App\\Modules\\Filesystem\\Providers\\FilesystemServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ]
+}

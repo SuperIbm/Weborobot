@@ -1,0 +1,15 @@
+{
+    "name": "Page",
+    "alias": "page",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 17,
+    "providers": [
+        "App\\Modules\\Page\\Providers\\PageServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "start.php"
+    ]
+}

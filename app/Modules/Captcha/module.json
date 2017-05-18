@@ -1,0 +1,16 @@
+{
+    "name": "Captcha",
+    "alias": "captcha",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 5,
+    "providers": [
+        "App\\Modules\\Captcha\\Providers\\CaptchaServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

@@ -1,0 +1,15 @@
+{
+    "name": "Component",
+    "alias": "Component",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 6,
+    "providers": [
+        "App\\Modules\\Component\\Providers\\ComponentServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "start.php"
+    ]
+}

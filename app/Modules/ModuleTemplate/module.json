@@ -1,0 +1,15 @@
+{
+    "name": "ModuleTemplate",
+    "alias": "Moduletemplate",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 16,
+    "providers": [
+        "App\\Modules\\ModuleTemplate\\Providers\\ModuleTemplateServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "start.php"
+    ]
+}

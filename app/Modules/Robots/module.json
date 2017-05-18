@@ -1,0 +1,16 @@
+{
+    "name": "Robots",
+    "alias": "robots",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 21,
+    "providers": [
+        "App\\Modules\\Robots\\Providers\\RobotsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

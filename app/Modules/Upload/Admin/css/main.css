@@ -1,0 +1,20 @@
+.icon_UploadSource_small
+{
+background-image: url(../images/icon_source_small.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_button_check
+{
+background-image: url(../images/icon_button_check.png?85);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_button_set
+{
+background-image: url(../images/icon_button_set.png?45);
+background-repeat: no-repeat;
+background-position: center center;
+}
