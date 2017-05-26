@@ -39,14 +39,6 @@ class ComponentAdminController extends Controller
  */
 private $_Component;
 
-/**
- * Репозитарий модулей.
- * @var \App\Modules\Module\Repositories\Module
- * @version 1.0
- * @since 1.0
- */
-private $_Module;
-
     /**
      * Конструктор.
      * @param \App\Modules\Component\Repositories\Component $Component Репозитарий виджетов.
@@ -57,7 +49,6 @@ private $_Module;
     public function __construct(Component $Component, Module $Module)
     {
     $this->_Component = $Component;
-    $this->_Module = $Module;
     }
 
 
@@ -137,7 +128,7 @@ private $_Module;
      */
     public function create(ComponentAdminCreateRequest $Request)
     {
-    $idComponent = $this->_Module->installComponent($Request->input('nameDir'), $Request->file('file')->path());
+    $idComponent = $this->_Component->install($Request->input('nameDir'), $Request->file('file')->path());
 
         if($idComponent)
         {

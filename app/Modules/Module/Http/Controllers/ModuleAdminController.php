@@ -123,7 +123,7 @@ private $_Component;
      */
     public function create(ModuleAdminCreateRequest $Request)
     {
-    $status = $this->_Module->installModule($Request->input('nameDir'), $Request->file('file')->path());
+    $status = $this->_Module->install($Request->input('nameDir'), $Request->file('file')->path());
 
         if($status)
         {

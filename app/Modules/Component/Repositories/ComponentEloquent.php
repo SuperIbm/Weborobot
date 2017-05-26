@@ -8,6 +8,10 @@
  */
 namespace App\Modules\Component\Repositories;
 
+use Zip;
+use Storage;
+use Config;
+use Util;
 use App\Models\RepositaryEloquent;
 
 /**
@@ -100,5 +104,81 @@ use RepositaryEloquent;
     public function destroy($id)
     {
     return $this->_destroy(['ComponentItem'], $id);
+    }
+
+    /**
+     * Установка компонента.
+     * @param string $nameDir Папка модуля.
+     * @param string $file Путь к файлу с архивом модуля.
+     * @return bool Вернет true, если установка прошла успешно.
+     * @since 1.0
+     * @version 1.0
+     */
+    public function install($nameDir, $file)
+    {
+    $pathToDir = Storage::disk('modules')->getDriver()->getAdapter()->applyPathPrefix($nameDir.'/');
+    $nameDirLower = Util::toLower($nameDir);
+
+    Zip::setFile($file);
+    Zip::extract(PCLZIP_OPT_PATH, $pathToDir);
+
+        if(Zip::errorCode() == 0)
+        {
+        Config::set($nameDirLower, require $pathToDir.'Config/config.php');
+
+            if(Util::isCorrectVersion(Config::get('app.version'), Config::get($nameDirLower.'.version')))
+            {
+                $module = $this->read
+                (
+                    [
+                        [
+                        'property' => 'nameModule',
+                        'value' => Config::get($nameDirLower.'.name')
+                        ]
+                    ]
+                );
+
+                if($module)
+                {
+                    if(Config::get($nameDirLower.'.components'))
+                    {
+                    $components =  Config::get($nameDirLower.'.components');
+
+                        for($i = 0; $i < count($components); $i++)
+                        {
+                            $this->create
+                            (
+                                [
+                                'idModule' => $module[0]['idModule'],
+                                'nameBundle' => isset($components[$i]['nameBundle']) ? $components[$i]['nameBundle'] : null,
+                                'nameComponent' => $components[$i]['nameComponent'],
+                                'labelComponent' => $components[$i]['labelComponent'],
+                                'pathToCss' => isset($components[$i]['pathToCss']) ? $components[$i]['pathToCss'] : null,
+                                'pathToJs' => isset($components[$i]['pathToJs']) ? $components[$i]['pathToJs'] : null,
+                                'status' => 'Активен'
+                                ]
+                            );
+                        }
+                    }
+
+                return true;
+                }
+                else
+                {
+                $this->addError('noModule', 'Модуль '.Config::get($nameDirLower.'.label').' в системе не обнаружен.');
+                return false;
+                }
+            }
+            else
+            {
+            $this->addError('isNotCorrectVersion', 'Данная версия модуля не подходит под текущую версию системы.');
+            return false;
+            }
+        }
+        else
+        {
+        $this->addError('isNoCorrectArchive', 'Некорректный архив модуля.');
+        return false;
+        }
     }
 }

@@ -8,6 +8,10 @@
  */
 namespace App\Modules\Widget\Repositories;
 
+use Zip;
+use Storage;
+use Config;
+use Util;
 use App\Models\RepositaryEloquent;
 
 /**
@@ -101,5 +105,82 @@ use RepositaryEloquent;
     public function destroy($id)
     {
     return $this->_destroy(['WidgetItem'], $id);
+    }
+
+    /**
+     * Установка виджета.
+     * @param string $nameDir Папка модуля.
+     * @param string $file Путь к файлу с архивом модуля.
+     * @return bool Вернет true, если установка прошла успешно.
+     * @since 1.0
+     * @version 1.0
+     */
+    public function install($nameDir, $file)
+    {
+    $pathToDir = Storage::disk('modules')->getDriver()->getAdapter()->applyPathPrefix($nameDir.'/');
+    $nameDirLower = Util::toLower($nameDir);
+
+    Zip::setFile($file);
+    Zip::extract(PCLZIP_OPT_PATH, $pathToDir);
+
+        if(Zip::errorCode() == 0)
+        {
+        Config::set($nameDir, require $pathToDir.'Config/config.php');
+
+            if(Util::isCorrectVersion(Config::get('app.version'), Config::get($nameDirLower.'.version')))
+            {
+                $module = $this->read
+                (
+                    [
+                        [
+                        'property' => 'nameModule',
+                        'value' => Config::get($nameDirLower.'.name')
+                        ]
+                    ]
+                );
+
+                if($module)
+                {
+                    if(Config::get($nameDirLower.'.widgets'))
+                    {
+                    $widgets = Config::get($nameDirLower.'.widgets');
+
+                        for($i = 0; $i < count($widgets); $i++)
+                        {
+                            $this->create
+                            (
+                                [
+                                'idModule' => $module[0]['idModule'],
+                                'actionWidget' => $widgets[$i]['actionWidget'],
+                                'labelWidget' => $widgets[$i]['labelWidget'],
+                                'icon' => $widgets[$i]['icon'],
+                                'pathToCss' => isset($widgets[$i]['pathToCss']) ? $widgets[$i]['pathToCss'] : null,
+                                'pathToJs' => $widgets[$i]['pathToJs'],
+                                'def' => $widgets[$i]['def'],
+                                'status' => 'Активен'
+                                ]
+                            );
+                        }
+                    }
+
+                return true;
+                }
+                else
+                {
+                $this->addError('noModule', 'Модуль '.Config::get($nameDirLower.'.label').' в системе не обнаружен.');
+                return false;
+                }
+            }
+            else
+            {
+            $this->addError('isNotCorrectVersion', 'Данная версия модуля не подходит под текущую версию системы.');
+            return false;
+            }
+        }
+        else
+        {
+        $this->addError('isNoCorrectArchive', 'Некорректный архив модуля.');
+        return false;
+        }
     }
 }

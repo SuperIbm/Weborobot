@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.31 on 2017-05-09.
+ * Generated for Laravel 5.3.31 on 2017-05-26.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -2266,6 +2266,405 @@ namespace Illuminate\Support\Facades {
         public static function extend($driver, $callback)
         {
             return \Illuminate\Cache\CacheManager::extend($driver, $callback);
+        }
+        
+        /**
+         * Set the event dispatcher instance.
+         *
+         * @param \Illuminate\Contracts\Events\Dispatcher $events
+         * @return void 
+         * @static 
+         */
+        public static function setEventDispatcher($events)
+        {
+            \Illuminate\Cache\Repository::setEventDispatcher($events);
+        }
+        
+        /**
+         * Determine if an item exists in the cache.
+         *
+         * @param string $key
+         * @return bool 
+         * @static 
+         */
+        public static function has($key)
+        {
+            return \Illuminate\Cache\Repository::has($key);
+        }
+        
+        /**
+         * Retrieve an item from the cache by key.
+         *
+         * @param string $key
+         * @param mixed $default
+         * @return mixed 
+         * @static 
+         */
+        public static function get($key, $default = null)
+        {
+            return \Illuminate\Cache\Repository::get($key, $default);
+        }
+        
+        /**
+         * Retrieve multiple items from the cache by key.
+         * 
+         * Items not found in the cache will have a null value.
+         *
+         * @param array $keys
+         * @return array 
+         * @static 
+         */
+        public static function many($keys)
+        {
+            return \Illuminate\Cache\Repository::many($keys);
+        }
+        
+        /**
+         * Retrieve an item from the cache and delete it.
+         *
+         * @param string $key
+         * @param mixed $default
+         * @return mixed 
+         * @static 
+         */
+        public static function pull($key, $default = null)
+        {
+            return \Illuminate\Cache\Repository::pull($key, $default);
+        }
+        
+        /**
+         * Store an item in the cache.
+         *
+         * @param string $key
+         * @param mixed $value
+         * @param \DateTime|float|int $minutes
+         * @return void 
+         * @static 
+         */
+        public static function put($key, $value, $minutes = null)
+        {
+            \Illuminate\Cache\Repository::put($key, $value, $minutes);
+        }
+        
+        /**
+         * Store multiple items in the cache for a given number of minutes.
+         *
+         * @param array $values
+         * @param float|int $minutes
+         * @return void 
+         * @static 
+         */
+        public static function putMany($values, $minutes)
+        {
+            \Illuminate\Cache\Repository::putMany($values, $minutes);
+        }
+        
+        /**
+         * Store an item in the cache if the key does not exist.
+         *
+         * @param string $key
+         * @param mixed $value
+         * @param \DateTime|float|int $minutes
+         * @return bool 
+         * @static 
+         */
+        public static function add($key, $value, $minutes)
+        {
+            return \Illuminate\Cache\Repository::add($key, $value, $minutes);
+        }
+        
+        /**
+         * Increment the value of an item in the cache.
+         *
+         * @param string $key
+         * @param mixed $value
+         * @return int|bool 
+         * @static 
+         */
+        public static function increment($key, $value = 1)
+        {
+            return \Illuminate\Cache\Repository::increment($key, $value);
+        }
+        
+        /**
+         * Decrement the value of an item in the cache.
+         *
+         * @param string $key
+         * @param mixed $value
+         * @return int|bool 
+         * @static 
+         */
+        public static function decrement($key, $value = 1)
+        {
+            return \Illuminate\Cache\Repository::decrement($key, $value);
+        }
+        
+        /**
+         * Store an item in the cache indefinitely.
+         *
+         * @param string $key
+         * @param mixed $value
+         * @return void 
+         * @static 
+         */
+        public static function forever($key, $value)
+        {
+            \Illuminate\Cache\Repository::forever($key, $value);
+        }
+        
+        /**
+         * Get an item from the cache, or store the default value.
+         *
+         * @param string $key
+         * @param \DateTime|float|int $minutes
+         * @param \Closure $callback
+         * @return mixed 
+         * @static 
+         */
+        public static function remember($key, $minutes, $callback)
+        {
+            return \Illuminate\Cache\Repository::remember($key, $minutes, $callback);
+        }
+        
+        /**
+         * Get an item from the cache, or store the default value forever.
+         *
+         * @param string $key
+         * @param \Closure $callback
+         * @return mixed 
+         * @static 
+         */
+        public static function sear($key, $callback)
+        {
+            return \Illuminate\Cache\Repository::sear($key, $callback);
+        }
+        
+        /**
+         * Get an item from the cache, or store the default value forever.
+         *
+         * @param string $key
+         * @param \Closure $callback
+         * @return mixed 
+         * @static 
+         */
+        public static function rememberForever($key, $callback)
+        {
+            return \Illuminate\Cache\Repository::rememberForever($key, $callback);
+        }
+        
+        /**
+         * Remove an item from the cache.
+         *
+         * @param string $key
+         * @return bool 
+         * @static 
+         */
+        public static function forget($key)
+        {
+            return \Illuminate\Cache\Repository::forget($key);
+        }
+        
+        /**
+         * Begin executing a new tags operation if the store supports it.
+         *
+         * @param array|mixed $names
+         * @return \Illuminate\Cache\TaggedCache 
+         * @throws \BadMethodCallException
+         * @static 
+         */
+        public static function tags($names)
+        {
+            return \Illuminate\Cache\Repository::tags($names);
+        }
+        
+        /**
+         * Get the default cache time.
+         *
+         * @return float|int 
+         * @static 
+         */
+        public static function getDefaultCacheTime()
+        {
+            return \Illuminate\Cache\Repository::getDefaultCacheTime();
+        }
+        
+        /**
+         * Set the default cache time in minutes.
+         *
+         * @param float|int $minutes
+         * @return void 
+         * @static 
+         */
+        public static function setDefaultCacheTime($minutes)
+        {
+            \Illuminate\Cache\Repository::setDefaultCacheTime($minutes);
+        }
+        
+        /**
+         * Get the cache store implementation.
+         *
+         * @return \Illuminate\Contracts\Cache\Store 
+         * @static 
+         */
+        public static function getStore()
+        {
+            return \Illuminate\Cache\Repository::getStore();
+        }
+        
+        /**
+         * Determine if a cached value exists.
+         *
+         * @param string $key
+         * @return bool 
+         * @static 
+         */
+        public static function offsetExists($key)
+        {
+            return \Illuminate\Cache\Repository::offsetExists($key);
+        }
+        
+        /**
+         * Retrieve an item from the cache by key.
+         *
+         * @param string $key
+         * @return mixed 
+         * @static 
+         */
+        public static function offsetGet($key)
+        {
+            return \Illuminate\Cache\Repository::offsetGet($key);
+        }
+        
+        /**
+         * Store an item in the cache for the default time.
+         *
+         * @param string $key
+         * @param mixed $value
+         * @return void 
+         * @static 
+         */
+        public static function offsetSet($key, $value)
+        {
+            \Illuminate\Cache\Repository::offsetSet($key, $value);
+        }
+        
+        /**
+         * Remove an item from the cache.
+         *
+         * @param string $key
+         * @return void 
+         * @static 
+         */
+        public static function offsetUnset($key)
+        {
+            \Illuminate\Cache\Repository::offsetUnset($key);
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param callable $macro
+         * @return void 
+         * @static 
+         */
+        public static function macro($name, $macro)
+        {
+            \Illuminate\Cache\Repository::macro($name, $macro);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */
+        public static function hasMacro($name)
+        {
+            return \Illuminate\Cache\Repository::hasMacro($name);
+        }
+        
+        /**
+         * Dynamically handle calls to the class.
+         *
+         * @param string $method
+         * @param array $parameters
+         * @return mixed 
+         * @throws \BadMethodCallException
+         * @static 
+         */
+        public static function macroCall($method, $parameters)
+        {
+            return \Illuminate\Cache\Repository::macroCall($method, $parameters);
+        }
+        
+        /**
+         * Remove all items from the cache.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function flush()
+        {
+            \Illuminate\Cache\RedisStore::flush();
+        }
+        
+        /**
+         * Get the Redis connection instance.
+         *
+         * @return \Predis\ClientInterface 
+         * @static 
+         */
+        public static function connection()
+        {
+            return \Illuminate\Cache\RedisStore::connection();
+        }
+        
+        /**
+         * Set the connection name to be used.
+         *
+         * @param string $connection
+         * @return void 
+         * @static 
+         */
+        public static function setConnection($connection)
+        {
+            \Illuminate\Cache\RedisStore::setConnection($connection);
+        }
+        
+        /**
+         * Get the Redis database instance.
+         *
+         * @return \Illuminate\Redis\Database 
+         * @static 
+         */
+        public static function getRedis()
+        {
+            return \Illuminate\Cache\RedisStore::getRedis();
+        }
+        
+        /**
+         * Get the cache key prefix.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getPrefix()
+        {
+            return \Illuminate\Cache\RedisStore::getPrefix();
+        }
+        
+        /**
+         * Set the cache key prefix.
+         *
+         * @param string $prefix
+         * @return void 
+         * @static 
+         */
+        public static function setPrefix($prefix)
+        {
+            \Illuminate\Cache\RedisStore::setPrefix($prefix);
         }
         
     }         
@@ -10735,12 +11134,13 @@ namespace Nwidart\Modules\Facades {
         /**
          * Get all modules as laravel collection instance.
          *
+         * @param $status
          * @return \Nwidart\Modules\Collection 
          * @static 
          */
-        public static function collections()
+        public static function collections($status = 1)
         {
-            return \Nwidart\Modules\Repository::collections();
+            return \Nwidart\Modules\Repository::collections($status);
         }
         
         /**
@@ -14489,6 +14889,21 @@ namespace App\Models\Facades {
             return \App\Models\Utiler::isAssoc($arr);
         }
         
+        /**
+         * Проверка соотвествия версий.
+         *
+         * @param string $versionFirst Первая версия.
+         * @param string $versionSecond Вторая версия.
+         * @return bool Вернет true, если версии соотвествуют.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function isCorrectVersion($versionFirst, $versionSecond)
+        {
+            return \App\Models\Utiler::isCorrectVersion($versionFirst, $versionSecond);
+        }
+        
     }         
 
     class Zip {
@@ -16028,7 +16443,7 @@ namespace App\Modules\Page\Facades {
          * Получение ошибки по номеру.
          *
          * @param int $index Номер ошибки.
-         * @return array Массив с описанием ошибки, где:
+         * @return array|bool Массив с описанием ошибки, где:
          * <ul>
          * 	<li>type - тип ошибки</li>
          * 	<li>message - сообщение об ошибки</li>
@@ -16047,7 +16462,7 @@ namespace App\Modules\Page\Facades {
         /**
          * Получение всех ошибок.
          *
-         * @return array Массив с описанием ошибки, где:
+         * @return array|bool Массив с описанием ошибки, где:
          * <ul>
          * 	<li>type - тип ошибки</li>
          * 	<li>message - сообщение об ошибки</li>
@@ -16500,7 +16915,7 @@ namespace App\Modules\ImageTmp\Facades {
          * Получение ошибки по номеру.
          *
          * @param int $index Номер ошибки.
-         * @return array Массив с описанием ошибки, где:
+         * @return array|bool Массив с описанием ошибки, где:
          * <ul>
          * 	<li>type - тип ошибки</li>
          * 	<li>message - сообщение об ошибки</li>
@@ -16519,7 +16934,7 @@ namespace App\Modules\ImageTmp\Facades {
         /**
          * Получение всех ошибок.
          *
-         * @return array Массив с описанием ошибки, где:
+         * @return array|bool Массив с описанием ошибки, где:
          * <ul>
          * 	<li>type - тип ошибки</li>
          * 	<li>message - сообщение об ошибки</li>
@@ -16738,9 +17153,9 @@ namespace Orangehill\Iseed\Facades {
          * @throws Orangehill\Iseed\TableNotFoundException
          * @static 
          */
-        public static function generateSeed($table, $database = null, $max = 0, $exclude = null, $prerunEvent = null, $postrunEvent = null, $dumpAuto = true)
+        public static function generateSeed($table, $database = null, $max = 0, $exclude = null, $prerunEvent = null, $postrunEvent = null, $dumpAuto = true, $indexed = true)
         {
-            return \Orangehill\Iseed\Iseed::generateSeed($table, $database, $max, $exclude, $prerunEvent, $postrunEvent, $dumpAuto);
+            return \Orangehill\Iseed\Iseed::generateSeed($table, $database, $max, $exclude, $prerunEvent, $postrunEvent, $dumpAuto, $indexed);
         }
         
         /**
@@ -16826,9 +17241,9 @@ namespace Orangehill\Iseed\Facades {
          * @return string 
          * @static 
          */
-        public static function populateStub($class, $stub, $table, $data, $chunkSize = null, $prerunEvent = null, $postrunEvent = null)
+        public static function populateStub($class, $stub, $table, $data, $chunkSize = null, $prerunEvent = null, $postrunEvent = null, $indexed = true)
         {
-            return \Orangehill\Iseed\Iseed::populateStub($class, $stub, $table, $data, $chunkSize, $prerunEvent, $postrunEvent);
+            return \Orangehill\Iseed\Iseed::populateStub($class, $stub, $table, $data, $chunkSize, $prerunEvent, $postrunEvent, $indexed);
         }
         
         /**

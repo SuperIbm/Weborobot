@@ -21,7 +21,14 @@ class Kernel extends ConsoleKernel
         \App\Modules\Sitemap\Commands\SitemapCreateCommand::class,
         \App\Modules\Upload\Commands\UploadCheckCommand::class,
         \App\Modules\Upload\Commands\UploadListCommand::class,
-        \App\Modules\Upload\Commands\UploadSetCommand::class
+        \App\Modules\Upload\Commands\UploadSetCommand::class,
+        \App\Modules\Module\Commands\ModuleInstallCommand::class,
+        \App\Modules\Module\Commands\ModuleCreateCommand::class,
+        \App\Modules\Component\Commands\ComponentInstallCommand::class,
+        \App\Modules\Widget\Commands\WidgetInstallCommand::class,
+        \App\Modules\AdminSection\Commands\AdminSectionCreateCommand::class,
+        \App\Modules\Component\Commands\ComponentCreateCommand::class,
+        \App\Modules\Widget\Commands\WidgetCreateCommand::class
     ];
 
     /**

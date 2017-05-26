@@ -136,7 +136,7 @@ use RepositaryEloquent;
      * @since 1.0
      * @version 1.0
      */
-	public function installModule($nameDir, $file)
+	public function install($nameDir, $file)
     {
         Artisan::call('module:make',
             [
@@ -155,7 +155,7 @@ use RepositaryEloquent;
         {
         Config::set($nameDirLower, require $pathToDir.'Config/config.php');
 
-            if($this->_isCorrectVersion(Config::get('app.version'), Config::get($nameDirLower.'.version')))
+            if(Util::isCorrectVersion(Config::get('app.version'), Config::get($nameDirLower.'.version')))
             {
                 $idModule = $this->create
                 (
@@ -221,7 +221,26 @@ use RepositaryEloquent;
                         );
                     }
 
-                    if(Config::get($nameDirLower.'.components')) $this->_installComponent($idModule, Config::get($nameDirLower.'.components'));
+                    if(Config::get($nameDirLower.'.components'))
+                    {
+                    $components =  Config::get($nameDirLower.'.components');
+
+                        for($i = 0; $i < count($components); $i++)
+                        {
+                            $this->_Component->create
+                            (
+                                [
+                                'idModule' => $idModule,
+                                'nameBundle' => isset($components[$i]['nameBundle']) ? $components[$i]['nameBundle'] : null,
+                                'nameComponent' => $components[$i]['nameComponent'],
+                                'labelComponent' => $components[$i]['labelComponent'],
+                                'pathToCss' => isset($components[$i]['pathToCss']) ? $components[$i]['pathToCss'] : null,
+                                'pathToJs' => isset($components[$i]['pathToJs']) ? $components[$i]['pathToJs'] : null,
+                                'status' => 'Активен'
+                                ]
+                            );
+                        }
+                    }
 
                     if(Config::get($nameDirLower.'.templates'))
                     {
@@ -241,7 +260,27 @@ use RepositaryEloquent;
                         }
                     }
 
-                    if(Config::get($nameDirLower.'.widgets')) $this->_installWidget($idModule, Config::get($nameDirLower.'.widgets'));
+                    if(Config::get($nameDirLower.'.widgets'))
+                    {
+                    $widgets = Config::get($nameDirLower.'.widgets');
+
+                        for($i = 0; $i < count($widgets); $i++)
+                        {
+                            $this->create
+                            (
+                                [
+                                'idModule' => $idModule,
+                                'actionWidget' => $widgets[$i]['actionWidget'],
+                                'labelWidget' => $widgets[$i]['labelWidget'],
+                                'icon' => $widgets[$i]['icon'],
+                                'pathToCss' => isset($widgets[$i]['pathToCss']) ? $widgets[$i]['pathToCss'] : null,
+                                'pathToJs' => $widgets[$i]['pathToJs'],
+                                'def' => $widgets[$i]['def'],
+                                'status' => 'Активен'
+                                ]
+                            );
+                        }
+                    }
 
                     Artisan::call('module:migrate',
                         [
@@ -272,198 +311,5 @@ use RepositaryEloquent;
         $this->addError('isNoCorrectArchive', 'Некорректный архив модуля.');
         return false;
         }
-    }
-
-    /**
-     * Установка компонента по ID модуля и списку самих компонентов.
-     * @param int $idModule ID модуля.
-     * @param array $components Массив компонентов для установки.
-     * @return bool Вернет true, если установка прошла успешно.
-     * @since 1.0
-     * @version 1.0
-     */
-    protected function _installComponent($idModule, $components)
-    {
-        for($i = 0; $i < count($components); $i++)
-        {
-            $this->_Component->create
-            (
-                [
-                'idModule' => $idModule,
-                'nameBundle' => isset($components[$i]['nameBundle']) ? $components[$i]['nameBundle'] : null,
-                'nameComponent' => $components[$i]['nameComponent'],
-                'labelComponent' => $components[$i]['labelComponent'],
-                'pathToCss' => isset($components[$i]['pathToCss']) ? $components[$i]['pathToCss'] : null,
-                'pathToJs' => isset($components[$i]['pathToJs']) ? $components[$i]['pathToJs'] : null,
-                'status' => 'Активен'
-                ]
-            );
-        }
-
-    return true;
-    }
-
-
-    /**
-     * Установка компонента.
-     * @param string $nameDir Папка модуля.
-     * @param string $file Путь к файлу с архивом модуля.
-     * @return bool Вернет true, если установка прошла успешно.
-     * @since 1.0
-     * @version 1.0
-     */
-    public function installComponent($nameDir, $file)
-    {
-    $pathToDir = Storage::disk('modules')->getDriver()->getAdapter()->applyPathPrefix($nameDir.'/');
-    $nameDirLower = Util::toLower($nameDir);
-
-    Zip::setFile($file);
-    Zip::extract(PCLZIP_OPT_PATH, $pathToDir);
-
-        if(Zip::errorCode() == 0)
-        {
-        Config::set($nameDirLower, require $pathToDir.'Config/config.php');
-
-            if($this->_isCorrectVersion(Config::get('app.version'), Config::get($nameDirLower.'.version')))
-            {
-                $module = $this->read
-                (
-                    [
-                        [
-                        'property' => 'nameModule',
-                        'value' => Config::get($nameDirLower.'.name')
-                        ]
-                    ]
-                );
-
-                if($module)
-                {
-                    if(Config::get($nameDirLower.'.components')) $this->_installComponent($module[0]['idModule'], Config::get($nameDirLower.'.components'));
-
-                return true;
-                }
-                else
-                {
-                $this->addError('noModule', 'Модуль '.Config::get($nameDirLower.'.label').' в системе не обнаружен.');
-                return false;
-                }
-            }
-            else
-            {
-            $this->addError('isNotCorrectVersion', 'Данная версия модуля не подходит под текущую версию системы.');
-            return false;
-            }
-        }
-        else
-        {
-        $this->addError('isNoCorrectArchive', 'Некорректный архив модуля.');
-        return false;
-        }
-    }
-
-
-    /**
-     * Установка виджета по ID модуля и списку самих виджетов.
-     * @param int $idModule ID модуля.
-     * @param array $widgets Массив виджетов для установки.
-     * @return bool Вернет true, если установка прошла успешно.
-     * @since 1.0
-     * @version 1.0
-     */
-    protected function _installWidget($idModule, $widgets)
-    {
-        for($i = 0; $i < count($widgets); $i++)
-        {
-            $this->_Widget->create
-            (
-                [
-                'idModule' => $idModule,
-                'actionWidget' => $widgets[$i]['actionWidget'],
-                'labelWidget' => $widgets[$i]['labelWidget'],
-                'icon' => $widgets[$i]['icon'],
-                'pathToCss' => isset($widgets[$i]['pathToCss']) ? $widgets[$i]['pathToCss'] : null,
-                'pathToJs' => $widgets[$i]['pathToJs'],
-                'def' => $widgets[$i]['def'],
-                'status' => 'Активен'
-                ]
-            );
-        }
-
-    return true;
-    }
-
-
-    /**
-     * Установка виджета.
-     * @param string $nameDir Папка модуля.
-     * @param string $file Путь к файлу с архивом модуля.
-     * @return bool Вернет true, если установка прошла успешно.
-     * @since 1.0
-     * @version 1.0
-     */
-    public function installWidget($nameDir, $file)
-    {
-    $pathToDir = Storage::disk('modules')->getDriver()->getAdapter()->applyPathPrefix($nameDir.'/');
-    $nameDirLower = Util::toLower($nameDir);
-
-    Zip::setFile($file);
-    Zip::extract(PCLZIP_OPT_PATH, $pathToDir);
-
-        if(Zip::errorCode() == 0)
-        {
-        Config::set($nameDir, require $pathToDir.'Config/config.php');
-
-            if($this->_isCorrectVersion(Config::get('app.version'), Config::get($nameDirLower.'.version')))
-            {
-                $module = $this->read
-                (
-                    [
-                        [
-                        'property' => 'nameModule',
-                        'value' => Config::get($nameDirLower.'.name')
-                        ]
-                    ]
-                );
-
-                if($module)
-                {
-                    if(Config::get($nameDirLower.'.widgets')) $this->_installWidget($module[0]['idModule'], Config::get($nameDirLower.'.widgets'));
-
-                return true;
-                }
-                else
-                {
-                $this->addError('noModule', 'Модуль '.Config::get($nameDirLower.'.label').' в системе не обнаружен.');
-                return false;
-                }
-            }
-            else
-            {
-            $this->addError('isNotCorrectVersion', 'Данная версия модуля не подходит под текущую версию системы.');
-            return false;
-            }
-        }
-        else
-        {
-        $this->addError('isNoCorrectArchive', 'Некорректный архив модуля.');
-        return false;
-        }
-    }
-
-
-    /**
-     * Проверка соотвествия версий.
-     * @param string $versionFirst Первая версия.
-     * @param string $versionSecond Вторая версия.
-     * @return bool Вернет true, если версии соотвествуют.
-     * @since 1.0
-     * @version 1.0
-     */
-    protected function _isCorrectVersion($versionFirst, $versionSecond)
-    {
-    $versionCurrent = explode(".", $versionFirst);
-    $versionModule = explode(".", $versionSecond);
-
-    return $versionCurrent[0] == $versionModule[0];
     }
 }

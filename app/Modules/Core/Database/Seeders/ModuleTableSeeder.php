@@ -42,7 +42,5 @@ class ModuleTableSeeder extends Seeder
                 )
             );
         }
-
-
     }
 }

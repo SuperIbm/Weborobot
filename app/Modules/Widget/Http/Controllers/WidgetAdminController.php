@@ -19,8 +19,6 @@ use App\Modules\Widget\Repositories\Widget;
 use App\Modules\Widget\Http\Requests\WidgetAdminReadRequest;
 use App\Modules\Widget\Http\Requests\WidgetAdminCreateRequest;
 
-use App\Modules\Module\Repositories\Module;
-
 
 /**
  * Класс контроллер для работы с виджетами в административной части.
@@ -39,25 +37,15 @@ class WidgetAdminController extends Controller
  */
 private $_Widget;
 
-/**
- * Репозитарий модулей.
- * @var \App\Modules\Module\Repositories\Module
- * @version 1.0
- * @since 1.0
- */
-private $_Module;
-
     /**
      * Конструктор.
      * @param \App\Modules\Widget\Repositories\Widget $Widget Репозитарий виджетов.
-     * @param \App\Modules\Module\Repositories\Module $Module Репозитарий модулей.
      * @since 1.0
      * @version 1.0
      */
-    public function __construct(Widget $Widget, Module $Module)
+    public function __construct(Widget $Widget)
     {
     $this->_Widget = $Widget;
-    $this->_Module = $Module;
     }
 
 
@@ -128,7 +116,7 @@ private $_Module;
      */
     public function create(WidgetAdminCreateRequest $Request)
     {
-    $idWidget = $this->_Module->installWidget($Request->input('nameDir'), $Request->file('file')->path());
+    $idWidget = $this->_Widget->install($Request->input('nameDir'), $Request->file('file')->path());
 
         if($idWidget)
         {

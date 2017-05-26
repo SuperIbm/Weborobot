@@ -999,5 +999,22 @@ class Utiler
 		if(array() === $arr) return false;
 		return array_keys($arr) !== range(0, count($arr) - 1);
 	}
+
+
+    /**
+     * Проверка соотвествия версий.
+     * @param string $versionFirst Первая версия.
+     * @param string $versionSecond Вторая версия.
+     * @return bool Вернет true, если версии соотвествуют.
+     * @since 1.0
+     * @version 1.0
+     */
+    function isCorrectVersion($versionFirst, $versionSecond)
+    {
+    $versionCurrent = explode(".", $versionFirst);
+    $versionModule = explode(".", $versionSecond);
+
+    return $versionCurrent[0] == $versionModule[0];
+    }
 }
 ?>

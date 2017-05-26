@@ -82,4 +82,15 @@ abstract class Widget extends Repositary
      * @version 1.0
      */
     abstract public function destroy($id);
+
+
+    /**
+     * Установка виджета.
+     * @param string $nameDir Папка модуля.
+     * @param string $file Путь к файлу с архивом модуля.
+     * @return bool Вернет true, если установка прошла успешно.
+     * @since 1.0
+     * @version 1.0
+     */
+    abstract public function install($nameDir, $file);
 }

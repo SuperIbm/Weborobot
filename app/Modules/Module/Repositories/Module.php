@@ -157,16 +157,5 @@ protected $_UserRoleAdminSection;
      * @since 1.0
      * @version 1.0
      */
-    abstract public function installModule($nameDir, $file);
-
-
-    /**
-     * Установка виджета.
-     * @param string $nameDir Папка модуля.
-     * @param string $file Путь к файлу с архивом модуля.
-     * @return bool Вернет true, если установка прошла успешно.
-     * @since 1.0
-     * @version 1.0
-     */
-    abstract public function installWidget($nameDir, $file);
+    abstract public function install($nameDir, $file);
 }
