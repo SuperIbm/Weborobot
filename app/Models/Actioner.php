@@ -62,7 +62,7 @@ class Actioner
 	 * @param string $index Индекс действия.
 	 * @param int $to Добавить к количеству выполненных действий.
 	 * @param int $minutes Общее время жизни этой записи в минутах.
-	 * @return \App\Models\Actioner Возвращает объект запоминания действий пользователя.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */

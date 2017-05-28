@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.31 on 2017-05-26.
+ * Generated for Laravel 5.3.31 on 2017-05-28.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -15621,7 +15621,7 @@ namespace App\Models\Facades {
          * @param string $index Индекс действия.
          * @param int $to Добавить к количеству выполненных действий.
          * @param int $minutes Общее время жизни этой записи в минутах.
-         * @return \App\Models\Actioner Возвращает объект запоминания действий пользователя.
+         * @return $this 
          * @since 1.0
          * @version 1.0
          * @static 
@@ -16138,6 +16138,466 @@ namespace Tttptd\Mdash\Facades {
     }         
 }
     
+namespace App\Modules\Core\Facades {
+
+    class Installer {
+        
+        /**
+         * Метод получения индекса.
+         * 
+         * Этот индекс используется в массиве данных для сохранения тех данных, которые были созданы этим декоратором.
+         *
+         * @return string Название индекса.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getIndex()
+        {
+            return \App\Modules\Core\Models\Installer::getIndex();
+        }
+        
+        /**
+         * Установка консоли.
+         *
+         * @param \Illuminate\Console\Command $Command Консоль.
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function setCommand($Command)
+        {
+            return \App\Modules\Core\Models\Installer::setCommand($Command);
+        }
+        
+        /**
+         * Установка консоли.
+         *
+         * @return \Illuminate\Console\Command $Command Консоль.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getCommand()
+        {
+            return \App\Modules\Core\Models\Installer::getCommand();
+        }
+        
+        /**
+         * Добавление декоратора.
+         *
+         * @param \App\Models\Decorator $Decorator Объект декоратора.
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function addDecorator($Decorator)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::addDecorator($Decorator);
+        }
+        
+        /**
+         * Добавление декараторов.
+         *
+         * @param \App\Models\Decorator[] $decorators Массив декораторов.
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function addDecorators($decorators)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::addDecorators($decorators);
+        }
+        
+        /**
+         * Удаление декоратора.
+         *
+         * @param \App\Models\Decorator $Decorator Объект декоратора.
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function deleteDecorator($Decorator)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::deleteDecorator($Decorator);
+        }
+        
+        /**
+         * Получение родительского декоратора.
+         *
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getParentDecorator()
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::getParentDecorator();
+        }
+        
+        /**
+         * Получение корневого декоратора.
+         *
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getRootDecorator()
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::getRootDecorator();
+        }
+        
+        /**
+         * Установка параметров.
+         *
+         * @param array $params Параметры компонента для его работы.
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function setParams($params)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::setParams($params);
+        }
+        
+        /**
+         * Добавление параметра.
+         *
+         * @param string $index Индекс параметра.
+         * @param mixed $param Параметры компонента для его работы.
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function addParam($index, $param)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::addParam($index, $param);
+        }
+        
+        /**
+         * Удаление параметра.
+         *
+         * @param string $index Индекс параметра.
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function deleteParam($index)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::deleteParam($index);
+        }
+        
+        /**
+         * Получение параметров.
+         *
+         * @param string $index Название параметра. Если не указать вернет все параметры.
+         * @param mixed $default Если параметр не задан, то вернуть это значение по умолчанию.
+         * @return mixed Параметр для компонента.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getParams($index = null, $default = null)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::getParams($index, $default);
+        }
+        
+        /**
+         * Получение данных, которые были выработаны декоратором.
+         *
+         * @param string $type Тип получаемых данных: array - в виде массива, collection - в виде коллекции.
+         * @return array Массив всех данных.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getData($type = 'collection')
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::getData($type);
+        }
+        
+        /**
+         * Запуск декоратора.
+         *
+         * @param string $type Тип получаемых данных: array - в виде массива, collection - в виде коллекции.
+         * @return mixed Возвращает полученный результат после запуска.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function run($type = 'collection')
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::run($type);
+        }
+        
+        /**
+         * Очистить ошибку.
+         *
+         * @return object Возвращает текущий объект.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function cleanError()
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::cleanError();
+        }
+        
+        /**
+         * Проверка наличия ошибки.
+         *
+         * @return bool Вернет true если есть ошибка.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function hasError()
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::hasError();
+        }
+        
+        /**
+         * Добавление ошибки.
+         *
+         * @param mixed $type Тип ошибки, это может быть краткий ее индификатор, или название. Это так же может быть массив, состоящий из:
+         * <pre>
+         * array
+         * (
+         * "type" => "Тип ошибки",
+         * "message" => "Сообщение об ошибки",
+         * "tag" => "Тэг ошибки, нужен для спец описания"
+         * )
+         * </pre>
+         * @param string $message Сообщение об ошибки.
+         * @param string $tag Тэг ошибки, нужен для спец описания.
+         * @return object Возвращает текущий объект.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function addError($type, $message = null, $tag = null)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::addError($type, $message, $tag);
+        }
+        
+        /**
+         * Получение ошибки по номеру.
+         *
+         * @param int $index Номер ошибки.
+         * @return array|bool Массив с описанием ошибки, где:
+         * <ul>
+         * 	<li>type - тип ошибки</li>
+         * 	<li>message - сообщение об ошибки</li>
+         * 	<li>tag - тэг ошибки, нужен для спец описания.</li>
+         * </ul>
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getError($index = 0)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::getError($index);
+        }
+        
+        /**
+         * Получение всех ошибок.
+         *
+         * @return array|bool Массив с описанием ошибки, где:
+         * <ul>
+         * 	<li>type - тип ошибки</li>
+         * 	<li>message - сообщение об ошибки</li>
+         * 	<li>tag - тэг ошибки, нужен для спец описания.</li>
+         * </ul>
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getErrors()
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::getErrors();
+        }
+        
+        /**
+         * Получение полного описания ошибки.
+         *
+         * @param int $index Номер ошибки.
+         * @return string Строка с описанием ошибки.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getErrorString($index = 0)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::getErrorString($index);
+        }
+        
+        /**
+         * Получение типа ошибки.
+         *
+         * @param int $index Номер ошибки.
+         * @return string Тип ошибки, это может быть краткий ее индификатор.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getErrorType($index = 0)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::getErrorType($index);
+        }
+        
+        /**
+         * Получение сообщения об ошибки.
+         *
+         * @param int $index Номер ошибки.
+         * @return string Сообщение об ошибки.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getErrorMessage($index = 0)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::getErrorMessage($index);
+        }
+        
+        /**
+         * Получение номера ошибки.
+         *
+         * @param int $index Номер ошибки.
+         * @return string Номер ошибки.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getErrorNumber($index = 0)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::getErrorNumber($index);
+        }
+        
+        /**
+         * Добавление событий.
+         *
+         * @param string $action Название события. Если $function пуст, то реализация события происходит через одноименный метод.
+         * @param callable $function Функция, которая должна быть вызвана для этого события.
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function addEvent($action, $function = null)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::addEvent($action, $function);
+        }
+        
+        /**
+         * Удаление события.
+         *
+         * @param string $action Название события.
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function deleteEvent($action)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::deleteEvent($action);
+        }
+        
+        /**
+         * Проверить если такое событие.
+         *
+         * @param string $action Название события.
+         * @return bool Вернет true если событие для наблюдателя существует.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function hasEvent($action)
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::hasEvent($action);
+        }
+        
+        /**
+         * Запуск события и возращения всех значений.
+         *
+         * @param string $action Название события.
+         * @param array $params Параметры события, которые передаются в его реализацию.
+         * @return mixed Вернет все возращенные значения реализаций.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function fireEvent($action, $params = array())
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::fireEvent($action, $params);
+        }
+        
+        /**
+         * Запуск события и возращения только первого значения.
+         *
+         * @param string $action Название события.
+         * @param array $params Параметры события, которые передаются в его реализацию.
+         * @return mixed Вернет первое возращенное значения реализаций.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function firstEvent($action, $params = array())
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::firstEvent($action, $params);
+        }
+        
+        /**
+         * Запуск события и их исполнение до первого возращенного false.
+         *
+         * @param string $action Название события.
+         * @param array $params Параметры события, которые передаются в его реализацию.
+         * @return mixed Вернет первое возращенное значения реализаций.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function untilEvent($action, $params = array())
+        {
+            //Method inherited from \App\Models\Decorator            
+            return \App\Modules\Core\Models\Installer::untilEvent($action, $params);
+        }
+        
+    }         
+}
+    
 namespace App\Modules\Captcha\Facades {
 
     class Captcha {
@@ -16326,7 +16786,7 @@ namespace App\Modules\Page\Facades {
          * Установка количества минут на сколько должен сохранятся кешь.
          *
          * @param int $minutes Количество минут.
-         * @return \App\Models\$this. 
+         * @return $this 
          * @since 1.0
          * @version 1.0
          * @static 
@@ -16798,7 +17258,7 @@ namespace App\Modules\ImageTmp\Facades {
          * Установка количества минут на сколько должен сохранятся кешь.
          *
          * @param int $minutes Количество минут.
-         * @return \App\Models\$this. 
+         * @return $this 
          * @since 1.0
          * @version 1.0
          * @static 
@@ -19210,6 +19670,8 @@ namespace {
     class LogReader extends \Jackiedo\LogReader\Facades\LogReader {}
     
     class Mdash extends \Tttptd\Mdash\Facades\Mdash {}
+    
+    class Installer extends \App\Modules\Core\Facades\Installer {}
     
     class Captcha extends \App\Modules\Captcha\Facades\Captcha {}
     

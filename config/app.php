@@ -4,6 +4,15 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Статус установленной системы
+    |--------------------------------------------------------------------------
+    |
+    | Определяем установлена ли система или нет.
+    */
+    'installed' => env('APP_INSTALLED', true),
+
+    /*
+    |--------------------------------------------------------------------------
     | Версия системы
     |--------------------------------------------------------------------------
     |
@@ -122,7 +131,7 @@ return [
     |
     */
 
-    'key' => "base64:8DfucXb1jFNClFiaUejWE3njqYEp4QQCVUo/rgefEwA=",
+    'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
 
@@ -136,7 +145,7 @@ return [
     | данных. Это может быть "database" - база данных, "mongodb" - MongoDb, "file" - в файле
     |
     */
-    'log_driver' => env('APP_LOG_DRIVER', 'mongodb'),
+    'log_driver' => env('APP_LOG_DRIVER', 'file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -340,6 +349,7 @@ return [
         'Mdash' => Tttptd\Mdash\Facades\Mdash::class,
 
         // Own classes
+        'Installer' => App\Modules\Core\Facades\Installer::class,
         'Util' => App\Models\Facades\Util::class,
         'Zip' => App\Models\Facades\Zip::class,
         'Path' => App\Models\Facades\Path::class,

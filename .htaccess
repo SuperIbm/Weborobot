@@ -9,6 +9,11 @@ AddDefaultCharset utf-8
 	</FilesMatch>
 </IfModule>
 
+<Files ".env">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews

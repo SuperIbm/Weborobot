@@ -85,7 +85,7 @@ private $_cacheMinutes = 60;
     /**
      * Установка количества минут на сколько должен сохранятся кешь.
      * @param int $minutes Количество минут.
-     * @return $this.
+     * @return $this
      * @since 1.0
      * @version 1.0
      */

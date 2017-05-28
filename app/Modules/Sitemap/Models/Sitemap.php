@@ -8,9 +8,9 @@
  */
 namespace App\Modules\Sitemap\Models;
 
+use App\Models\Event;
 use Yangqi\Htmldom\Htmldom;
 use Config;
-use File;
 
 /**
  * Класс для генерации sitemap.xml.
@@ -21,6 +21,8 @@ use File;
  */
 class Sitemap
 {
+use Event;
+
 /**
  * Отсканированные страницы сайта.
  * @var array
@@ -44,12 +46,11 @@ private $_priority = 0.2;
      * @param string $basePath Раздел с которого нужно начать сканирование.
      * @param string|array $basePathAllow Раздел, который может быть отсканирован.
      * @param string|array $basePathDisallow Раздел, который не может быть отсканирован.
-     * @param callback $callback Функция, которая будет вызвана каждый раз при сканировании.
      * @return \App\Modules\Sitemap\Models\Sitemap Верент объект сконирования сайт и генерации sitemap.xml.
      * @since 1.0
      * @version 1.0
      */
-    private function _scan($linkFull = null, $namePage = "Главная", $basePath = null, $basePathAllow = null, $basePathDisallow = null, $callback = null)
+    private function _scan($linkFull = null, $namePage = "Главная", $basePath = null, $basePathAllow = null, $basePathDisallow = null)
     {
     $domanName = Config::get("app.url");
 
@@ -72,75 +73,80 @@ private $_priority = 0.2;
                 if(@$parsUrl["query"] == "") $linkFull .= "?";
                 else $linkFull .= "&";
 
-            $linkFull .= "scan=1";
-            $html = @file_get_contents($linkFull);
+            $status = $this->untilEvent('beforeScan', [$linkFullSave]);
 
-                if($html)
+                if($status)
                 {
-                    if($callback) $callback($linkFull, $html);
+                $html = @file_get_contents($linkFull."scan=1");
 
-                /* Попробуем убрать все <noindex>...</noindex>, <script>...</script> и <noscan>...</noscan> */
-                $html = preg_replace('/<(noindex|script|noscan)[^>]*>(.*?)<\/(noindex|script|noscan)>/ixs', "", $html);
-
-                $Htmldom = new Htmldom();
-                $Htmldom->load($html, true, true);
-
-                $arrLinks = Array();
-
-                    foreach($Htmldom->find('a') as $A)
+                    if($html)
                     {
-                        if($A->href)
+                    $html = preg_replace('/<(noindex|script|noscan)[^>]*>(.*?)<\/(noindex|script|noscan)>/ixs', "", $html);
+
+                    $Htmldom = new Htmldom();
+                    $Htmldom->load($html, true, true);
+
+                    $arrLinks = Array();
+
+                        foreach($Htmldom->find('a') as $A)
                         {
-                            $arrLinks[] = array
-                            (
-                            trim($A->href),
-                            trim($A->innertext)
-                            );
-                        }
-                    }
-
-                    foreach($Htmldom->find('title') as $A)
-                    {
-                    $namePage = trim($A->innertext);
-                    break;
-                    }
-
-                $priority = 1 - ((count(explode("/", $linkShort)) - 1) * $this->getPriority());
-
-                    if($priority <= 0) $priority = 0.1;
-
-                    $this->_pages[$linkFullSave] = array
-                    (
-                    "namePage" => $namePage,
-                    "link" => $linkFullSave,
-                    "date" => date("Y-m-d\TH:i:sP"),
-                    "priority" => $priority
-                    );
-
-                    // Перейдем по найденным ссылкам
-                    if($arrLinks)
-                    {
-                        for($i = 0; $i < count($arrLinks); $i++)
-                        {
-                        $urlParts = @parse_url($arrLinks[$i][0]);
-
-                            if(!@$urlParts["scheme"]) $arrLinks[$i][0] = $domanName.$arrLinks[$i][0];
-                            else
+                            if($A->href)
                             {
-                            $how = preg_match("/".str_replace("/", "\/", $domanName)."/i", $arrLinks[$i][0]);
-
-                                if($how == 0) continue;
+                                $arrLinks[] = array
+                                (
+                                trim($A->href),
+                                trim($A->innertext)
+                                );
                             }
+                        }
 
-                            if(preg_match("/".str_replace("/", "\/", $domanName)."[\w\/_]*(img|image|doc|js|admin|uploaded)\//i", $arrLinks[$i][0])) continue;
-                            if(preg_match("/".str_replace("/", "\/", $domanName)."[\w\/_]*(\.(jpg|jpeg|png|gif|swf|flv|doc|docx|xls|xlsx|zip|rar))/i", $arrLinks[$i][0])) continue;
-                            if(stripos($arrLinks[$i][0], "mailto:") === true) continue;
+                        foreach($Htmldom->find('title') as $A)
+                        {
+                        $namePage = trim($A->innertext);
+                        break;
+                        }
 
-                        $urlParts = @parse_url($arrLinks[$i][0]);
-                        $urlParts["query"] = @$urlParts["query"] == "" ? "" : "?".@$urlParts["query"];
-                        $arrLinks[$i][0] = $urlParts["scheme"]."://".@$urlParts["host"].@$urlParts["path"].$urlParts["query"];
+                    $priority = 1 - ((count(explode("/", $linkShort)) - 1) * $this->getPriority());
 
-                        $this->_scan($arrLinks[$i][0], $arrLinks[$i][1], $basePath, $basePathAllow, $basePathDisallow, $callback);
+                        if($priority <= 0) $priority = 0.1;
+
+                        $this->_pages[$linkFullSave] = array
+                        (
+                        "namePage" => $namePage,
+                        "link" => $linkFullSave,
+                        "date" => date('Y-m-d\TH:i:sP'),
+                        "priority" => $priority
+                        );
+
+                    $status = $this->untilEvent('afterScan', [$linkFullSave, $arrLinks]);
+
+                        if($status)
+                        {
+                            if($arrLinks)
+                            {
+                                for($i = 0; $i < count($arrLinks); $i++)
+                                {
+                                $urlParts = @parse_url($arrLinks[$i][0]);
+
+                                    if(!@$urlParts["scheme"]) $arrLinks[$i][0] = $domanName.$arrLinks[$i][0];
+                                    else
+                                    {
+                                    $how = preg_match("/".str_replace("/", "\/", $domanName)."/i", $arrLinks[$i][0]);
+
+                                    if($how == 0) continue;
+                                    }
+
+                                    if(preg_match("/".str_replace("/", "\/", $domanName)."[\w\/_]*(img|image|doc|js|admin|uploaded)\//i", $arrLinks[$i][0])) continue;
+                                    if(preg_match("/".str_replace("/", "\/", $domanName)."[\w\/_]*(\.(jpg|jpeg|png|gif|swf|flv|doc|docx|xls|xlsx|zip|rar))/i", $arrLinks[$i][0])) continue;
+                                    if(stripos($arrLinks[$i][0], "mailto:") === true) continue;
+
+                                $urlParts = @parse_url($arrLinks[$i][0]);
+                                $urlParts["query"] = @$urlParts["query"] == "" ? "" : "?".@$urlParts["query"];
+                                $arrLinks[$i][0] = $urlParts["scheme"]."://".@$urlParts["host"].@$urlParts["path"].$urlParts["query"];
+
+                                $this->_scan($arrLinks[$i][0], $arrLinks[$i][1], $basePath, $basePathAllow, $basePathDisallow);
+                                }
+                            }
                         }
                     }
                 }

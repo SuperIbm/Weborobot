@@ -61,7 +61,7 @@ private $_table = 'log';
      * @param array $allowedLevel
      * @return array
      */
-    protected function parseLog($content, $allowedEnvironment = null, $allowedLevel = [])
+    private function parseLog($content, $allowedEnvironment = null, $allowedLevel = [])
     {
         $records = $this->_Сonnection
         ->table($this->_table)

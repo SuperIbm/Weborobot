@@ -87,7 +87,7 @@ private $_childrens = Array();
 	 * @param string $value Значение узла.
 	 * @param bool $currentBranch Находиться ли этот узел на текущей ветке.
 	 * @param bool $currentNode Является ли этот узел текущим.
-	 * @return $this.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */
@@ -180,7 +180,7 @@ private $_childrens = Array();
 	/**
 	 * Установка результатов после рендеринга.
 	 * @param array $data Массив данных после рендеринга.
-	 * @return $this.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */

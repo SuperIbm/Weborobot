@@ -10,6 +10,7 @@ namespace App\Models\Currency;
 
 use App\Models\CarbonLocalized;
 use App\Models\SimpleXMLElement;
+use Yangqi\Htmldom\Htmldom;
 use App\Models\Contracts\Currency;
 
 
@@ -33,13 +34,13 @@ class CurrencyCbr extends Currency
 	public function get(CarbonLocalized $Carbon, $charCode)
 	{
 	$pathToFile = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=".$Carbon->format("d.m.Y");
-	$Xml = new SimpleXMLElement($pathToFile, null, true);
+    $Htmldom = new Htmldom($pathToFile, true, true);
 
-		if($Xml->Valute)
+		if($Htmldom->Valute)
 		{
 		$data = Array();
 
-			foreach($Xml->Valute as $item)
+			foreach($Htmldom->Valute as $item)
 			{
 				$data[$item->CharCode->asText()] = array
 				(

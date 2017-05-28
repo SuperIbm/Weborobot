@@ -8,7 +8,9 @@
  */
 namespace App\Modules\Core\Providers;
 
+use App;
 use Illuminate\Support\ServiceProvider;
+use App\Modules\Core\Models\Installer;
 
 /**
  * Класс сервис-провайдера для настройки этого модуля.
@@ -42,7 +44,12 @@ protected $defer = false;
 	 */
     public function register()
     {
-
+        App::singleton('installer',
+            function($App)
+            {
+            return new Installer();
+            }
+        );
     }
 
 	/**

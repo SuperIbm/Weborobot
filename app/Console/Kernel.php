@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        \App\Modules\Core\Commands\InstallCommand::class,
         \App\Modules\Image\Commands\ImageMigrateCommand::class,
         \App\Modules\Document\Commands\DocumentMigrateCommand::class,
         \App\Modules\Sitemap\Commands\SitemapCreateCommand::class,

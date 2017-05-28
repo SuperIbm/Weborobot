@@ -28,7 +28,7 @@ private $_Observable;
 
 	/**
 	 * Инициализация объекта интерфейса определяющего методы для добавления, удаления и оповещения наблюдателей.
-	 * @return object Возвращает текущий объект.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */
@@ -44,7 +44,7 @@ private $_Observable;
 	 * Добавление событий.
 	 * @param string $action Название события. Если $function пуст, то реализация события происходит через одноименный метод.
 	 * @param callable $function Функция, которая должна быть вызвана для этого события.
-	 * @return object Возвращает текущий объект.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */
@@ -59,7 +59,7 @@ private $_Observable;
 	/**
 	 * Удаление события.
 	 * @param string $action Название события.
-	 * @return object Возвращает текущий объект.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */

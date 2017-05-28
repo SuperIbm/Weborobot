@@ -26,7 +26,7 @@ use Error, Event;
  * @since 1.0
  * @version 1.0
  */
-private $_decorators = Array();
+private $_decorators = [];
 
 /**
  * Родительский декоратор.
@@ -42,7 +42,7 @@ private $_DecoratorParent;
  * @version 1.0
  * @since 1.0
  */
-private $_data = Array();
+private $_data = [];
 
 /**
  * Параметры декоратора.
@@ -50,12 +50,12 @@ private $_data = Array();
  * @version 1.0
  * @since 1.0
  */
-private $_params = Array();
+private $_params = [];
 
 	/**
 	 * Этот абстрактный метод предназначен для проектирования собственных действий в декораторе.
 	 * @param array $params Параметры декоратора.
-	 * @param \App\Models\Decorator $ParentDecorator Ролительский декоратор.
+	 * @param \App\Models\Decorator $ParentDecorator Родительский декоратор.
 	 * @return bool Должен вернуть true если действие выполнено успешно.
 	 * @since 1.0
 	 * @version 1.0
@@ -91,33 +91,22 @@ private $_params = Array();
 	 * </ul>
 	 * Если вернет булево значение false, то остановит дальнейшее действие.
 	 *
-	 * @param mixed $decorators Массив декораторов, которые нужно выполнить. Или один объект декоратор \App\Models\Decorator.
-	 * @param mixed $params Параметры для декоратора.
+	 * @param array|string $decorators Массив декораторов, которые нужно выполнить. Или один объект декоратор \App\Models\Decorator.
+	 * @param array $params Параметры для декоратора.
 	 * @since 1.0
 	 * @version 1.0
 	 */
 	public function __construct($decorators = null, $params = null)
 	{
-		if(is_array($decorators))
-		{
-		$decoratorsNew = Array();
-		
-			for($i = 0; $i < count($decorators); $i++)
-			{
-				if(isset($decorators[$i])) $decoratorsNew[count($decoratorsNew)] = $decorators[$i];
-			}
-		
-		$this->_decorators = $decoratorsNew;
-		}
-		else if($decorators) $this->_decorators[0] = $decorators;
-		
-		if($this->_decorators)
-		{
-			for($i = 0; $i < count($this->_decorators); $i++)
-			{
-			$this->_decorators[$i]->_setParentDecorator($this);
-			}
-		}
+		if(!is_array($decorators)) $decorators = [$decorators];
+
+		if($decorators)
+        {
+            for($i = 0; $i < count($decorators); $i++)
+            {
+                if(isset($decorators[$i])) $this->addDecorator($decorators[$i]);
+            }
+        }
 		
 		if($params) $this->setParams($params);
 
@@ -129,58 +118,77 @@ private $_params = Array();
 	/**
 	 * Добавление декоратора.
 	 * @param \App\Models\Decorator $Decorator Объект декоратора.
-	 * @return \App\Models\Decorator Объект декоратора.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */
 	public function addDecorator(Decorator $Decorator)
 	{
 	$this->_decorators[] = $Decorator;
+    $Decorator->_setParentDecorator($this);
 	return $this;	
 	}
+
+
+    /**
+     * Добавление декараторов.
+     * @param \App\Models\Decorator[] $decorators Массив декораторов.
+     * @return $this
+     * @since 1.0
+     * @version 1.0
+     */
+	public function addDecorators($decorators)
+    {
+        if($decorators)
+        {
+            for($i = 0; $i < count($decorators); $i++)
+            {
+                if(isset($decorators[$i])) $this->addDecorator($decorators[$i]);
+            }
+        }
+
+    return $this;
+    }
 	
 	
 	/**
 	 * Удаление декоратора.
 	 * @param \App\Models\Decorator $Decorator Объект декоратора.
-	 * @return \App\Models\Decorator Объект декоратора.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */
 	public function deleteDecorator(Decorator $Decorator)
 	{
-	$decorators = Array();
+	$decorators = [];
 	
 		for($i = 0; $i < count($this->_decorators); $i++)
 		{
-			if($this->_decorators[$i] !== $Decorator)
-			{
-			$decorators[] = $Decorator;
-			}
+			if($this->_decorators[$i] !== $Decorator) $decorators[] = $Decorator;
 		}
 	
 	$this->_decorators = $decorators;
 	return $this;	
 	}
-	
-	
+
+
 	/**
 	 * Установка родительского декоратора.
 	 * @param \App\Models\Decorator $Decorator Объект родительского декоратора.
-	 * @return \App\Models\Decorator Объект декоратора.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */
 	protected function _setParentDecorator(Decorator $Decorator)
 	{
 	$this->_DecoratorParent = $Decorator;
-	return $this;	
+	return $this;
 	}
 	
 	
 	/**
 	 * Получение родительского декоратора.
-	 * @return \App\Models\Decorator Объект декоратора.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */
@@ -188,12 +196,39 @@ private $_params = Array();
 	{
 	return $this->_DecoratorParent;	
 	}
+
+
+    /**
+     * Получение корневого декоратора.
+     * @return $this
+     * @since 1.0
+     * @version 1.0
+     */
+	public function getRootDecorator()
+    {
+    return $this->_getRootDecorator($this);
+    }
+
+
+    /**
+     * Получение корневого декоратора методом пербора всех родительских декораторов.
+     * @param \App\Models\Decorator $Decorator Объект родительского декоратора.
+     * @return $this
+     * @since 1.0
+     * @version 1.0
+     */
+    private function _getRootDecorator(Decorator $Decorator)
+    {
+        if($Decorator->getParentDecorator()) return $this->_getRootDecorator($Decorator->getParentDecorator());
+
+    return $Decorator;
+    }
 	
 	
 	/**
 	 * Установка параметров.
 	 * @param array $params Параметры компонента для его работы.
-	 * @return \App\Models\Decorator Объект декоратора.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */
@@ -213,7 +248,7 @@ private $_params = Array();
 	 * Добавление параметра.
 	 * @param string $index Индекс параметра.
 	 * @param mixed $param Параметры компонента для его работы.
-	 * @return \App\Models\Decorator Объект декоратора.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */
@@ -227,7 +262,7 @@ private $_params = Array();
 	/**
 	 * Удаление параметра.
 	 * @param string $index Индекс параметра.
-	 * @return \App\Models\Decorator Объект декоратора.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */
@@ -251,23 +286,20 @@ private $_params = Array();
 	{
 		if($index)
 		{
-			if(isset($this->_params[$index]))
-			{
-			return $this->_params[$index];
-			}
+			if(isset($this->_params[$index])) return $this->_params[$index];
 			else
 			{
 			$ParentDecorator = $this->getParentDecorator();
 			
-				if($ParentDecorator)
-				{
-				$value = $ParentDecorator->getParams($index, null);
-				}
+				if($ParentDecorator) $value = $ParentDecorator->getParams($index, null);
 				else $value = null;
 				
 				if($value) return $value;
-				else if(is_string($default) || is_int($default) || is_array($default) || is_bool($default) || is_object($default)) return $default;
-				else if(@function_exists($default)) return call_user_func_array($default, array());
+				else if(isset($default))
+                {
+                    if(@function_exists($default)) return call_user_func_array($default, []);
+                    else return $default;
+                }
 				else return null;
 			}
 		}
@@ -278,7 +310,7 @@ private $_params = Array();
 	/**
 	 * Установка данных декоратора.
 	 * @param mixed $data Данные выработанные этим декоратором.
-	 * @return \App\Models\Decorator Объект декоратора.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */
@@ -287,10 +319,32 @@ private $_params = Array();
 	$this->_data = $data;	
 	return $this;
 	}
-	
+
+
+    /**
+     * Получение данных, которые были выработаны декораторомами в виде массива.
+     * @return array Массив всех данных.
+     * @since 1.0
+     * @version 1.0
+     */
+	protected function _getData()
+    {
+    $data = [];
+
+        if($this->_data) $data[$this->getIndex()] = $this->_data;
+
+        for($i = 0; $i < count($this->_decorators); $i++)
+        {
+        $dataNew = $this->_decorators[$i]->_getData();
+
+            if($dataNew) $data = array_merge($data, $dataNew);
+        }
+
+    return $data;
+    }
 	
 	/**
-	 * Получение данных, которые были выработаны декоратором.
+	 * Получение данных, которые были выработаны декораторами.
 	 * @param string $type Тип получаемых данных: array - в виде массива, collection - в виде коллекции.
 	 * @return array Массив всех данных.
 	 * @since 1.0
@@ -298,18 +352,7 @@ private $_params = Array();
 	 */
 	public function getData($type = "collection")
 	{
-	$data = Array();	
-	
-		if($this->_data) $data[$this->getIndex()] = $this->_data;
-	
-		for($i = 0; $i < count($this->_decorators); $i++)
-		{
-		$dataNew = $this->_decorators[$i]->getData();
-		
-			if(!$dataNew) continue;
-		
-		$data = array_merge($data, $this->_decorators[$i]->getData());
-		}
+	$data = $this->_getData();
 		
 		if($type == "collection") return collect($data);
 		else return $data;

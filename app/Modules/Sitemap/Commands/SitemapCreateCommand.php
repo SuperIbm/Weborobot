@@ -52,12 +52,15 @@ protected $description = 'Create a new sitemap.xml for the site.';
     $this->line('Scaning the pages of site...');
     $Bar = $this->output->createProgressBar();
 
-        $pages = $Sitemap->scan($this->argument('path'), explode(',', $this->argument('allow')), explode(',', $this->argument('disallow')),
+        $Sitemap->addEvent('beforeScan',
             function() use ($Bar)
             {
             $Bar->advance();
+            return true;
             }
         );
+
+    $pages = $Sitemap->scan($this->argument('path'), explode(',', $this->argument('allow')), explode(',', $this->argument('disallow')));
 
     $Bar->finish();
     $this->line("");

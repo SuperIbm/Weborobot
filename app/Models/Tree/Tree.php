@@ -707,7 +707,7 @@ private $_Nodes;
 	/**
 	 * Установка объекта узла.
 	 * @param \App\Models\Tree\Node $Node Объект узла.
-	 * @return $this.
+	 * @return $this
 	 * @since 1.0
 	 * @version 1.0
 	 */
@@ -729,7 +729,7 @@ private $_Nodes;
 	 */
 	public function isOpenType($status = null)
 	{
-		if($status === null) return $this->_openType;
+		if(!isset($status)) return $this->_openType;
 		else
 		{
 		$this->_openType = $status;
