@@ -7,13 +7,14 @@
 namespace App\Modules\Page\Providers;
 
 use App;
+use Route;
 use Illuminate\Support\ServiceProvider;
 use App\Modules\Page\Models\PageEloquent as Page;
 use App\Modules\Page\Models\PageTreeArrayEloquent as PageTreeArray;
 use App\Modules\Page\Repositories\PageEloquent;
 use App\Modules\Page\Repositories\PageTreeArrayEloquent;
 use App\Modules\Page\Events\Listeners\PageListener;
-
+use App\Modules\Page\Models\PageCurrent;
 
 
 /**
@@ -40,6 +41,7 @@ protected $defer = false;
     $this->registerTranslations();
     $this->registerConfig();
     $this->registerViews();
+    $this->_setRoutes();
     }
 
 	/**
@@ -52,6 +54,17 @@ protected $defer = false;
             function()
             {
             return new PageEloquent(new Page());
+            }
+        );
+
+        App::singleton('pageCurrent',
+            function()
+            {
+                return new PageCurrent
+                (
+                App::make('App\Modules\Page\Repositories\Page'),
+                App::make('App\Modules\PageTemplate\Repositories\PageTemplate')
+                );
             }
         );
 
@@ -70,6 +83,48 @@ protected $defer = false;
             return new PageTreeArrayEloquent(new PageTreeArray());
             }
         );
+    }
+
+    /**
+     * Установка маршрутов для структуры сайта.
+     * @since 1.0
+     * @version 1.0
+     */
+    protected function _setRoutes()
+    {
+    $data = App::make('App\Modules\Page\Repositories\PageTreeArray')->read(null, true);
+    $tree = App::make('App\Modules\Page\Repositories\PageTreeArray')->tree($data);
+
+        function setRoutes($tree)
+        {
+            if($tree)
+            {
+                for($i = 0; $i < count($tree); $i++)
+                {
+                    if($tree[$i]['modeAccess'] == 'Свободный')
+                    {
+                        Route::get($tree[$i]['path'], 'App\Modules\Page\Http\Controllers\PageController@read')
+                        ->middleware('web');
+                    }
+                    else if($tree[$i]['modeAccess'] == 'Ограниченный')
+                    {
+                        Route::get($tree[$i]['path'], 'App\Modules\Page\Http\Controllers\PageController@read')
+                        ->middleware
+                        (
+                            [
+                            'auth.user:group,Пользователи',
+                            'auth.user:page,'.$tree[$i]['idPage'],
+                            'web'
+                            ]
+                        );
+                    }
+
+                    if(isset($tree[$i]['children'])) setRoutes($tree[$i]['children']);
+                }
+            }
+        }
+
+    setRoutes($tree);
     }
 
 	/**

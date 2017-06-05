@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.31 on 2017-05-28.
+ * Generated for Laravel 5.3.31 on 2017-06-05.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -16158,6 +16158,19 @@ namespace App\Modules\Core\Facades {
         }
         
         /**
+         * Метод обработчик собития после выполнения всех действий декоратора.
+         *
+         * @return bool Должен вернуть true, для успешности действия.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function afterAction()
+        {
+            return \App\Modules\Core\Models\Installer::afterAction();
+        }
+        
+        /**
          * Установка консоли.
          *
          * @param \Illuminate\Console\Command $Command Консоль.
@@ -16320,7 +16333,7 @@ namespace App\Modules\Core\Facades {
         }
         
         /**
-         * Получение данных, которые были выработаны декоратором.
+         * Получение данных, которые были выработаны декораторами.
          *
          * @param string $type Тип получаемых данных: array - в виде массива, collection - в виде коллекции.
          * @return array Массив всех данных.
@@ -16996,6 +17009,253 @@ namespace App\Modules\Page\Facades {
         {
             //Method inherited from \App\Models\Repositary            
             return \App\Modules\Page\Repositories\PageEloquent::getErrorNumber($index);
+        }
+        
+    }         
+
+    class PageCurrent {
+        
+        /**
+         * Получить заголовок страницы.
+         *
+         * @return array Данные текущей страницы.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getPage()
+        {
+            return \App\Modules\Page\Models\PageCurrent::getPage();
+        }
+        
+        /**
+         * Установить заголовок страницы.
+         *
+         * @param string $title Заголовок страницы.
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function setTitle($title)
+        {
+            return \App\Modules\Page\Models\PageCurrent::setTitle($title);
+        }
+        
+        /**
+         * Получить заголовок страницы.
+         *
+         * @return string Заголовок страницы.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getTitle()
+        {
+            return \App\Modules\Page\Models\PageCurrent::getTitle();
+        }
+        
+        /**
+         * Установить описание страницы.
+         *
+         * @param string $description Описание страницы.
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function setDescription($description)
+        {
+            return \App\Modules\Page\Models\PageCurrent::setDescription($description);
+        }
+        
+        /**
+         * Получить описание страницы.
+         *
+         * @return string Описание страницы.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getDescription()
+        {
+            return \App\Modules\Page\Models\PageCurrent::getDescription();
+        }
+        
+        /**
+         * Установить ключевые слова страницы.
+         *
+         * @param string $keywords Ключевые слова страницы.
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function setKeywords($keywords)
+        {
+            return \App\Modules\Page\Models\PageCurrent::setKeywords($keywords);
+        }
+        
+        /**
+         * Получить ключевые слова страницы.
+         *
+         * @return string Ключевые слова страницы.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getKeywords()
+        {
+            return \App\Modules\Page\Models\PageCurrent::getKeywords();
+        }
+        
+        /**
+         * Устанавливаем текущий шаблон страницы.
+         *
+         * @param array $template Массив данных шаблона страницы.
+         * @return $this 
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function setTemplate($template)
+        {
+            return \App\Modules\Page\Models\PageCurrent::setTemplate($template);
+        }
+        
+        /**
+         * Получение текущиго шаблона страницы.
+         *
+         * @return array Массив данных шаблона страницы.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getTemplate()
+        {
+            return \App\Modules\Page\Models\PageCurrent::getTemplate();
+        }
+        
+        /**
+         * Получение всех блоков.
+         *
+         * @return array Массив блоков с их HTML.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getBlocks()
+        {
+            return \App\Modules\Page\Models\PageCurrent::getBlocks();
+        }
+        
+        /**
+         * Получение HTML блока по его номеру.
+         *
+         * @param int $number Номер блока.
+         * @return string HTML блока.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getBlock($number)
+        {
+            return \App\Modules\Page\Models\PageCurrent::getBlock($number);
+        }
+        
+        /**
+         * Получение текущего HTTP статуса.
+         *
+         * @return int Текущий статус.
+         * @return $this
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getStatus()
+        {
+            return \App\Modules\Page\Models\PageCurrent::getStatus();
+        }
+        
+        /**
+         * Получение контента основной части страницы.
+         *
+         * @return string HTML контент основной части страницы.
+         * @return $this
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getContent()
+        {
+            return \App\Modules\Page\Models\PageCurrent::getContent();
+        }
+        
+        /**
+         * Получение HTML контента всей страницы.
+         *
+         * @return string HTML контент всей страницы.
+         * @return $this
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getHtml()
+        {
+            return \App\Modules\Page\Models\PageCurrent::getHtml();
+        }
+        
+        /**
+         * Рендеринг и получение страницы.
+         *
+         * @param string $path Путь к странице, которую нужно отрендерить.
+         * @param array $params Параметры полученные с ссылки.
+         * @return string|bool Вернет HTML всей страницы.
+         * @throws Exception
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function render($path, $params = array())
+        {
+            return \App\Modules\Page\Models\PageCurrent::render($path, $params);
+        }
+        
+    }         
+}
+    
+namespace App\Modules\Block\Facades {
+
+    class Block {
+        
+        /**
+         * Получение HTTP статуса.
+         *
+         * @return int Текущий статус.
+         * @return $this
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function getStatus()
+        {
+            return \App\Modules\Block\Models\Block::getStatus();
+        }
+        
+        /**
+         * Рендеринг и получение HTML блока.
+         *
+         * @param string $path Путь к странице, которую нужно отрендерить.
+         * @param int $number Номер блока для получения. Если не указать, верент массив всех блоков.
+         * @param array $params Параметры полученные с ссылки.
+         * @return string|array|bool HTML блоки страницы.
+         * @since 1.0
+         * @version 1.0
+         * @static 
+         */
+        public static function render($path, $number = null, $params = array())
+        {
+            return \App\Modules\Block\Models\Block::render($path, $number, $params);
         }
         
     }         
@@ -19676,6 +19936,10 @@ namespace {
     class Captcha extends \App\Modules\Captcha\Facades\Captcha {}
     
     class Page extends \App\Modules\Page\Facades\Page {}
+    
+    class PageCurrent extends \App\Modules\Page\Facades\PageCurrent {}
+    
+    class Block extends \App\Modules\Block\Facades\Block {}
     
     class Image extends \App\Modules\Image\Facades\Image {}
     

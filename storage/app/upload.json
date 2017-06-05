@@ -13,7 +13,7 @@
                         "components":
                         [
                             {
-							"nameBundle": "",
+							"controller": "",
 							"nameComponent": "",
 							"labelComponent": "",
 							"pathToCss": "",
@@ -55,7 +55,7 @@
                         "components":
                         [
                             {
-							"nameBundle": "",
+							"controller": "",
 							"nameComponent": ""
                             }
                         ],

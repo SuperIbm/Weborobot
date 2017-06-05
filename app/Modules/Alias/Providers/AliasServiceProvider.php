@@ -9,9 +9,12 @@
 namespace App\Modules\Alias\Providers;
 
 use App;
+use Route;
+use PageCurrent;
 use Illuminate\Support\ServiceProvider;
 use App\Modules\Alias\Models\AliasEloquent as Alias;
 use App\Modules\Alias\Repositories\AliasEloquent;
+use Illuminate\Http\Response;
 
 
 /**
@@ -42,6 +45,7 @@ protected $defer = false;
     $this->registerTranslations();
     $this->registerConfig();
     $this->registerViews();
+    $this->_setRoutes();
     }
 
     /**
@@ -58,6 +62,81 @@ protected $defer = false;
             return new AliasEloquent(new Alias());
             }
         );
+    }
+
+    /**
+     * Установка маршрутов для псевдонимов.
+     * @since 1.0
+     * @version 1.0
+     */
+    protected function _setRoutes()
+    {
+        $data = App::make('App\Modules\Alias\Repositories\Alias')->read
+        (
+        null,
+        true,
+            [
+                [
+                'property' => 'pattern',
+                'direction' => 'DESC'
+                ]
+            ]
+        );
+
+        if($data)
+        {
+            function setRoute($page)
+            {
+            $html = PageCurrent::render($page['path']);
+
+                if($html !== false) return (new Response($html, PageCurrent::getStatus()));
+                else abort('404', 'Запрашиваемая вами страница не была найдена.');
+            }
+
+            for($i = 0; $i < count($data); $i++)
+            {
+            $data[$i]['pattern'] = str_replace('{*}', '{_slugs}', $data[$i]['pattern']);
+            $data[$i]['pattern'] = str_replace('{?}', '{_slug}', $data[$i]['pattern']);
+
+            $page = App::make('App\Modules\Page\Repositories\Page')->get($data[$i]['idPage'], true, true);
+
+                if($page)
+                {
+                    if($page['modeAccess'] == 'Свободный')
+                    {
+                        Route::get($data[$i]['pattern'],
+                            function() use ($page)
+                            {
+                            return setRoute($page);
+                            }
+                        )
+                        ->where('_slug', '[0-9,a-z,A-Z]+')
+                        ->where('_slugs', '[0-9,a-z,A-Z,/]+')
+                        ->middleware('web');
+                    }
+                    else
+                    {
+                        Route::get($data[$i]['pattern'],
+                            function() use ($page)
+                            {
+                            return setRoute($page);
+                            }
+                        )
+                        ->where('_slug', '[0-9,a-z,A-Z]+')
+                        ->where('_slugs', '[0-9,a-z,A-Z,/]+')
+                        ->middleware
+                        (
+                            [
+                            'auth.user:group,Пользователи',
+                            'auth.user:page,'.$data[$i]['idPage'],
+                            'web'
+                            ]
+                        );
+                    }
+                }
+                else abort('404', 'Запрашиваемая вами страница не была найдена.');
+            }
+        }
     }
 
     /**

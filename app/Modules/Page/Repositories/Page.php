@@ -27,7 +27,7 @@ abstract class Page extends Repositary
  * @version 1.0
  * @since 1.0
  */
-private static $_pages = Array();
+private static $_pages = [];
 
 	/**
 	 * Получение страницы по ее пути.
@@ -49,7 +49,7 @@ private static $_pages = Array();
 		unset($dirname[count($dirname) - 1]);
 
 		$id = 0;
-		$page = Array();
+		$page = [];
 
 			for($i = 0; $i < count($dirname); $i++)
 			{
@@ -166,7 +166,7 @@ private static $_pages = Array();
 	 */
     protected static function _setById($id, $page, $inherit = false)
 	{
-		if(!isset(self::$_pages[$id])) self::$_pages[$id] = Array();
+		if(!isset(self::$_pages[$id])) self::$_pages[$id] = [];
 
 		if($inherit) self::$_pages[$id]["inherit"] = $page;
 		else self::$_pages[$id]["noInherit"] = $page;

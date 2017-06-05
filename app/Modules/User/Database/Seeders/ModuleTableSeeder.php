@@ -43,7 +43,7 @@ class ModuleTableSeeder extends Seeder
                     0 =>
                         array (
                             'idModule' => $idModule,
-                            'nameBundle' => NULL,
+                            'controller' => 'UserController',
                             'nameComponent' => 'siteLogin',
                             'labelComponent' => 'Авторизация',
                             'pathToCss' => NULL,
@@ -53,7 +53,7 @@ class ModuleTableSeeder extends Seeder
                     1 =>
                         array (
                             'idModule' => $idModule,
-                            'nameBundle' => NULL,
+                            'controller' => 'UserController',
                             'nameComponent' => 'siteCreate',
                             'labelComponent' => 'Регистрация',
                             'pathToCss' => NULL,
@@ -63,7 +63,7 @@ class ModuleTableSeeder extends Seeder
                     2 =>
                         array (
                             'idModule' => $idModule,
-                            'nameBundle' => NULL,
+                            'controller' => 'UserController',
                             'nameComponent' => 'siteForget',
                             'labelComponent' => 'Восстановления пароля',
                             'pathToCss' => NULL,
@@ -73,7 +73,7 @@ class ModuleTableSeeder extends Seeder
                     3 =>
                         array (
                             'idModule' => $idModule,
-                            'nameBundle' => NULL,
+                            'controller' => 'UserController',
                             'nameComponent' => 'siteUpdate',
                             'labelComponent' => 'Изменение данных',
                             'pathToCss' => NULL,
@@ -83,7 +83,7 @@ class ModuleTableSeeder extends Seeder
                     4 =>
                         array (
                             'idModule' => $idModule,
-                            'nameBundle' => NULL,
+                            'controller' => 'UserController',
                             'nameComponent' => 'siteConfirm',
                             'labelComponent' => 'Подтверждение учетной записи',
                             'pathToCss' => NULL,
@@ -93,7 +93,7 @@ class ModuleTableSeeder extends Seeder
                     5 =>
                         array (
                             'idModule' => $idModule,
-                            'nameBundle' => NULL,
+                            'controller' => 'UserController',
                             'nameComponent' => 'siteRead',
                             'labelComponent' => 'Информация о текущем пользователе',
                             'pathToCss' => NULL,
@@ -103,7 +103,7 @@ class ModuleTableSeeder extends Seeder
                     6 =>
                         array (
                             'idModule' => $idModule,
-                            'nameBundle' => NULL,
+                            'controller' => 'UserController',
                             'nameComponent' => 'siteExit',
                             'labelComponent' => 'Выход',
                             'pathToCss' => NULL,

@@ -18,7 +18,7 @@ return [
     'components' =>
     [
         [
-        'nameBundle' => NULL,
+        'controller' => 'SeoController',
         'nameComponent' => 'get',
         'labelComponent' => 'Установить',
         'pathToCss' => NULL,

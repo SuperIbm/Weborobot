@@ -3,6 +3,8 @@
  * Модуль Страницы сайта.
  * Этот модуль содержит все классы для работы со страницами сайта.
  * @package App.Modules.Page
+ * @since 1.0
+ * @version 1.0
  */
 namespace App\Modules\Page\Facades;
 

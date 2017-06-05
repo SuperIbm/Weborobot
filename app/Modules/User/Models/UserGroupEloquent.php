@@ -209,6 +209,6 @@ protected $fillable =
 	 */
 	public function scopeActive($Query, $status = true)
 	{
-	return $Query->where('status', $status == true ? 1 : 0);
+	return $Query->where($this->getTable().'.status', $status == true ? 1 : 0);
 	}
 }

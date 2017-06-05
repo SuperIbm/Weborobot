@@ -198,7 +198,7 @@ private $_Module;
                             'allowDrop' => false,
                             'nameModule' => $module['nameModule'],
                             'nameComponent' => $pageComponents[$y]['nameComponent'],
-                            'nameBundle' => $pageComponents[$y]['nameBundle'] == $pageComponents[$y]['nameComponent'] ? null : $pageComponents[$y]['nameBundle'],
+                            'controller' => $pageComponents[$y]['controller'],
                             'labelComponent' => $pageComponents[$y]['labelComponent'],
                             'settings' => []
                             );

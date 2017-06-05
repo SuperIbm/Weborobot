@@ -1,0 +1,16 @@
+{
+    "name": "Block",
+    "alias": "block",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "App\\Modules\\Block\\Providers\\BlockServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

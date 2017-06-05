@@ -8,6 +8,7 @@
  */
 namespace App\Modules\Page\Http\Controllers;
 
+use Storage;
 use Log;
 use Auth;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ use App\Modules\Page\Repositories\PageTreeArray;
 use App\Modules\Page\Http\Requests\PageAdminDestroyRequest;
 
 /**
- * Класс контроллер для страниц сайта.
+ * Класс контроллер для страниц сайта в административной системе.
  * @version 1.0
  * @since 1.0
  * @copyright Weborobot.
@@ -115,6 +116,10 @@ private $_Page;
 
             if($status)
             {
+            $pathFile = $Request->input('idPage').'.tpl';
+
+                if(Storage::disk('pages')->exists($pathFile)) Storage::disk('pages')->delete($pathFile);
+
                 Log::info('Обновление страницы.',
                     [
                     'module' => "Page",
@@ -179,6 +184,10 @@ private $_Page;
 
         if($status == true && $this->_Page->hasError() == false)
         {
+        $pathFile = $Request->input('idPage').'.tpl';
+
+            if(Storage::disk('pages')->exists($pathFile)) Storage::disk('pages')->delete($pathFile);
+
             Log::info('Удаление страницы.',
                 [
                 'module' => "Page",

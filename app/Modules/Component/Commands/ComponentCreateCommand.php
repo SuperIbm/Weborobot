@@ -29,7 +29,7 @@ class ComponentCreateCommand extends Command
  * @version 1.0
  * @since 1.0
  */
-protected $signature = 'weborobot:component-create {name : A name of the module.} {nameComponent : A name of the component} {label : A label of the component}';
+protected $signature = 'weborobot:component-create {name : A name of the module.} {controller : A name of controller\'s class} {nameComponent : A name of the component} {label : A label of the component}';
 
 /**
  * Описание консольной комманды.
@@ -96,12 +96,7 @@ private $_Module;
             if($encoding != "UTF-8") $label = Util::iconv($this->argument("label"), 'windows-1251', 'utf-8');
             else $label = $this->argument("label");
 
-        $nameBundle = $this->ask('Input a name of bundle', 'NULL');
-
-            if($nameBundle == "NULL") $nameBundle = null;
-
         $pathToJs = $this->ask('Input a path to an index JavaScript file', 'app/Modules/'.$module[0]['nameModule'].'/Admin/js/component/'.$this->argument("nameComponent").'/js/index.js');
-
         $pathToCss = $this->ask('Input a path to a CSS file', 'NULL');
 
             if($pathToCss == "NULL") $pathToCss = null;
@@ -110,7 +105,7 @@ private $_Module;
             (
                 [
                 'idModule' => $module[0]['idModule'],
-                'nameBundle' => $nameBundle,
+                'controller' => $this->argument("controller"),
                 'nameComponent' => $this->argument("nameComponent"),
                 'labelComponent' => $label,
                 'pathToJs' => $pathToJs,

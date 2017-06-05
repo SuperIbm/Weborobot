@@ -53,5 +53,6 @@ class AuthServiceProvider extends ServiceProvider
     $Gate->define('role', 'App\Modules\Access\Models\GateRole@check');
     $Gate->define('group', 'App\Modules\Access\Models\GateGroup@check');
     $Gate->define('admin', 'App\Modules\Access\Models\GateAdmin@check');
+    $Gate->define('user', 'App\Modules\Access\Models\GateUser@check');
     }
 }

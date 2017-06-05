@@ -150,7 +150,7 @@ use RepositaryEloquent;
                             (
                                 [
                                 'idModule' => $module[0]['idModule'],
-                                'nameBundle' => isset($components[$i]['nameBundle']) ? $components[$i]['nameBundle'] : null,
+                                'controller' => $components[$i]['controller'],
                                 'nameComponent' => $components[$i]['nameComponent'],
                                 'labelComponent' => $components[$i]['labelComponent'],
                                 'pathToCss' => isset($components[$i]['pathToCss']) ? $components[$i]['pathToCss'] : null,

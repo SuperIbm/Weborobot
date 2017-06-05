@@ -44,7 +44,7 @@ class ModuleTableSeeder extends Seeder
                     0 =>
                         array (
                             'idModule' => $idModule,
-                            'nameBundle' => NULL,
+                            'controller' => 'InfoblockController',
                             'nameComponent' => 'get',
                             'labelComponent' => 'Установить',
                             'pathToCss' => NULL,

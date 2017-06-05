@@ -30,7 +30,7 @@ class ComponentListener
 	{
 	$result = $Component->newQuery()
 	->where("idModule", $Component->idModule)
-	->where("nameBundle", $Component->nameBundle)
+	->where("controller", $Component->controller)
 	->where("nameComponent", $Component->nameComponent)
 	->first();
 
@@ -56,7 +56,7 @@ class ComponentListener
 	$result = $Component->newQuery()
 	->where("idComponent", "!=", $Component->idComponent)
     ->where("idModule", $Component->idModule)
-    ->where("nameBundle", $Component->nameBundle)
+    ->where("controller", $Component->controller)
     ->where("nameComponent", $Component->nameComponent)
 	->first();
 

@@ -268,8 +268,8 @@ use RepositaryEloquent;
                                                                     'value' => $upload["idModule"]
                                                                     ],
                                                                     [
-                                                                    'property' => 'nameBundle',
-                                                                    'value' => isset($rule["actions"][$k][$k2][$r]["nameBundle"]) ? $rule["actions"][$k][$k2][$r]["nameBundle"] : null
+                                                                    'property' => 'controller',
+                                                                    'value' => $rule["actions"][$k][$k2][$r]["controller"]
                                                                     ],
                                                                     [
                                                                     'property' => 'nameComponent',
@@ -376,8 +376,8 @@ use RepositaryEloquent;
                                                                         'value' => $upload["idModule"]
                                                                         ],
                                                                         [
-                                                                        'property' => 'nameBundle',
-                                                                        'value' => isset($rule["actions"][$k][$k2][$r]["nameBundle"]) ? $rule["actions"][$k][$k2][$r]["nameBundle"] : null
+                                                                        'property' => 'controller',
+                                                                        'value' => $rule["actions"][$k][$k2][$r]["controller"]
                                                                         ],
                                                                         [
                                                                         'property' => 'nameComponent',
@@ -478,8 +478,8 @@ use RepositaryEloquent;
                                                                         'value' => $upload["idModule"]
                                                                         ],
                                                                         [
-                                                                        'property' => 'nameBundle',
-                                                                        'value' => isset($rule["actions"][$k][$k2][$r]["nameBundle"]) ? $rule["actions"][$k][$k2][$r]["nameBundle"] : null
+                                                                        'property' => 'controller',
+                                                                        'value' => $rule["actions"][$k][$k2][$r]["controller"]
                                                                         ],
                                                                         [
                                                                         'property' => 'nameComponent',

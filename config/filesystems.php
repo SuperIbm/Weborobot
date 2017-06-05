@@ -78,6 +78,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'pages' => [
+            'driver' => 'local',
+            'root' => resource_path('views/pages'),
+            'visibility' => 'public',
+        ],
+
         'modules' => [
             'driver' => 'local',
             'root' => app_path('Modules/'),

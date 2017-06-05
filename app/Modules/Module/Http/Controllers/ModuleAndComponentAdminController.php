@@ -117,7 +117,7 @@ private $_Component;
                         'nameModule' => $data[$i]['nameModule'],
                         'nameComponent' => $components[$z]['nameComponent'],
                         'labelComponent' => $components[$z]['labelComponent'],
-                        'nameBundle' => $components[$z]['nameBundle'] == $components[$z]['nameComponent'] ? null : $components[$z]['nameBundle'],
+                        'controller' => $components[$z]['controller'],
                         'idComponent' => $components[$z]['idComponent'],
                         ];
                     }

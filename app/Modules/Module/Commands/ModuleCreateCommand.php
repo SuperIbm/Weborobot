@@ -87,7 +87,7 @@ private $_Module;
             {
                 $this->call('module:make',
                     [
-                    'module-name' => $this->argument("name")
+                    'name' => [$this->argument("name")]
                     ]
                 );
             }

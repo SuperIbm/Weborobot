@@ -359,12 +359,13 @@ return [
         'Geo' => App\Models\Facades\Geo::class,
         'Captcha' => App\Modules\Captcha\Facades\Captcha::class,
         'Page' => App\Modules\Page\Facades\Page::class,
+        'PageCurrent' => App\Modules\Page\Facades\PageCurrent::class,
+        'Block' => App\Modules\Block\Facades\Block::class,
         'Image' => App\Modules\Image\Facades\Image::class,
         'ImageTmp' => App\Modules\ImageTmp\Facades\ImageTmp::class,
         'ImageFilter' => App\Modules\Image\Facades\ImageFilter::class,
         'Document' => App\Modules\Document\Facades\Document::class,
-        'Seo' => App\Modules\Seo\Facades\Seo::class,
-
+        'Seo' => App\Modules\Seo\Facades\Seo::class
     ],
 
 ];

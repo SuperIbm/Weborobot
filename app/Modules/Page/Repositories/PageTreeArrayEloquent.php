@@ -34,7 +34,7 @@ use RepositaryEloquent;
      */
     public function get($id, $active = null, $inherit = false)
     {
-    return App::make('App\Modules\Page\Repositories\Page')->read($id, $active, $inherit);
+    return App::make('App\Modules\Page\Repositories\Page')->get($id, $active, $inherit);
     }
 
 	/**

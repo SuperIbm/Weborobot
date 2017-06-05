@@ -180,7 +180,7 @@ private $_Component;
         {
         $data = $Request->all();
         unset($data['idModule']);
-        unset($data['nameBundle']);
+        unset($data['controller']);
         unset($data['nameComponent']);
 
         $status = $this->_Component->update($Request->input('idComponent'), $data);

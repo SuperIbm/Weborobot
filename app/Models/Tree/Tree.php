@@ -169,7 +169,7 @@ private $_Nodes;
 				if($status)
 				{
 				$Node->addChildren($NodeChildren);
-				$nodeValue = $Node->getData();
+				$nodeValue = $NodeChildren->getResults();
 
 					if
 					(
@@ -270,6 +270,7 @@ private $_Nodes;
 		}
 
 	$Model = $this->newInstance();
+    unset($data[$Model->getKeyName()]);
 	$Model = $Model->create($data);
 
 		if($Model->hasError())
@@ -314,20 +315,18 @@ private $_Nodes;
 
             if(is_integer($attrs[$nameWeight]) || is_numeric($attrs[$nameWeight]))
             {
-                \DB::connection()->enableQueryLog();
-
                 if(self::getNameReferen())
                 {
-                $NodesShift = $this->newInstance()
-                ->newQuery()
-                ->where(self::getNameWeight(), ">", $attrs[$nameWeight])
-                ->where(self::getNameReferen(), "=", $attrs[$nameReferen]);
+                    $NodesShift = $this->newInstance()
+                    ->newQuery()
+                    ->where(self::getNameWeight(), ">", $attrs[$nameWeight])
+                    ->where(self::getNameReferen(), "=", $attrs[$nameReferen]);
                 }
                 else
                 {
-                $NodesShift = $this->newInstance()
-                ->newQuery()
-                ->where(self::getNameWeight(), ">", $attrs[$nameWeight]);
+                    $NodesShift = $this->newInstance()
+                    ->newQuery()
+                    ->where(self::getNameWeight(), ">", $attrs[$nameWeight]);
                 }
 
                 if($filters)

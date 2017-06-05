@@ -80,8 +80,8 @@ Ext.define('Admin.view.AppViewport',
 							(
                             module,
                             component,
-                            values["nameBundle"],
-                            values["labelAction"],
+                            values["controller"],
+                            values["labelComponent"],
                             values["pathToJs"],
                             values["pathToCss"]
 							);

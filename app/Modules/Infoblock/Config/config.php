@@ -19,7 +19,7 @@ return
     'components' =>
         [
             [
-            'nameBundle' => NULL,
+            'controller' => 'InfoblockController',
             'nameComponent' => 'get',
             'labelComponent' => 'Установить',
             'pathToCss' => NULL,

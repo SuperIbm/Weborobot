@@ -24,7 +24,7 @@ class TableComponent extends Migration {
 		{
 			$table->bigInteger('idComponent', true)->unsigned();
 			$table->bigInteger('idModule')->unsigned()->index('idModule');
-			$table->string('nameBundle', 150)->nullable();
+			$table->string('controller', 150)->nullable();
 			$table->string('nameComponent', 150);
 			$table->string('labelComponent', 150);
 			$table->string('pathToCss')->nullable();

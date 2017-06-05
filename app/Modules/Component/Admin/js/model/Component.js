@@ -16,7 +16,7 @@ Ext.define('Component.model.Component',
 			type: "int"
             },
 			{
-			name: "nameBundle",
+			name: "controller",
 			type: "string"
 			},
 			{

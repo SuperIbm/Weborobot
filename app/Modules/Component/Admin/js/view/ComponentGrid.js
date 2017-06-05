@@ -60,8 +60,8 @@ Ext.define('Component.view.ComponentGrid',
 			filter: 'string'
             },
             {
-            header: 'Название пакета',
-            dataIndex: 'nameBundle',
+            header: 'Название контроллера',
+            dataIndex: 'controller',
             filter: 'string',
             hidden: true
             },

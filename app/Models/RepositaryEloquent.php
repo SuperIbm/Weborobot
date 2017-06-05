@@ -247,11 +247,6 @@ trait RepositaryEloquent
 
         if($Model)
         {
-            foreach($data as $k => $v)
-            {
-                if($data[$k] === "") unset($data[$k]);
-            }
-
         $status = $Model->update($data);
 
             if($Model->hasError() == true || $status == false)

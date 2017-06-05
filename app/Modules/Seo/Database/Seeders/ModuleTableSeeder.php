@@ -43,7 +43,7 @@ class ModuleTableSeeder extends Seeder
                     0 =>
                         array (
                             'idModule' => $idModule,
-                            'nameBundle' => NULL,
+                            'controller' => 'SeoController',
                             'nameComponent' => 'get',
                             'labelComponent' => 'Установить',
                             'pathToCss' => NULL,

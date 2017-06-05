@@ -1,0 +1,16 @@
+{
+    "name": "Inherit",
+    "alias": "inherit",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "App\\Modules\\Inherit\\Providers\\InheritServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

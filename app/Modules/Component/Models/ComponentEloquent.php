@@ -21,7 +21,7 @@ use App\Models\Validate;
  *
  * @property int $idComponent ID компонента.
  * @property int $idModule ID модуля.
- * @property string $nameBundle Название пакета.
+ * @property string $controller Название контроллера.
  * @property string $nameComponent Название компонента.
  * @property string $labelComponent Лейбел компонента.
  * @property string $pathToCss Путь к CSS файлу.
@@ -32,9 +32,9 @@ use App\Models\Validate;
  *
  * @method static \Illuminate\Database\Query\Builder|\App\Modules\Component\Models\ComponentEloquent whereIdComponent($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Modules\Component\Models\ComponentEloquent whereIdModule($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Modules\Component\Models\ComponentEloquent whereNameBundle($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Modules\Component\Models\ComponentEloquent wherenameComponent($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Modules\Component\Models\ComponentEloquent wherelabelComponent($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Modules\Component\Models\ComponentEloquent whereController($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Modules\Component\Models\ComponentEloquent whereNameComponent($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Modules\Component\Models\ComponentEloquent whereLabelComponent($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Modules\Component\Models\ComponentEloquent wherePathToCss($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Modules\Component\Models\ComponentEloquent wherePathToJs($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Modules\Component\Models\ComponentEloquent whereStatus($value)
@@ -88,7 +88,7 @@ protected $fillable =
 [
 'idComponent',
 'idModule',
-'nameBundle',
+'controller',
 'nameComponent',
 'labelComponent',
 'pathToCss',
@@ -106,7 +106,7 @@ protected $fillable =
 		return
 		[
         'idModule' => 'required|integer|digits_between:1,20',
-        'nameBundle' => 'max:150',
+        'controller' => 'max:150',
         'nameComponent' => 'required|between:1,150',
         'labelComponent' => 'required|between:1,150',
         'pathToCss' => 'max:255',
@@ -125,7 +125,7 @@ protected $fillable =
 		return
 		[
         'idModule' => 'ID модуля',
-        'nameBundle' => 'Название пакета',
+        'controller' => 'Название контроллера',
         'nameComponent' => 'Название компонента',
         'labelComponent' => 'Лейбел компонента',
         'pathToCss' => 'Путь к CSS файлу',
@@ -154,15 +154,15 @@ protected $fillable =
 	}
 
 	/**
-	 * Преобразователь атрибута - запись: Название пакета.
+	 * Преобразователь атрибута - запись: Контроллер.
 	 * @param mixed $value Значение атрибута.
 	 * @return void
 	 * @since 1.0
 	 * @version 1.0
 	 */
-	public function setNameBundleAttribute($value)
+	public function setControllerAttribute($value)
 	{
-	$this->attributes['nameBundle'] = Util::getText($value);
+	$this->attributes['controller'] = Util::getText($value);
 	}
 
     /**
@@ -172,7 +172,7 @@ protected $fillable =
      * @since 1.0
      * @version 1.0
      */
-    public function setnameComponentAttribute($value)
+    public function setNameComponentAttribute($value)
     {
     $this->attributes['nameComponent'] = Util::getText($value);
     }
@@ -184,7 +184,7 @@ protected $fillable =
      * @since 1.0
      * @version 1.0
      */
-    public function setlabelComponentAttribute($value)
+    public function setLabelComponentAttribute($value)
     {
     $this->attributes['labelComponent'] = Util::getText($value);
     }
@@ -258,6 +258,6 @@ protected $fillable =
      */
     public function scopeActive($Query, $status = true)
     {
-    return $Query->where('status', $status == true ? 1 : 0);
+    return $Query->where($this->getTable().'.status', $status == true ? 1 : 0);
     }
 }
