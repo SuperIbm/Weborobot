@@ -29,5 +29,6 @@ class PageComponentListener
 	public function deleting(PageComponentEloquent $PageComponent)
 	{
 	$PageComponent->PageComponentSetting()->delete();
+    return true;
 	}
 }

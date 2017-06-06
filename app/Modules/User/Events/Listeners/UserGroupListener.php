@@ -9,7 +9,6 @@
 namespace App\Modules\User\Events\Listeners;
 
 use App\Modules\User\Models\UserGroupEloquent as UserGroup;
-use Image;
 
 /**
  * Класс обработчик событий для модели групп пользователей.
@@ -32,5 +31,6 @@ class UserGroupListener
 	$UserGroup->UserGroupOfUser()->delete();
 	$UserGroup->UserGroupPage()->delete();
 	$UserGroup->UserGroupRole()->delete();
+    return true;
 	}
 }

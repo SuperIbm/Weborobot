@@ -211,12 +211,11 @@ private static $_pages = [];
      * Получить по первичному ключу.
      * @param int $id Первичный ключ.
      * @param bool $active Булево значение, если определить как true, то будет получать только активные записи.
-     * @param bool $inherit Требуется ли взять зависмости у вышестоящих страниц.
      * @return array Массив данных.
      * @since 1.0
      * @version 1.0
      */
-    abstract public function get($id, $active = null, $inherit = false);
+    abstract public function get($id, $active = null);
 
 	/**
 	 * Чтение данных.

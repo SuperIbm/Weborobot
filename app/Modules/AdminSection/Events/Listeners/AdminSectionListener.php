@@ -29,5 +29,6 @@ class AdminSectionListener
 	public function deleting(AdminSection $AdminSection)
 	{
 	$AdminSection->UserRoleAdminSection()->delete();
+	return true;
 	}
 }

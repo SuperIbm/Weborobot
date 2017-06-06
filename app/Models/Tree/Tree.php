@@ -313,40 +313,43 @@ private $_Nodes;
         {
         $attrs = $DeleteNodes[$i]->toArray();
 
-            if(is_integer($attrs[$nameWeight]) || is_numeric($attrs[$nameWeight]))
+            if($this->getAutoIncrement())
             {
-                if(self::getNameReferen())
+                if(is_integer($attrs[$nameWeight]) || is_numeric($attrs[$nameWeight]))
                 {
-                    $NodesShift = $this->newInstance()
-                    ->newQuery()
-                    ->where(self::getNameWeight(), ">", $attrs[$nameWeight])
-                    ->where(self::getNameReferen(), "=", $attrs[$nameReferen]);
-                }
-                else
-                {
-                    $NodesShift = $this->newInstance()
-                    ->newQuery()
-                    ->where(self::getNameWeight(), ">", $attrs[$nameWeight]);
-                }
-
-                if($filters)
-                {
-                $fils = Repositary::filters($filters, $this->newInstance()->getFillable(), $this->newInstance()->getTable());
-
-                    for($z = 0; $z < count($fils); $z++)
+                    if(self::getNameReferen())
                     {
-                    $NodesShift->where($fils[$z]['property'], !isset($fils[$z]['operator']) ? "=" : $fils[$z]['operator'], $fils[$z]['value']);
+                        $NodesShift = $this->newInstance()
+                        ->newQuery()
+                        ->where(self::getNameWeight(), ">", $attrs[$nameWeight])
+                        ->where(self::getNameReferen(), "=", $attrs[$nameReferen]);
                     }
-                }
-
-                if($NodesShift)
-                {
-                $NodesShift = $NodesShift->get();
-
-                    for($z = 0; $z < count($NodesShift); $z++)
+                    else
                     {
-                    $NodesShift[$z]->$nameWeight -= 1;
-                    $NodesShift[$z]->save();
+                        $NodesShift = $this->newInstance()
+                        ->newQuery()
+                        ->where(self::getNameWeight(), ">", $attrs[$nameWeight]);
+                    }
+
+                    if($filters)
+                    {
+                    $fils = Repositary::filters($filters, $this->newInstance()->getFillable(), $this->newInstance()->getTable());
+
+                        for($z = 0; $z < count($fils); $z++)
+                        {
+                        $NodesShift->where($fils[$z]['property'], !isset($fils[$z]['operator']) ? "=" : $fils[$z]['operator'], $fils[$z]['value']);
+                        }
+                    }
+
+                    if($NodesShift)
+                    {
+                    $NodesShift = $NodesShift->get();
+
+                        for($z = 0; $z < count($NodesShift); $z++)
+                        {
+                        $NodesShift[$z]->$nameWeight -= 1;
+                        $NodesShift[$z]->save();
+                        }
                     }
                 }
             }

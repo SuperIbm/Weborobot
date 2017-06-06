@@ -79,5 +79,6 @@ class PageListener
 	{
 	$Page->UserGroupPage()->delete();
 	$Page->UserRolePage()->delete();
+    return true;
 	}
 }

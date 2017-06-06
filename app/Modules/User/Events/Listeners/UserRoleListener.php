@@ -31,5 +31,6 @@ class UserRoleListener
 	$UserRole->UserGroupRole()->delete();
 	$UserRole->UserRoleAdminSection()->delete();
 	$UserRole->UserRolePage()->delete();
+    return true;
 	}
 }

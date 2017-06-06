@@ -33,7 +33,7 @@ class PageAdminController extends Controller
  * @version 1.0
  * @since 1.0
  */
-private $_Page;
+private $_PageTreeArray;
 
     /**
      * Конструктор.
@@ -43,7 +43,7 @@ private $_Page;
      */
     public function __construct(PageTreeArray $Page)
     {
-    $this->_Page = $Page;
+    $this->_PageTreeArray = $Page;
     }
 
     /**
@@ -59,7 +59,7 @@ private $_Page;
     $data["dateEdit"] = Carbon::now();
     $data["idPageTemplate"] = $data["idPageTemplate"] == "" ? null : $data["idPageTemplate"];
 
-    $idPage = $this->_Page->create($data);
+    $idPage = $this->_PageTreeArray->create($data);
 
         if($idPage)
         {
@@ -89,8 +89,8 @@ private $_Page;
             $data =
             [
             'success' => false,
-            'errortype' => $this->_Page->getErrorType(),
-            'errormsg' => $this->_Page->getErrorMessage()
+            'errortype' => $this->_PageTreeArray->getErrorType(),
+            'errormsg' => $this->_PageTreeArray->getErrorMessage()
             ];
         }
 
@@ -112,7 +112,7 @@ private $_Page;
         $data = $Request->all();
         $data['dateEdit'] = Carbon::now();
         $data["idPageTemplate"] = $data["idPageTemplate"] == "" ? null : $data["idPageTemplate"];
-        $status = $this->_Page->update($Request->input('idPage'), $data);
+        $status = $this->_PageTreeArray->update($Request->input('idPage'), $data);
 
             if($status)
             {
@@ -146,8 +146,8 @@ private $_Page;
                 $data =
                 [
                 'success' => false,
-                'errortype' => $this->_Page->getErrorType(),
-                'errormsg' => $this->_Page->getErrorMessage()
+                'errortype' => $this->_PageTreeArray->getErrorType(),
+                'errormsg' => $this->_PageTreeArray->getErrorMessage()
                 ];
             }
         }
@@ -180,9 +180,9 @@ private $_Page;
      */
     public function destroy(PageAdminDestroyRequest $Request)
     {
-    $status = $this->_Page->destroy($Request->input('idPage'));
+    $status = $this->_PageTreeArray->destroy($Request->input('idPage'));
 
-        if($status == true && $this->_Page->hasError() == false)
+        if($status == true && $this->_PageTreeArray->hasError() == false)
         {
         $pathFile = $Request->input('idPage').'.tpl';
 
@@ -214,8 +214,8 @@ private $_Page;
             $data =
             [
             'success' => false,
-            'errortype' => $this->_Page->getErrorType(),
-            'errormsg' => $this->_Page->getErrorMessage()
+            'errortype' => $this->_PageTreeArray->getErrorType(),
+            'errormsg' => $this->_PageTreeArray->getErrorMessage()
             ];
         }
 
@@ -232,7 +232,7 @@ private $_Page;
      */
     public function tree(Request $Request)
     {
-        $data = $this->_Page->read
+        $data = $this->_PageTreeArray->read
         (
         null,
         null,
@@ -244,7 +244,7 @@ private $_Page;
             ]
         );
 
-        $data = $this->_Page->tree
+        $data = $this->_PageTreeArray->tree
         (
         $data,
         null,
@@ -256,7 +256,7 @@ private $_Page;
             ]
         );
 
-        if($this->_Page->hasError() == true)
+        if($this->_PageTreeArray->hasError() == true)
         {
             $data =
             [
