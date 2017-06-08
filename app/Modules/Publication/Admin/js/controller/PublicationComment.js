@@ -64,6 +64,19 @@ Ext.define('Publication.controller.PublicationComment',
 							}
 						);
 					}
+                    /*else if(this.getStore("PublicationCommentTree").isLoaded() == false)
+                    {
+                        this.getStore("PublicationCommentTree").on("load",
+                            function()
+                            {
+                            action.resume();
+                            },
+                            null,
+                            {
+                            single: true
+                            }
+                        );
+                    }*/
 					else action.resume();
 				},
 				action: function(id)
@@ -220,7 +233,7 @@ Ext.define('Publication.controller.PublicationComment',
 			}
 		},
 		
-		create: function(idPublicationComment_referen, idPublication)
+		create: function(idPublicationCommentReferen, idPublication)
 		{		
 		var thisObj = this;
 				
@@ -249,7 +262,7 @@ Ext.define('Publication.controller.PublicationComment',
 					}
 				).show().center();
 			
-			this.WindowCreate.down("form").getForm().idPublicationComment_referen = idPublicationComment_referen;
+			this.WindowCreate.down("form").getForm().idPublicationCommentReferen = idPublicationCommentReferen;
 			this.WindowCreate.down("form").getForm().idPublication = idPublication;
 			}
 		},

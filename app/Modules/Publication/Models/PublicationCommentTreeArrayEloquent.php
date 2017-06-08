@@ -81,13 +81,23 @@ use TreeArray;
 
 	/**
 	 * Метод получения названия столбца определяющий вес узла.
-	 * @return string Возвращает название столбца.
+	 * @return string|array Возвращает название столбца.
 	 * @since 1.0
 	 * @version 1.0
 	 */
 	public static function getNameWeight()
 	{
-	return "dateAdd ASC, publicationComment.idPublicationComment";
+	    return
+        [
+            [
+            'property' => 'dateAdd',
+            'direction' => 'ASC'
+            ],
+            [
+            'property' => 'publicationComment.idPublicationComment',
+            'direction' => 'ASC'
+            ],
+        ];
 	}
 
 

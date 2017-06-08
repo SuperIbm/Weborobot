@@ -91,7 +91,7 @@ private $_User;
      */
     public function create(UserImageAdminCreateRequest $Request)
     {
-    $data = Array();
+    $data = [];
     $data['idImageSmall'] = $Request->file('image')->path();
     $data['idImageMiddle'] = $Request->file('image')->path();
 

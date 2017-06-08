@@ -30,7 +30,7 @@ use RepositaryEloquent;
      */
     public function get($id)
     {
-    return $this->_get(['Publication', 'PublicationComment'], $id);
+    return $this->_get(['Publication', 'PublicationQueryWord'], $id);
     }
 
 
@@ -47,7 +47,7 @@ use RepositaryEloquent;
      */
     public function read($filters = null, $sorts = null, $offset = null, $limit = null, $with = null)
     {
-    return $this->_read(['Publication', 'PublicationComment'], false, $filters, null, $sorts, $offset, $limit, $with);
+    return $this->_read(['Publication', 'PublicationQueryWord'], false, $filters, null, $sorts, $offset, $limit, $with);
     }
 
     /**
@@ -60,7 +60,7 @@ use RepositaryEloquent;
      */
     public function count($filters = null, $with = null)
     {
-    return $this->_read(['Publication', 'PublicationComment'], true, $filters, null, null, null, null, $with);
+    return $this->_read(['Publication', 'PublicationQueryWord'], true, $filters, null, null, null, null, $with);
     }
 
     /**
@@ -72,7 +72,7 @@ use RepositaryEloquent;
      */
     public function create(array $data)
     {
-    return $this->_create(['PublicationComment'], $data);
+    return $this->_create(['PublicationItem', 'PublicationQueryWord'], $data);
     }
 
     /**
@@ -85,7 +85,7 @@ use RepositaryEloquent;
      */
     public function update($id, array $data)
     {
-    return $this->_update(['PublicationComment'], $id, $data);
+    return $this->_update(['PublicationItem', 'PublicationQueryWord'], $id, $data);
     }
 
     /**
@@ -97,6 +97,6 @@ use RepositaryEloquent;
      */
     public function destroy($id)
     {
-    return $this->_destroy(['PublicationComment'], $id);
+    return $this->_destroy(['PublicationItem', 'PublicationQueryWord'], $id);
     }
 }

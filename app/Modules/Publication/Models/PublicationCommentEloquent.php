@@ -140,7 +140,7 @@ protected $fillable =
         'idPublicationCommentReferen' => 'integer|max:20',
         'idUser' => 'integer|max:20',
         'name' => 'required|between:1,150',
-        'email' => 'required|email',
+        'email' => 'email',
         'url' => 'url',
         'comment' => 'required|between:1,5000',
         'dateAdd' => 'required|date',
@@ -148,7 +148,7 @@ protected $fillable =
         'idImageBig' => 'integer|digits_between:0,20',
         'idImageMiddle' => 'integer|digits_between:0,20',
         'idImageSmall' => 'integer|digits_between:0,20',
-        'status' => 'required|boolean'
+        'status' => 'required|min:0|max:2'
         ];
 	}
 
@@ -192,6 +192,7 @@ protected $fillable =
         'between' => 'Поле :attribute должно быть длиней :min символов, но короче :max символов.',
         'digits_between' => 'Поле :attribute должно находится в диапозоне от :min до :max символов.',
         'max' => 'Поле :attribute должно содержать не больше :max символов.',
+        'min' => 'Поле :attribute должно содержать не меньше :min символов.',
         'email' => 'Поле :attribute должно содержать корректный email адрес.',
         'date' => 'Поле :attribute должно содержать корректную дату.',
         'url' => 'Поле :attribute должно содержать корректный URL адрес.',
@@ -260,15 +261,44 @@ protected $fillable =
     }
 
     /**
+     * Преобразователь атрибута - запись: статус.
+     * @param mixed $value Значение атрибута.
+     * @return void
+     * @version 1.0
+     * @since 1.0
+     */
+    public function setStatusAttribute($value)
+    {
+        switch($value)
+        {
+        case 'Активен': $this->attributes['status'] = 1; break;
+        case 'Не активен': $this->attributes['status'] = 0; break;
+        case 'Не проверен': $this->attributes['status'] = 2; break;
+
+        case true: $this->attributes['status'] = 1; break;
+        case false: $this->attributes['status'] = 0; break;
+        }
+
+        if($value < 0 && $value > 2) $this->attributes['status'] = $value;
+    }
+
+    /**
      * Преобразователь атрибута - получение: статус.
      * @param mixed $value Значение атрибута.
      * @return string Значение статуса.
-     * @since 1.0
      * @version 1.0
+     * @since 1.0
      */
     public function getStatusAttribute($value)
     {
-    return Util::getStatus("label", $value);
+        switch($value)
+        {
+        case 1: return 'Активен';
+        case 0: return 'Не активен';
+        case 2: return 'Не проверен';
+        }
+
+    return $value;
     }
 
     /**
@@ -395,11 +425,23 @@ protected $fillable =
      * @param \Illuminate\Database\Eloquent\Builder $Query Запрос.
      * @param bool $status Статус активности.
      * @return \Illuminate\Database\Eloquent\Builder Построитель запросов.
-     * @since 1.0
      * @version 1.0
+     * @since 1.0
      */
     public function scopeActive($Query, $status = true)
     {
-    return $Query->where($this->getTable().'.status', $status == true ? 1 : 0);
+        if($status == true) return $Query->where('status', 1);
+        else
+        {
+            return $Query->orWhere
+            (
+                function($Query)
+                {
+                    $Query
+                    ->where('status', 0)
+                    ->where('status', 2);
+                }
+            );
+        }
     }
 }

@@ -10,7 +10,7 @@ Ext.define('Publication.store.PublicationSection',
 		labelSection: "Все разделы",
 		expanded: true,
 		icon: "app/Modules/Admin/Admin/images/icon_folder.png",
-		idPublicationSection: -1,
+		idPublicationSection: 0,
 		leaf: false
 		},
 		autoLoad:

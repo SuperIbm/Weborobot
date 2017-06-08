@@ -3,7 +3,7 @@ Ext.define('Publication.store.PublicationImage',
 	extend: 'Ext.data.Store',
 	model: 'Publication.model.PublicationImage',
 	
-	autoLoad: true,
+	autoLoad: false,
 		proxy:
 		{
 		type: 'ajax',

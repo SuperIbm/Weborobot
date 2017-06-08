@@ -251,7 +251,8 @@ Ext.define('Publication.controller.PublicationSection',
 				},
 				afterDelete: function(tree, ids)
 				{
-				tree.getSelectionModel().select(tree.getRootNode());	
+				tree.getSelectionModel().select(tree.getRootNode());
+				this.getStore('PublicationComment').load();
 				}
 			}
 		},
@@ -275,7 +276,7 @@ Ext.define('Publication.controller.PublicationSection',
 				this.getTree().getMenuItemCreate().setDisabled(false);
 				}
 			
-				if(id != -1)
+				if(id != 0)
 				{
 					if(this.getGrid().getButtonCreate())
 					{

@@ -168,7 +168,7 @@ Ext.define('Publication.view.PublicationGrid',
 						var record = tree.getStore().getById(idPublicationSection);
 						tree.getSelectionModel().select(record, null, true);
 						
-							if(record.getId() != -1)
+							if(record.getId() != 0)
 							{
 								if(this.getButtonCreate())
 								{

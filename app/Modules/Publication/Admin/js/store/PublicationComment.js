@@ -10,9 +10,13 @@ Ext.define('Publication.store.PublicationComment',
 		sorters:
 		[
 			{
-			property: 'dateAdd DESC, publicationComment.idPublicationComment',
+			property: 'dateAdd',
+			direction: 'DESC'
+			},
+            {
+			property: 'publicationComment.idPublicationComment',
 			direction: 'ASC'
-			}
+            }
 		],
 		autoLoad:
 		{
@@ -39,9 +43,9 @@ Ext.define('Publication.store.PublicationComment',
 		noCache: false,
 			api:
 			{
-			create: '_api/Publication/PublicationCommentAdminController/create/',
-			update: '_api/Publication/PublicationCommentAdminController/update/',
-			destroy: '_api/Publication/PublicationCommentAdminController/destroy/',
+			create: '_api/Publication/PublicationCommentTreeAdminController/create/',
+			update: '_api/Publication/PublicationCommentTreeAdminController/update/',
+			destroy: '_api/Publication/PublicationCommentTreeAdminController/destroy/',
 			read: '_api/Publication/PublicationCommentAdminController/read/'
 			},
 			reader:

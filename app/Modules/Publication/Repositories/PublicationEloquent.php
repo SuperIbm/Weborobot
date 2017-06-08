@@ -100,6 +100,6 @@ use RepositaryEloquent;
      */
     public function destroy($id)
     {
-    return $this->_destroy(['PublicationItem'], $id);
+    return $this->_destroy(['PublicationItem', 'PublicationComment'], $id);
     }
 }

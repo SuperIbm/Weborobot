@@ -11,7 +11,7 @@ Ext.define('Publication.store.PublicationCommentTree',
 		expanded: false,
 		leaf: false,
 		icon: "app/Modules/Admin/Admin/images/icon_folder.png",
-		idPublicationComment: -1,
+		idPublicationComment: 0,
 		name: "Все комментарии"
 		},
 
@@ -24,7 +24,7 @@ Ext.define('Publication.store.PublicationCommentTree',
 			create: '_api/Publication/PublicationCommentTreeAdminController/create/',
 			update: '_api/Publication/PublicationCommentTreeAdminController/update/',
 			destroy: '_api/Publication/PublicationCommentTreeAdminController/destroy/',
-			read: '_api/Publication/PublicationCommentTreeAdminController/read/'
+			read: '_api/Publication/PublicationCommentTreeAdminController/tree/'
 			},
 			reader:
 			{

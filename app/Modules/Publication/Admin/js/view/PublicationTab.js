@@ -10,8 +10,7 @@ Ext.define('Publication.view.PublicationTab',
 	activeTab: 0,
 	bodyBorder: false,
 	border: false,
-	deferredRender: false,
-	forceLayout: true,
+	deferredRender: true,
 	
 		items:
 		[

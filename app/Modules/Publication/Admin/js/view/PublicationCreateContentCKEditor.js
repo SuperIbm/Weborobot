@@ -4,6 +4,6 @@ Ext.define('Publication.view.PublicationCreateContentCKEditor',
 	alias: 'widget.Publication.view.PublicationCreateContentCKEditor',
 	
 	bodyClass: "CONTENT",
-	contentsCss: Admin.getApplication().Access.getSetting("pathToCssGeneral")
+	contentsCss: Admin.getApplication().Access.getSetting("appCss")
 	}
 );

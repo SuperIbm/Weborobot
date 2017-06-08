@@ -17,7 +17,7 @@ Ext.define('Publication.model.PublicationCommentTree',
 			type: "int"
 			},
 			{
-			name: "idPublicationComment_referen",
+			name: "idPublicationCommentReferen",
 			type: "int"
 			},
 			{
@@ -56,16 +56,11 @@ Ext.define('Publication.model.PublicationCommentTree',
 				return Weborobot.Util.parserBr2Rn(value);
 				}
 			},
-			{
+            {
 			name: "dateAdd",
 			type: "date",
-			dateFormat: "d.m.Y H:i:s"
-			},
-			{
-			name: "timeAdd",
-			type: "date",
-			dateFormat: "H:i:s"
-			},
+			dateFormat: "Y-m-d H:i:s"
+            },
 			{
 			name: "ip",
 			type: "string"
@@ -104,7 +99,7 @@ Ext.define('Publication.model.PublicationCommentTree',
 			create: '_api/Publication/PublicationCommentTreeAdminController/create/',
 			update: '_api/Publication/PublicationCommentTreeAdminController/update/',
 			destroy: '_api/Publication/PublicationCommentTreeAdminController/destroy/',
-			read: '_api/Publication/PublicationCommentTreeAdminController/read/'
+			read: '_api/Publication/PublicationCommentAdminController/read/'
             },
 			reader:
 			{

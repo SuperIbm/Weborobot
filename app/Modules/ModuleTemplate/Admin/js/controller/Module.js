@@ -78,7 +78,7 @@ Ext.define('ModuleTemplate.controller.Module',
 		
 		select: function(id)
 		{
-		id = id == -1 ? null : id;
+		id = id == 0 ? null : id;
 		this.getGrid().getStore().getProxy().setExtraParam("idModule", id);
 		this.getGrid().getStore().load();
 		

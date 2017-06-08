@@ -28,7 +28,7 @@ Ext.define('Publication.controller.PublicationCommentCreate',
 								params:
 								{
 								idPublication: button.up("window").down("form").getForm().idPublication,
-								idPublicationComment_referen: button.up("window").down("form").getForm().idPublicationComment_referen
+								idPublicationCommentReferen: button.up("window").down("form").getForm().idPublicationCommentReferen
 								},
 								success: function(model, operation)
 								{

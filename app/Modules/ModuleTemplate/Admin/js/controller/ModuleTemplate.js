@@ -222,10 +222,11 @@ Ext.define('ModuleTemplate.controller.ModuleTemplate',
 			if(!this.WindowUpdate)
 			{
 			this.WindowUpdate = true;
-			thisObj.getApplication().createController("ModuleTemplateUpdate");
 
 				function show(record)
 				{
+				thisObj.getApplication().createController("ModuleTemplateUpdate");
+
 					thisObj.WindowUpdate = Ext.create("ModuleTemplate.view.ModuleTemplateUpdateWindow",
 						{
 							listeners:

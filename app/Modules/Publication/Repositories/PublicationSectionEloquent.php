@@ -88,7 +88,7 @@ use RepositaryEloquent;
      */
     public function update($id, array $data)
     {
-    return $this->_update(['PublicationSection'], $id, $data);
+    return $this->_update(['PublicationSection', 'PublicationItem', 'PublicationComment'], $id, $data);
     }
 
     /**
@@ -100,6 +100,6 @@ use RepositaryEloquent;
      */
     public function destroy($id)
     {
-    return $this->_destroy(['PublicationSection'], $id);
+    return $this->_destroy(['PublicationSection', 'PublicationItem', 'PublicationComment'], $id);
     }
 }

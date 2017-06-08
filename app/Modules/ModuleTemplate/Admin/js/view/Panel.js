@@ -1,10 +1,10 @@
-Ext.define('Component.view.Panel',
+Ext.define('ModuleTemplate.view.Panel',
 	{
     extend: 'Ext.panel.Panel',
-	alias: 'widget.Component.view.Panel',
+	alias: 'widget.ModuleTemplate.view.Panel',
 	
 	title: "Шаблоны модулей",
-	icon: Admin.getApplication().Section.get("Component")["iconSmall"],
+	icon: Admin.getApplication().Section.get("ModuleTemplate")["iconSmall"],
 	layout: 'border',
 	scrollable: false,
 	frame: true,
@@ -12,10 +12,10 @@ Ext.define('Component.view.Panel',
 		items:
 		[
 			{
-			xtype: "Component.view.ModuleTree"
+			xtype: "ModuleTemplate.view.ModuleTree"
 			},
 			{
-			xtype: "Component.view.ComponentGrid"
+			xtype: "ModuleTemplate.view.ModuleTemplateGrid"
 			}
 		]
 	}

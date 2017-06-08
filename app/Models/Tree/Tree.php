@@ -100,7 +100,7 @@ private $_Nodes;
 	
 	/**
 	 * Метод получения названия столбца определяющий вес узла.
-	 * @return string Возвращает название столбца.
+	 * @return string|array Возвращает название столбца.
 	 * @since 1.0
 	 * @version 1.0
 	 */
@@ -251,10 +251,18 @@ private $_Nodes;
                 }
             }
 
-		$Query->orderBy(self::getNameWeight(), "desc");
+		    if(is_string($nameWeight)) $Query->orderBy($nameWeight, "desc");
+			else
+            {
+                for($i = 0; $i < count($nameWeight); $i++)
+                {
+                $Query->orderBy($nameWeight[$i]['property'], $nameWeight[$i]['direction']);
+                }
+            }
+
 		$NodeLast = $Query->first();
 
-			if(self::getAutoIncrement() == true)
+			if(self::getAutoIncrement() == true && !is_array($nameWeight))
 			{
 				if($NodeLast)
 				{
@@ -321,14 +329,14 @@ private $_Nodes;
                     {
                         $NodesShift = $this->newInstance()
                         ->newQuery()
-                        ->where(self::getNameWeight(), ">", $attrs[$nameWeight])
+                        ->where($nameWeight, ">", $attrs[$nameWeight])
                         ->where(self::getNameReferen(), "=", $attrs[$nameReferen]);
                     }
                     else
                     {
                         $NodesShift = $this->newInstance()
                         ->newQuery()
-                        ->where(self::getNameWeight(), ">", $attrs[$nameWeight]);
+                        ->where($nameWeight, ">", $attrs[$nameWeight]);
                     }
 
                     if($filters)
@@ -525,7 +533,7 @@ private $_Nodes;
 
 						$NodesShift = $this->newInstance()
 						->newQuery()
-						->where($nameWeight, ">=", $attrs[self::getNameWeight()])
+						->where($nameWeight, ">=", $attrs[$nameWeight])
 						->where(self::getNameReferen(), "=", $idReferenOld);
 
                         if($filters)
@@ -549,7 +557,7 @@ private $_Nodes;
 						$NodeLast = $this->newInstance()
 						->newQuery()
 						->where(self::getNameReferen(), $idReferenNew)
-						->orderBy(self::getNameWeight(), "desc");
+						->orderBy($nameWeight, "desc");
 
                         if($filters)
                         {

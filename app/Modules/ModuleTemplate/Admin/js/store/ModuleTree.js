@@ -9,7 +9,7 @@ Ext.define('ModuleTemplate.store.ModuleTree',
 		text: "Все модули",
 		expanded: true,
 		icon: "app/Modules/Module/Admin/images/icon_small.png",
-		idModule: -1,
+		idModule: 0,
 		leaf: false
 		},
 		

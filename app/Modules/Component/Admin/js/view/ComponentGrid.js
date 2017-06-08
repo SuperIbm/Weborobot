@@ -1,16 +1,16 @@
-Ext.define('Component.view.ComponentGrid',
+Ext.define('ModuleTemplate.view.ModuleTemplateGrid',
 	{
     extend: 'Admin.view.ux.GridPanel',
-	alias: 'widget.Component.view.ComponentGrid',
+	alias: 'widget.ModuleTemplate.view.ModuleTemplateGrid',
 	
 		requires:
 		[
-        "Component.view.field.ComponentPathToJsText",
-        "Component.view.field.ComponentPathToCssText"
+        "ModuleTemplate.view.field.ModuleTemplatePathToJsText",
+        "ModuleTemplate.view.field.ModuleTemplatePathToCssText"
 		],
 	
 	name: "ModuleTree",
-	store: 'Component',
+	store: 'ModuleTemplate',
 	
 	region: 'center',
 	split: true,	
@@ -24,7 +24,7 @@ Ext.define('Component.view.ComponentGrid',
 			plugins:
 			{
 			ptype: 'gridviewdragdrop',
-			ddGroup: "Component.view.ComponentGrid",
+			ddGroup: "ModuleTemplate.view.ModuleTemplateGrid",
 			enableDrop: false
 			}
 		},
@@ -33,7 +33,7 @@ Ext.define('Component.view.ComponentGrid',
 		[
 			{
 			xtype: 'pagingtoolbar',
-			store: 'Component',
+			store: 'ModuleTemplate',
 			dock: 'bottom',
 			displayInfo: true
 			}
@@ -43,7 +43,7 @@ Ext.define('Component.view.ComponentGrid',
 		[
             {
 			header: 'ID',
-			dataIndex: 'idComponent',
+			dataIndex: 'idModuleTemplate',
 			width: "8%",
 			filter: 'number'
             },
@@ -105,13 +105,13 @@ Ext.define('Component.view.ComponentGrid',
 			{
 			text: "Добавить",
 			disabled: true,
-			hidden: !Admin.getApplication().Access.is("Component", "isCreate")
+			hidden: !Admin.getApplication().Access.is("ModuleTemplate", "isCreate")
 			};
 			
 			this.buttonUpdate = 
 			{
 			text: "Изменить",
-			hidden: !Admin.getApplication().Access.is("Component", "isUpdate")
+			hidden: !Admin.getApplication().Access.is("ModuleTemplate", "isUpdate")
 			};
 			
 		this.callParent();

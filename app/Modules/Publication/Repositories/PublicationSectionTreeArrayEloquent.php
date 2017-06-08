@@ -123,7 +123,7 @@ use RepositaryEloquent;
 	$status = $Model->destroyNode($id, $deleteChildren, $filters);
 
 		if($status == false) $this->addError($Model->getErrors());
-		else Cache::tags(['PublicationSection'])->flush();
+		else Cache::tags(['PublicationSection', 'PublicationItem', 'PublicationComment'])->flush();
 
 	return $status;
 	}

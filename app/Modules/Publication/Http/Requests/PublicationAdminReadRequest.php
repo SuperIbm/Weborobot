@@ -64,7 +64,7 @@ class PublicationAdminReadRequest extends FormRequest
         'start' => 'Начальная позиция записи',
         'limit' => 'Количество записей',
         'id' => 'ID записи',
-        'idModule' => 'ID секции'
+        'idPublicationSection' => 'ID секции'
         ];
     }
 

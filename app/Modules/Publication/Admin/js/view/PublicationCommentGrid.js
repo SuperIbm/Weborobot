@@ -36,7 +36,7 @@ Ext.define('Publication.view.PublicationCommentGrid',
 			},
 			{
 			text: 'Имя',
-			width: "28%",
+			width: "26%",
 			dataIndex: 'name',
 				editor:
 				{
@@ -48,7 +48,7 @@ Ext.define('Publication.view.PublicationCommentGrid',
 			header: 'Изображение',
 			dataIndex: 'idImageSmall',
 			xtype: 'imagecolumn',
-			width: "18%"
+			width: "26%"
 			},
 			{
 			text: 'E-mail',
@@ -84,30 +84,8 @@ Ext.define('Publication.view.PublicationCommentGrid',
 			header: 'Дата добавления',
 			dataIndex: 'dateAdd',
 			xtype: 'datecolumn',
-			format: "j F Y",
-			width: "16%",
-				editor:
-				{
-				xtype: "Publication.view.field.PublicationCommentDateAddDate",
-				hideLabel: true
-				}
-			},
-			{
-			header: 'Время добавления',
-			dataIndex: 'timeAdd',
-			xtype: 'datecolumn',
-			format: "H:i:s",
-			width: "16%",
-				filter:
-				{
-				type: 'date',
-				dateFormat: "H:i:s"
-				},
-				editor:
-				{
-				xtype: "Publication.view.field.PublicationCommentTimeAddDate",
-				hideLabel: true
-				}
+			format: "j F Y, H:i",
+			width: "26%"
 			},
 			{
 			text: 'IP',
@@ -121,7 +99,28 @@ Ext.define('Publication.view.PublicationCommentGrid',
 				editor:
 				{
 				xtype: 'comboBoxStatus',
-				hideLabel: true
+				hideLabel: true,
+                    store: new Ext.data.ArrayStore
+                    (
+                        {
+                            fields:
+                            [
+                            "name"
+                            ],
+                            data:
+                            [
+                                [
+                                "Активен"
+                                ],
+                                [
+                                "Не проверен"
+                                ],
+                                [
+                                "Не активен"
+                                ]
+                            ]
+                        }
+                    )
 				}
 			}
 		],

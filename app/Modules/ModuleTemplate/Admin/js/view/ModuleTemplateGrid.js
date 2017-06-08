@@ -112,7 +112,7 @@ Ext.define('ModuleTemplate.view.ModuleTemplateGrid',
 						var record = tree.getStore().getById(idModule);
 						tree.getSelectionModel().select(record, null, true);
 						
-							if(record.getId() != -1)
+							if(record.getId() != 0)
 							{
 							this.getButtonCreate().setDisabled(false);	
 							this.getMenuItemCreate().setDisabled(false);

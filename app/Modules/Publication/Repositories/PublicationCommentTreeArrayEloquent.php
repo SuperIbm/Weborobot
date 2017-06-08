@@ -19,7 +19,7 @@ use App\Models\RepositaryEloquent;
  * @copyright Weborobot.
  * @author Инчагов Тимофей Александрович.
  */
-class PublicationCommentTreeArrayEloquent extends PublicationSectionTreeArray
+class PublicationCommentTreeArrayEloquent extends PublicationCommentTreeArray
 {
 use RepositaryEloquent;
 

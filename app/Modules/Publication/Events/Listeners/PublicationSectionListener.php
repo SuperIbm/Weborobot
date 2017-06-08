@@ -28,6 +28,17 @@ class PublicationSectionListener
      */
 	public function deleting(PublicationSection $PublicationSection)
 	{
+    $Publications = $PublicationSection->Publication()->get();
+
+        if($Publications)
+        {
+            foreach($Publications as $Publication)
+            {
+            $Publication->PublicationQueryWord()->delete();
+            $Publication->PublicationComment()->delete();
+            }
+        }
+
     $PublicationSection->Publication()->delete();
     return true;
 	}

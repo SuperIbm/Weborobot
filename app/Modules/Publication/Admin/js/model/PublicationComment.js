@@ -17,7 +17,7 @@ Ext.define('Publication.model.PublicationComment',
 			type: "string"
 			},
 			{
-			name: "idPublicationComment_referen",
+			name: "idPublicationCommentReferen",
 			type: "string"
 			},
 			{
@@ -59,12 +59,7 @@ Ext.define('Publication.model.PublicationComment',
 			{
 			name: "dateAdd",
 			type: "date",
-			dateFormat: "d.m.Y H:i:s"
-			},
-			{
-			name: "timeAdd",
-			type: "date",
-			dateFormat: "H:i:s"
+			dateFormat: "Y-m-d H:i:s"
 			},
 			{
 			name: "ip",
@@ -101,9 +96,9 @@ Ext.define('Publication.model.PublicationComment',
 		noCache: false,
 			api:
 			{
-			create: '_api/Publication/PublicationCommentAdminController/create/',
-			update: '_api/Publication/PublicationCommentAdminController/update/',
-			destroy: '_api/Publication/PublicationCommentAdminController/destroy/',
+			create: '_api/Publication/PublicationCommentTreeAdminController/create/',
+			update: '_api/Publication/PublicationCommentTreeAdminController/update/',
+			destroy: '_api/Publication/PublicationCommentTreeAdminController/destroy/',
 			read: '_api/Publication/PublicationCommentAdminController/read/'
 			},
 			reader:

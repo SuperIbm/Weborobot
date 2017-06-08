@@ -408,7 +408,7 @@ var Admin = Ext.application
 					{
 						var Panel = Ext.create(index + ".view.Panel",
 							{
-							itemId: index	
+							itemId: index
 							}
 						);
 

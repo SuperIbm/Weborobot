@@ -202,6 +202,7 @@ Ext.define('Publication.controller.Publication',
 														{
 															button.up("gridpanel").unmask();
 															thisObj.getStore("Publication").load();
+                                                            thisObj.getStore("PublicationComment").load();
 														}
 
 													},
@@ -294,8 +295,24 @@ Ext.define('Publication.controller.Publication',
 										"publicationUpdateTab"
 										]
 									);
-									
-								thisObj.redirectTo(token);	
+
+									if(thisObj.WindowUpdate)
+                                    {
+                                    thisObj.WindowUpdate.down("treepanel[name='PublicationComment']").getStore().getProxy().setExtraParam("idPublication", null);
+
+                                        thisObj.WindowUpdate.down("treepanel[name='PublicationComment']").getStore().on("load",
+                                            function()
+                                            {
+                                            thisObj.WindowUpdate.down("treepanel[name='PublicationComment']").getRootNode().expand(true);
+                                            },
+                                            null,
+                                            {
+                                            single: true
+                                            }
+                                        );
+                                    }
+
+								thisObj.redirectTo(token);
 								}
 							}
 						}
@@ -321,7 +338,6 @@ Ext.define('Publication.controller.Publication',
 					);
 
 				thisObj.WindowUpdate.down("treepanel[name='PublicationComment']").getStore().load();
-
 				thisObj.WindowUpdate.setTitle(thisObj.WindowUpdate.getTitle() + ": " + record.get("title"));
 				}
 			
