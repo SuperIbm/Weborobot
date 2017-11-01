@@ -32,7 +32,7 @@ class SmartyResourceComponentTemplate extends Smarty_Resource_Custom
 	 */
 	protected function fetch($name, &$source, &$mtime)
 	{
-	$Repository = App::make('App\Modules\ComponentTemplate\Repositories\ComponentTemplate');
+	$Repository = App::make('App\Modules\ModuleTemplate\Repositories\ModuleTemplate');
 	$record = $Repository->get($name, true);
 	
 		if($record)
