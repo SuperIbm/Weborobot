@@ -10,6 +10,8 @@ namespace App\Modules\User\Models;
 
 use Eloquent;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * Класс модель для таблицы выбранных страницы группы на основе Eloquent.
@@ -25,7 +27,7 @@ use App\Models\Validate;
  */
 class UserGroupPageEloquent extends Eloquent
 {
-use Validate;
+use Validate, SoftDeletes;
     
 /**
  * Убрать конвектатор атрибутов к змейке.

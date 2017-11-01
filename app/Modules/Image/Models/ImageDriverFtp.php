@@ -114,10 +114,7 @@ protected static $_login;
 		{
 		$tmpfname = storage_path('app/tmp/'.$id.'.'.$format);
 
-			if(!Storage::disk('tmp')->exists($id.'.'.$format))
-			{
-			ftp_get(self::$_connection, $tmpfname, Config::get('image.store.ftp.path').$id.'.'.$format, FTP_BINARY);
-			}
+			if(!Storage::disk('tmp')->exists($id.'.'.$format)) ftp_get(self::$_connection, $tmpfname, Config::get('image.store.ftp.path').$id.'.'.$format, FTP_BINARY);
 
 		return Storage::disk('tmp')->get($id.'.'.$format);
 		}
@@ -168,10 +165,7 @@ protected static $_login;
 	 */
 	public function destroy($id, $format)
 	{
-		if(self::$_connection && self::$_login)
-		{
-		return ftp_delete(self::$_connection, Config::get('image.store.ftp.path').$id.'.'.$format);
-		}
+		if(self::$_connection && self::$_login) return ftp_delete(self::$_connection, Config::get('image.store.ftp.path').$id.'.'.$format);
 
 	return false;
 	}

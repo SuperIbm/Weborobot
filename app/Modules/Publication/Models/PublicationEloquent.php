@@ -13,6 +13,8 @@ use Eloquent;
 use Util;
 use Image;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * Класс модель для таблицы публикаций на основе Eloquent.
@@ -54,7 +56,7 @@ use App\Models\Validate;
  */
 class PublicationEloquent extends Eloquent
 {
-use Validate;
+use Validate, SoftDeletes;
     
 /**
  * Убрать конвектатор атрибутов к змейке.

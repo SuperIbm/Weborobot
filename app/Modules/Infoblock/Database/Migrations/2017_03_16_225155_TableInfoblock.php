@@ -26,6 +26,12 @@ class TableInfoblock extends Migration
 			$table->string('labelInfoblock');
 			$table->text('code', 65535)->nullable();
 			$table->boolean('status')->default(0)->index('status');
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
 		});
 	}
 

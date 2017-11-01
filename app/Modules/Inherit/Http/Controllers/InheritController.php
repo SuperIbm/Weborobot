@@ -30,6 +30,6 @@ class InheritController extends Controller
      */
     public function get(Request $Request)
     {
-    return view('app.test', ['TEXT' => 'I am here!']);
+
     }
 }

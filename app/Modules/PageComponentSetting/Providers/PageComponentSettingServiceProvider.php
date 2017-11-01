@@ -55,10 +55,11 @@ protected $defer = false;
         App::singleton('App\Modules\PageComponentSetting\Repositories\PageComponentSetting',
             function()
             {
-            PageComponentSetting::observe(PageComponentSettingListener::class);
             return new PageComponentSettingEloquent(new PageComponentSetting());
             }
         );
+
+    PageComponentSetting::observe(PageComponentSettingListener::class);
     }
 
     /**

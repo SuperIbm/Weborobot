@@ -10,6 +10,7 @@ namespace App\Modules\Seo\Models;
 
 use MongoDb;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
@@ -21,7 +22,7 @@ use App\Models\Validate;
  */
 class SeoMongoDb extends MongoDB
 {
-use Validate;
+use Validate, SoftDeletes;
 
 /**
  * Убрать конвектатор атрибутов к змейке.

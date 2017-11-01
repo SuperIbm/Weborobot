@@ -73,10 +73,11 @@ protected $defer = false;
         App::singleton('App\Modules\Publication\Repositories\Publication',
             function()
             {
-            Publication::observe(PublicationListener::class);
             return new PublicationEloquent(new Publication());
             }
         );
+
+    Publication::observe(PublicationListener::class);
 
         App::singleton('App\Modules\Publication\Repositories\PublicationQueryWord',
             function()
@@ -88,34 +89,38 @@ protected $defer = false;
         App::singleton('App\Modules\Publication\Repositories\PublicationSection',
             function()
             {
-            PublicationSection::observe(PublicationSectionListener::class);
             return new PublicationSectionEloquent(new PublicationSection());
             }
         );
 
+    PublicationSection::observe(PublicationSectionListener::class);
+
         App::singleton('App\Modules\Publication\Repositories\PublicationSectionTreeArray',
             function()
             {
-            PublicationSectionTreeArray::observe(PublicationSectionListener::class);
             return new PublicationSectionTreeArrayEloquent(new PublicationSectionTreeArray());
             }
         );
 
+    PublicationSectionTreeArray::observe(PublicationSectionListener::class);
+
         App::singleton('App\Modules\Publication\Repositories\PublicationComment',
             function()
             {
-            PublicationComment::observe(PublicationCommentListener::class);
             return new PublicationCommentEloquent(new PublicationComment());
             }
         );
 
+    PublicationComment::observe(PublicationCommentListener::class);
+
         App::singleton('App\Modules\Publication\Repositories\PublicationCommentTreeArray',
             function()
             {
-            PublicationCommentTreeArray::observe(PublicationCommentListener::class);
             return new PublicationCommentTreeArrayEloquent(new PublicationCommentTreeArray());
             }
         );
+
+    PublicationCommentTreeArray::observe(PublicationCommentListener::class);
     }
 
     /**

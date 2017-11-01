@@ -61,18 +61,20 @@ protected $defer = false;
         App::singleton('App\Modules\AdminSection\Repositories\AdminSection',
             function()
             {
-            AdminSection::observe(AdminSectionListener::class);
             return new AdminSectionEloquent(new AdminSection());
             }
         );
 
+    AdminSection::observe(AdminSectionListener::class);
+
         App::singleton('App\Modules\AdminSection\Repositories\AdminSectionTreeArray',
             function()
             {
-            AdminSectionTreeArray::observe(AdminSectionListener::class);
             return new AdminSectionTreeArrayEloquent(new AdminSectionTreeArray());
             }
         );
+
+    AdminSectionTreeArray::observe(AdminSectionListener::class);
     }
 
 	/**

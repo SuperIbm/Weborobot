@@ -71,18 +71,20 @@ protected $defer = false;
         App::singleton('App\Modules\Page\Repositories\Page',
 	        function()
 	        {
-            Page::observe(PageListener::class);  
 	        return new PageEloquent(new Page());
 	        }
         );
 
+    Page::observe(PageListener::class);
+
         App::singleton('App\Modules\Page\Repositories\PageTreeArray',
             function()
             {
-            PageTreeArray::observe(PageListener::class);
             return new PageTreeArrayEloquent(new PageTreeArray());
             }
         );
+
+    PageTreeArray::observe(PageListener::class);
     }
 
     /**

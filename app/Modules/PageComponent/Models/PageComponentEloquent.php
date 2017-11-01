@@ -10,6 +10,8 @@ namespace App\Modules\PageComponent\Models;
 
 use Eloquent;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * Класс модель для таблицы компонентов страницы на основе Eloquent.
@@ -38,7 +40,7 @@ use App\Models\Validate;
  */
 class PageComponentEloquent extends Eloquent
 {
-use Validate;
+use Validate, SoftDeletes;
 
 /**
  * Убрать конвектатор атрибутов к змейке.

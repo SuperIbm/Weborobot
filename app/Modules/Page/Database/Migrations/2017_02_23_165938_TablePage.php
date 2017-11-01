@@ -38,6 +38,12 @@ class TablePage extends Migration {
 			$table->boolean('status')->default(0)->index('status');
 			$table->index(['idPage','status'], 'columnIndex_1');
 			$table->index(['idPageReferen','nameLink','status'], 'columnIndex_2');
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
 		});
 	}
 

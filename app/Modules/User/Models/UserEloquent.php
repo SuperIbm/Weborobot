@@ -15,6 +15,7 @@ use Session;
 use Util;
 use Crypt;
 use Image;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**

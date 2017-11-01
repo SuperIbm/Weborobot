@@ -11,6 +11,7 @@ namespace App\Modules\Image\Models;
 use Eloquent;
 use Util;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
@@ -38,7 +39,7 @@ use App\Models\Validate;
  */
 class ImageEloquent extends Eloquent
 {
-use Validate;
+use Validate, SoftDeletes;
 
 /**
  * Параметр для хранения пути к файлу.

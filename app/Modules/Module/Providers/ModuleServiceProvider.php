@@ -51,7 +51,6 @@ protected $defer = false;
         App::singleton('App\Modules\Module\Repositories\Module',
             function($App)
             {
-            Module::observe(ModuleListener::class);
                 return new ModuleEloquent
                 (
                 new Module(),
@@ -63,6 +62,8 @@ protected $defer = false;
                 );
             }
         );
+
+    Module::observe(ModuleListener::class);
     }
 
 	/**

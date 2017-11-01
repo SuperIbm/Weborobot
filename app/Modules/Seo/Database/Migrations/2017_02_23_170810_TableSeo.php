@@ -27,6 +27,12 @@ class TableSeo extends Migration
 			$table->bigInteger('shows')->unsigned()->default(0);
 			$table->bigInteger('visitors')->unsigned()->default(0);
 			$table->bigInteger('visitorsNew')->unsigned()->default(0);
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
 		});
 	}
 

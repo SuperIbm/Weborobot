@@ -24,6 +24,12 @@ class TableUserRole extends Migration {
 			$table->bigInteger('idUserRole', true)->unsigned();
 			$table->string('nameRole', 100);
 			$table->boolean('status')->default(0)->index('status');
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
 		});
 	}
 

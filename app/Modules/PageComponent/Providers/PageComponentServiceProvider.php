@@ -57,18 +57,20 @@ protected $defer = false;
         App::singleton('App\Modules\PageComponent\Repositories\PageComponent',
             function()
             {
-            PageComponent::observe(PageComponentListener::class);
             return new PageComponentEloquent(new PageComponent());
             }
         );
 
+    PageComponent::observe(PageComponentListener::class);
+
         App::singleton('App\Modules\PageComponent\Repositories\PageComponentTreeArray',
             function()
             {
-            PageComponentTreeArray::observe(PageComponentListener::class);
             return new PageComponentTreeArrayEloquent(new PageComponentTreeArray());
             }
         );
+
+    PageComponentTreeArray::observe(PageComponentListener::class);
     }
 
     /**

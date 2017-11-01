@@ -4,7 +4,7 @@ Ext.define('Publication.component.getTagCloud.controller.Publication',
 	
 	id: "Publication.component.getTagCloud",
 	
-	stores: ["ComponentTemplateSelect", "PublicationSectionSelect"],
+	stores: ["ModuleTemplateSelect", "PublicationSectionSelect"],
 	models: ["PublicationSectionSelect"],
 	
 		control:

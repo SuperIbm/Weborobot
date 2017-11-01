@@ -98,18 +98,20 @@ protected $defer = false;
         App::singleton('App\Modules\User\Repositories\User',
             function()
             {
-            User::observe(UserListener::class);
             return new UserEloquent(new User());
             }
         );
 
+    User::observe(UserListener::class);
+
         App::singleton('App\Modules\User\Repositories\UserGroup',
             function()
             {
-            UserGroup::observe(UserGroupListener::class);
             return new UserGroupEloquent(new UserGroup());
             }
         );
+
+    UserGroup::observe(UserGroupListener::class);
 
         App::singleton('App\Modules\User\Repositories\UserGroupOfUser',
             function()
@@ -135,10 +137,11 @@ protected $defer = false;
         App::singleton('App\Modules\User\Repositories\UserRole',
             function()
             {
-            UserRole::observe(UserRoleListener::class);
             return new UserRoleEloquent(new UserRole());
             }
         );
+
+    UserRole::observe(UserRoleListener::class);
 
         App::singleton('App\Modules\User\Repositories\UserRoleAdminSection',
             function()

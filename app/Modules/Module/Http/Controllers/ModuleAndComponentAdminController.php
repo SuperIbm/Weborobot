@@ -107,7 +107,7 @@ private $_Component;
 
                     for($z = 0; $z < count($components); $z++)
                     {
-                    $dataWithComonents[$y]['children'] =
+                        $dataWithComonents[$y]['children'][] =
                         [
                         'text' => $components[$z]["labelComponent"],
                         'leaf' => true,

@@ -24,6 +24,12 @@ class TableBlockIp extends Migration {
 			$table->bigInteger('idBlockIp', true)->unsigned();
 			$table->string('ip', 15)->index('ip');
 			$table->boolean('status')->default(0)->index('status');
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
 		});
 	}
 

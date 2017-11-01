@@ -11,6 +11,7 @@ namespace App\Modules\Document\Models;
 use MongoDb;
 use Util;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
@@ -34,7 +35,7 @@ use App\Models\Validate;
  */
 class DocumentMongoDb extends MongoDb
 {
-use Validate;
+use Validate, SoftDeletes;
 
 /**
  * Параметр для хранения пути к файлу.

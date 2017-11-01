@@ -24,6 +24,12 @@ class TableUserGroupOfUser extends Migration {
 			$table->bigInteger('idUserGroupOfUser', true)->unsigned();
 			$table->bigInteger('idUserGroup')->unsigned()->index('idUserGroup');
 			$table->bigInteger('idUser')->unsigned()->index('idUser');
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
 		});
 	}
 

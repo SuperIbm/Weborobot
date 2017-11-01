@@ -12,6 +12,8 @@ use Eloquent;
 use Util;
 use Config;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * Класс модель для таблицы разделов административной системы на основе Eloquent.
@@ -52,7 +54,7 @@ use App\Models\Validate;
  */
 class AdminSectionEloquent extends Eloquent
 {
-use Validate;
+use Validate, SoftDeletes;
 
 /**
  * Убрать конвектатор атрибутов к змейке.

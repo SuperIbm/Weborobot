@@ -25,6 +25,12 @@ class TablePageComponentSetting extends Migration
 			$table->bigInteger('idPageComponent')->unsigned()->index('idModule');
 			$table->string('nameSetting');
 			$table->string('value')->nullable();
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
 		});
 	}
 

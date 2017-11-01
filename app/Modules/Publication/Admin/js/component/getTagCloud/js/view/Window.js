@@ -13,7 +13,7 @@ Ext.define('Publication.component.getTagCloud.view.Window',
 	scrollable: true,
 	constrain: true,
 	
-	iconCls: "icon_Page_Action_small",
+	iconCls: "icon_Component_small",
 	
 	minimizable: false,
 	maximizable: false,
@@ -21,7 +21,7 @@ Ext.define('Publication.component.getTagCloud.view.Window',
 	modal: true,
 	
 	width: 500,
-	height: 260,	
+	height: 265,
 		
 		items:
 		[

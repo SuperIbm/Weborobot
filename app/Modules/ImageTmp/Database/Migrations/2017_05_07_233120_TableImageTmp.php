@@ -27,6 +27,10 @@ class TableImageTmp extends Migration {
 			$table->bigInteger('idImageThumbnail')->unsigned()->unique('idImageThumbnail');
 			$table->dateTime('dateAdd')->index('datAdd');
 			$table->string('tags')->nullable()->index('tag');
+
+            $table->timestamps();
+            $table->index('created_at');
+            $table->index('updated_at');
 		});
 	}
 

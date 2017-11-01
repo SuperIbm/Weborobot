@@ -56,8 +56,6 @@ protected $defer = false;
         App::singleton('App\Modules\PageTemplate\Repositories\PageTemplate',
             function($App)
             {
-            PageTemplate::observe(PageTemplateListener::class);
-
                 return new PageTemplateEloquent
                 (
                 new PageTemplate(),
@@ -66,6 +64,8 @@ protected $defer = false;
                 );
             }
         );
+
+    PageTemplate::observe(PageTemplateListener::class);
     }
 
     /**

@@ -4,7 +4,7 @@ Ext.define('Publication.component.getLenta.controller.Publication',
 	
 	id: "Publication.component.getLenta",
 	
-	stores: ["ComponentTemplateSelect", "PublicationSectionSelect"],
+	stores: ["ModuleTemplateSelect", "PublicationSectionSelect"],
 	models: ["PublicationSectionSelect"],
 	
 		control:

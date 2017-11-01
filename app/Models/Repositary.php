@@ -239,7 +239,7 @@ private $_cacheMinutes = 60;
      * Получение нового экземпляра модели.
      * @param array $data Данные этой модели.
      * @param bool $exists Определяет существует ли эта запись или нет.
-     * @return \App\Modules\ModuleTemplate\Models\ModuleTemplateEloquent Объект модели данного репозитария.
+     * @return Object Объект модели данного репозитария.
      * @since 1.0
      * @version 1.0
      */

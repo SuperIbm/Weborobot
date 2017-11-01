@@ -10,8 +10,9 @@ namespace App\Modules\Support\Models;
 
 use Eloquent;
 use Util;
-use Image;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * Класс модель для поддержки на основе Eloquent.
@@ -32,7 +33,7 @@ use App\Models\Validate;
  */
 class SupportEloquent extends Eloquent
 {
-use Validate;
+use Validate, SoftDeletes;
 
 /**
  * Убрать конвектатор атрибутов к змейке.

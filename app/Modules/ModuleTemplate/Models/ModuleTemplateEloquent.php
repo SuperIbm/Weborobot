@@ -11,6 +11,8 @@ namespace App\Modules\ModuleTemplate\Models;
 use Eloquent;
 use Util;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * Класс модель для таблицы шаблонов модулей на основе Eloquent.
@@ -38,7 +40,7 @@ use App\Models\Validate;
  */
 class ModuleTemplateEloquent extends Eloquent
 {
-use Validate;
+use Validate, SoftDeletes;
     
 /**
  * Убрать конвектатор атрибутов к змейке.

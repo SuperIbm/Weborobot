@@ -27,6 +27,12 @@ class TablePageComponent extends Migration
 			$table->smallInteger('numberBlock')->unsigned()->default(0)->index('numberBlock');
 			$table->boolean('weight')->default(0)->index('weight');
 			$table->index(['idPage','idComponent','numberBlock','weight'], 'columnIndex_1');
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
 		});
 	}
 

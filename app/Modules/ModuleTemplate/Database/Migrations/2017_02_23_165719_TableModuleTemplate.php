@@ -26,6 +26,12 @@ class TableModuleTemplate extends Migration
 			$table->string('labelTemplate', 150);
 			$table->text('htmlTpl', 16777215)->nullable();
 			$table->boolean('status')->default(0)->index('status');
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
 		});
 	}
 

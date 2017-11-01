@@ -112,6 +112,9 @@ private $_PageTreeArray;
         $data = $Request->all();
         $data['dateEdit'] = Carbon::now();
         $data["idPageTemplate"] = $data["idPageTemplate"] == "" ? null : $data["idPageTemplate"];
+
+            if($data["nameLink"] === "") unset($data["nameLink"]);
+
         $status = $this->_PageTreeArray->update($Request->input('idPage'), $data);
 
             if($status)

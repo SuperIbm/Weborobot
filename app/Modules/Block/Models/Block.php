@@ -129,7 +129,7 @@ private $_status = 200;
 
         $page = $this->_Page->getByDirname($url['path'], true, true);
         }
-        else $page = $this->_Page->getByDirname('');
+        else $page = $this->_Page->getByDirname('', true, true);
 
         if($page)
         {

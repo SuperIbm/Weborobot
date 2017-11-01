@@ -27,6 +27,12 @@ class TableImage extends Migration
 			$table->string('cache', 15)->nullable();
 			$table->smallInteger('width')->unsigned();
 			$table->smallInteger('height')->unsigned();
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
 		});
 	}
 

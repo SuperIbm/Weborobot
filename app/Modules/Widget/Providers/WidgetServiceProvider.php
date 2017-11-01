@@ -56,10 +56,11 @@ protected $defer = false;
         App::singleton('App\Modules\Widget\Repositories\Widget',
             function()
             {
-            Widget::observe(WidgetListener::class);
             return new WidgetEloquent(new Widget());
             }
         );
+
+    Widget::observe(WidgetListener::class);
     }
 
     /**

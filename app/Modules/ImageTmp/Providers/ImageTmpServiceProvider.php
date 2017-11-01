@@ -50,18 +50,20 @@ protected $defer = false;
         App::singleton('App\Modules\ImageTmp\Repositories\ImageTmp',
             function()
             {
-            ImageTmp::observe(ImageTmpListener::class);
             return new ImageTmpEloquent(new ImageTmp());
             }
         );
 
+    ImageTmp::observe(ImageTmpListener::class);
+
         App::singleton('imageTmp',
             function()
             {
-            ImageTmp::observe(ImageTmpListener::class);
             return new ImageTmpEloquent(new ImageTmp());
             }
         );
+
+    ImageTmp::observe(ImageTmpListener::class);
     }
 
     /**

@@ -51,10 +51,11 @@ protected $defer = false;
         App::singleton('App\Modules\Component\Repositories\Component',
             function()
             {
-            Component::observe(ComponentListener::class);
             return new ComponentEloquent(new Component());
             }
         );
+
+    Component::observe(ComponentListener::class);
     }
 
     /**

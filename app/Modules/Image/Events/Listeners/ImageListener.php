@@ -9,6 +9,7 @@
 namespace App\Modules\Image\Events\Listeners;
 
 use App;
+use Config;
 
 /**
  * Класс обработчик событий для модели изображений.
@@ -76,6 +77,7 @@ class ImageListener
 	 */
 	public function deleted($Image)
 	{
-	return App::make('image.driver')->destroy($Image->idImage, $Image->format);
+        if(!Config::get("image.softDeletes")) return App::make('image.driver')->destroy($Image->idImage, $Image->format);
+        else return true;
 	}
 }

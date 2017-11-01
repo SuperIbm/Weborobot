@@ -78,18 +78,20 @@ protected $defer = false;
         Image::extend('database',
             function()
             {
-            ImageEloquentModel::observe(ImageListener::class);
             return new ImageEloquent(new ImageEloquentModel());
             }
         );
 
+    ImageEloquentModel::observe(ImageListener::class);
+
         Image::extend('mongodb',
             function()
             {
-            ImageMongoDbModel::observe(ImageListener::class);
             return new ImageMongoDb(new ImageMongoDbModel());
             }
         );
+
+    ImageMongoDbModel::observe(ImageListener::class);
 
 	    App::singleton('image.driver',
 		    function($App)

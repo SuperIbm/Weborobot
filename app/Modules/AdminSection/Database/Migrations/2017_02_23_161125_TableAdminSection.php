@@ -32,6 +32,12 @@ class TableAdminSection extends Migration
             $table->string('pathToJs');
             $table->boolean('weight')->nullable()->index('weight');
             $table->boolean('status')->default(0)->index('status');
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
         });
 	}
 

@@ -25,6 +25,12 @@ class TableDocument extends Migration
 			$table->binary('byte', 16777215)->nullable();
 			$table->string('format', 6);
 			$table->string('cache', 50)->nullable();
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
 		});
 	}
 

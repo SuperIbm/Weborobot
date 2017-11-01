@@ -9,6 +9,7 @@
 namespace App\Modules\Document\Events\Listeners;
 
 use App;
+use Config;
 
 /**
  * Класс обработчик событий для модели документов.
@@ -76,6 +77,7 @@ class DocumentListener
 	 */
 	public function deleted($Document)
 	{
-	return App::make('document.driver')->destroy($Document->idDocument, $Document->format);
+        if(!Config::get("document.softDeletes")) return App::make('document.driver')->destroy($Document->idDocument, $Document->format);
+        else return true;
 	}
 }

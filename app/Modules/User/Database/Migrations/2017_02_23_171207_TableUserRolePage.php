@@ -24,6 +24,12 @@ class TableUserRolePage extends Migration {
 			$table->bigInteger('idUserRolePage', true)->unsigned();
 			$table->bigInteger('idUserRole')->unsigned()->index('idUserGroup');
 			$table->bigInteger('idPage')->unsigned()->index('idPage');
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
 		});
 	}
 

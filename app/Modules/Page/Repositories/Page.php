@@ -193,7 +193,7 @@ private static $_pages = [];
 
 				if($data)
 				{
-					if($data["path"] == $dirname)
+					if(@$data["path"] == $dirname)
 					{
 						if($active == true && $data["status"] == "Активен") return $data;
 						else if($active == false) return $data;

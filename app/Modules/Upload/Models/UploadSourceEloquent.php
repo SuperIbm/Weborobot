@@ -12,6 +12,7 @@ use Eloquent;
 use App\Models\Validate;
 use Util;
 use Crypt;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
@@ -39,7 +40,7 @@ use Crypt;
  */
 class UploadSourceEloquent extends Eloquent
 {
-use Validate;
+use Validate, SoftDeletes;
 
 /**
  * Убрать конвектатор атрибутов к змейке.

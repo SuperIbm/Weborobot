@@ -25,6 +25,12 @@ class TableSupport extends Migration
                 $table->bigInteger('idSupport', true)->unsigned();
                 $table->string('email', 250)->default('');
                 $table->string('fio', 250)->default('');
+
+                $table->timestamps();
+                $table->softDeletes();
+                $table->index('created_at');
+                $table->index('updated_at');
+                $table->index('deleted_at');
             }
         );
 	}

@@ -11,6 +11,7 @@ namespace App\Modules\Upload\Models;
 use Eloquent;
 use App\Models\Validate;
 use Util;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
@@ -37,7 +38,7 @@ use Util;
  */
 class UploadEloquent extends Eloquent
 {
-use Validate;
+use Validate, SoftDeletes;
 
 /**
  * Убрать конвектатор атрибутов к змейке.

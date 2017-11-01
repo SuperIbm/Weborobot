@@ -16,20 +16,20 @@ Ext.define('Publication.component.getLenta.view.PublicationForm',
 			
 				store:
 				{
-				type: "Publication.component.getLenta.store.ComponentTemplateSelect"
+				type: "Publication.component.getLenta.store.ModuleTemplateSelect"
 				},
 				
 			triggerReload: true,
 				
-			valueField: "idComponentTemplate",
+			valueField: "idModuleTemplate",
 			displayField: "labelTemplate",
 			
 			labelSeparator: "",
 			labelWidth: 160,
 			width: 450,
 			
-			name: "idComponentTemplate",
-			reference: "idComponentTemplate",
+			name: "idModuleTemplate",
+			reference: "idModuleTemplate",
 			emptyText: "[Выберите шаблон]",
 			fieldLabel: "Шаблон:<span class='needsForm'>*</span>",
 			

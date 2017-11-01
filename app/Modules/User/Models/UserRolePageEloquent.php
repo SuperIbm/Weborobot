@@ -10,6 +10,8 @@ namespace App\Modules\User\Models;
 
 use Eloquent;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * Класс модель для таблицы выбранных страниц роли на основе Eloquent.
@@ -33,7 +35,7 @@ use App\Models\Validate;
  */
 class UserRolePageEloquent extends Eloquent
 {
-use Validate;
+use Validate, SoftDeletes;
 
 /**
  * Убрать конвектатор атрибутов к змейке.

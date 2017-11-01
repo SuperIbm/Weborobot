@@ -4,7 +4,7 @@ Ext.define('Publication.component.getByAction.controller.Publication',
 	
 	id: "Publication.component.getByAction",
 	
-	stores: ["ComponentTemplateSelect", "PublicationSectionSelect"],
+	stores: ["ModuleTemplateSelect", "PublicationSectionSelect"],
 	models: ["PublicationSectionSelect"],
 	
 		control:

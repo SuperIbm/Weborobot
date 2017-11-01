@@ -50,10 +50,11 @@ protected $defer = false;
 	    App::singleton('App\Modules\ModuleTemplate\Repositories\ModuleTemplate',
 		    function()
 		    {
-            ModuleTemplate::observe(ModuleTemplateListener::class);
 		    return new ModuleTemplateEloquent(new ModuleTemplate());
 		    }
 	    );
+
+    ModuleTemplate::observe(ModuleTemplateListener::class);
     }
 
 	/**

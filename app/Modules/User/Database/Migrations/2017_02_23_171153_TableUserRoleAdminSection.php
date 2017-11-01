@@ -28,6 +28,12 @@ class TableUserRoleAdminSection extends Migration {
 			$table->boolean('isUpdate');
 			$table->boolean('isCreate');
 			$table->boolean('isDestroy');
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
 		});
 	}
 

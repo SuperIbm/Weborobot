@@ -29,6 +29,12 @@ class TableComponent extends Migration {
 			$table->string('labelComponent', 150);
 			$table->string('pathToCss')->nullable();
 			$table->string('pathToJs')->nullable();
+
+            $table->timestamps();
+            $table->softDeletes();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index('deleted_at');
 		});
 	}
 

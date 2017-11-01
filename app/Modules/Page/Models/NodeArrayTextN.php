@@ -119,7 +119,8 @@ private $_dir = 'app/Modules/Admin/admin/images/';
             else $icon = $this->_dir.'icon_page.png';
         }
 
-        if($data['nameLink']) $path = $dataParent['path'].$data['nameLink'].'/';
+        if($data['nameLink'] && isset($dataParent['path'])) $path = $dataParent['path'].$data['nameLink'].'/';
+        else if($data['nameLink']) $path = $data['nameLink'].'/';
         else $path = '';
 
         $node = array

@@ -57,7 +57,7 @@ private $_BlockIp;
 	/**
 	 * Возвращение пользователя по его уникальному индификатору
 	 * @param mixed $identifier ID пользователя.
-	 * @return \Illuminate\Contracts\Auth\Authenticatable|null
+	 * @return \Illuminate\Contracts\Auth\Authenticatable|Object|null
 	 * @version 1.0
  	 * @since 1.0
 	 */
@@ -73,7 +73,7 @@ private $_BlockIp;
 	 * Возвращение пользователя через уникальный индификатор и токен помнить меня.
 	 * @param mixed $identifier ID пользователя.
 	 * @param string $token Токен.
-	 * @return \Illuminate\Contracts\Auth\Authenticatable|null
+	 * @return \Illuminate\Contracts\Auth\Authenticatable|Object|null
 	 * @version 1.0
  	 * @since 1.0
 	 */
@@ -116,7 +116,7 @@ private $_BlockIp;
 	/**
 	 * Возвращение пользователя по заданным параметрам.
 	 * @param array $credentials Параметры.
-	 * @return \Illuminate\Contracts\Auth\Authenticatable|null
+	 * @return \Illuminate\Contracts\Auth\Authenticatable|Object|null
 	 * @version 1.0
  	 * @since 1.0
 	 */

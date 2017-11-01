@@ -11,6 +11,7 @@ namespace App\Modules\Document\Models;
 use Eloquent;
 use Util;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
@@ -34,7 +35,7 @@ use App\Models\Validate;
  */
 class DocumentEloquent extends Eloquent
 {
-use Validate;
+use Validate, SoftDeletes;
 
 /**
  * Параметр для хранения пути к файлу.

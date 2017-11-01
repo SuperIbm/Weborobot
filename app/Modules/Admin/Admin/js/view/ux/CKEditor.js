@@ -55,10 +55,20 @@ Ext.define("Admin.view.ux.CKEditor",
 			}
 			
 		CKEDITOR.config.showBaseInPathToObject = this.showBaseInPathToObject == undefined ? false : this.showBaseInPathToObject;
+        CKEDITOR.basePath = baseHref + "bower_modules/ckeditor/";
+        CKEDITOR.base = baseHref;
+
+        var extraPlugins = (CKEDITOR.config.extraPlugins ? ',module' : 'module');
+        extraPlugins += (extraPlugins ? ',typograph' : 'typograph');
+        extraPlugins += (extraPlugins ? ',imap' : 'imap');
+        extraPlugins += (extraPlugins ? ',youtube' : 'youtube');
+        extraPlugins += (extraPlugins ? ',codemirror' : 'codemirror');
+        extraPlugins += (extraPlugins ? ',video' : 'video');
+        extraPlugins += (extraPlugins ? ',gallery' : 'gallery');
 			
 			var defConfig = 
 			{
-			resize_enabled : false,
+			resize_enabled: false,
 				on:
 				{
 					"instanceReady": function(evt)
@@ -67,14 +77,74 @@ Ext.define("Admin.view.ux.CKEditor",
 					evt.editor.is_instance_ready = true;
 					}
 				},
-				
-			showBaseInPathToObject: CKEDITOR.config.showBaseInPathToObject
+
+            extraPlugins: extraPlugins,
+			showBaseInPathToObject: CKEDITOR.config.showBaseInPathToObject,
+
+            filebrowserBrowseUrl: CKEDITOR.base + 'vendor/richardfan1126/kcfinder/browse.php?opener=ckeditor&type=files',
+            filebrowserImageBrowseUrl: CKEDITOR.base + 'vendor/richardfan1126/kcfinder/browse.php?opener=ckeditor&type=images',
+            filebrowserFlashBrowseUrl: CKEDITOR.base + 'vendor/richardfan1126/kcfinder/browse.php?opener=ckeditor&type=flash',
+            filebrowserUploadUrl: CKEDITOR.base + 'vendor/richardfan1126/kcfinder/upload.php?opener=ckeditor&type=files',
+            filebrowserImageUploadUrl: CKEDITOR.base + 'vendor/richardfan1126/kcfinder/upload.php?opener=ckeditor&type=images',
+            filebrowserFlashUploadUrl: CKEDITOR.base + 'vendor/richardfan1126/kcfinder/upload.php?opener=ckeditor&type=flash',
+
+            templates_files: [CKEDITOR.basePath + "templates.js"],
+
+            language: 'ru',
+            skin: "Moono_blue",
+            forcePasteAsPlainText: false,
+            templates_replaceContent: false,
+            format_tags: 'p;div;h1;h2;h3;h4;h5',
+            entities: false,
+            toolbar: 'MyToolbarAll',
+            fillEmptyBlocks: false,
+            baseFloatZIndex: 100000,
+            disableNativeSpellChecker: false,
+
+                allowedContent:
+                {
+                    $1:
+                    {
+                    elements: CKEDITOR.dtd,
+                    attributes: true,
+                    styles: true,
+                    classes: true
+                    }
+                },
+
+            disallowedContent: 'img{width,height}',
+
+            toolbar_MyToolbarAll:
+                [
+                    { name: 'document', items : [ 'Source', '-','Preview','-','Templates','-','module' ] },
+                    { name: 'clipboard', items : [ 'Cut','Copy','Paste','-','Undo','Redo' ] },
+                    { name: 'editing', items : [ 'Find','Replace','-','SelectAll' ] },
+                    { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat','-', 'typograph' ] },
+                    '/',
+                    { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Blockquote','CreateDiv','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock' ] },
+                    { name: 'links', items : [ 'Link','Unlink','Anchor' ] },
+                    { name: 'insert', items : [ 'Image','Flash','Table','SpecialChar', 'Imap', 'Youtube', 'Video', 'gallery' ] },
+                    { name: 'styles', items : [ 'Format', 'Styles' ] },
+                    { name: 'tools', items : [ 'Maximize', 'ShowBlocks' ] }
+                ],
+
+            gallery_default_img_resize_width: 800,
+            gallery_default_img_resize_height: 0,
+
+            gallery_default_thumb_resize_width: 200,
+            gallery_default_thumb_resize_height: 0,
+
+                gallery_template:
+                '<div class="item">' +
+                    '<a rel="{SET_ID}" href="{IMAGE}" target="_inBox">' +
+                        '<img src="{PREVIEW}" />' +
+                    '</a>' +
+                '</div>',
+
+            gallery_template_wrap: '<div class="gallery" data-id="{SET_ID}">{ITEMS}</div>'
 			};
 
 		Ext.apply(this.config.CKConfig, defConfig);
-		
-		CKEDITOR.basePath = baseHref + "bower_modules/ckeditor/";
-        CKEDITOR.base = baseHref;
 		CKEDITOR.replace(this.id, this.config.CKConfig);
 		CKEDITOR.instances[this.id].setData(value);
 		

@@ -1,0 +1,13 @@
+.icon_Component_small
+{
+background-image: url(../images/icon_small.png);
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+.icon_Component_big
+{
+background-image: url(../images/icon_big.png);
+background-repeat: no-repeat;
+background-position: center center;
+}

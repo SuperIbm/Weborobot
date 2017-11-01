@@ -10,6 +10,7 @@ namespace App\Modules\Seo\Models;
 
 use Eloquent;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
@@ -37,7 +38,7 @@ use App\Models\Validate;
  */
 class SeoEloquent extends Eloquent
 {
-use Validate;
+use Validate, SoftDeletes;
 
 /**
  * Убрать конвектатор атрибутов к змейке.

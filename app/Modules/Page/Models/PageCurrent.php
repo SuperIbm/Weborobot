@@ -13,6 +13,7 @@ use Route;
 use Storage;
 use Block;
 use Util;
+use Config;
 use App\Modules\Page\Repositories\Page;
 use App\Modules\PageTemplate\Repositories\PageTemplate;
 
@@ -431,7 +432,8 @@ private $_status = 200;
                         'BLOCKS' => $this->getBlocks(),
                         'TITLE' => $this->getTitle(),
                         'KEYWORDS' => $this->getKeywords(),
-                        'DESCRIPTION' => $this->getDescription()
+                        'DESCRIPTION' => $this->getDescription(),
+                        'DOMAIN_NAME' => Config::get('app.url')
                         ]
                     )->render();
 

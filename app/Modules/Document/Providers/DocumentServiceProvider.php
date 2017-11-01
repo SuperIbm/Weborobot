@@ -71,19 +71,20 @@ protected $defer = false;
         Document::extend('database',
             function($app)
             {
-                echo "database <br>";
-            DocumentEloquentModel::observe(DocumentListener::class);
             return new DocumentEloquent(new DocumentEloquentModel());
             }
         );
 
+    DocumentEloquentModel::observe(DocumentListener::class);
+
         Document::extend('mongodb',
             function($app)
             {
-            DocumentMongoDbModel::observe(DocumentListener::class);
             return new DocumentMongoDb(new DocumentMongoDbModel());
             }
         );
+
+    DocumentMongoDbModel::observe(DocumentListener::class);
 
 	    App::singleton('document.driver',
 		    function($App)

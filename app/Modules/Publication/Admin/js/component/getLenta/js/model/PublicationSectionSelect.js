@@ -26,7 +26,7 @@ Ext.define('Publication.component.getLenta.model.PublicationSectionSelect',
 		type: 'ajax',
 			api:
 			{
-				read: Weborobot.Util.getUrlToModule("Publication", "PublicationSection", "read")
+			read: '_api/Publication/PublicationSectionAdminController/tree/'
 			},
 			reader:
 			{

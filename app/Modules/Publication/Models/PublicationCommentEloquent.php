@@ -13,6 +13,8 @@ use Util;
 use Image;
 use Config;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * Класс модель для таблицы комментариев в публикации на основе Eloquent.
@@ -58,7 +60,7 @@ use App\Models\Validate;
  */
 class PublicationCommentEloquent extends Eloquent
 {
-use Validate;
+use Validate, SoftDeletes;
     
 /**
  * Убрать конвектатор атрибутов к змейке.

@@ -11,6 +11,7 @@ namespace App\Modules\Page\Models;
 use Illuminate\Database\Eloquent\Model;
 use Util;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
@@ -60,7 +61,7 @@ use App\Models\Validate;
  */
 class PageEloquent extends Model
 {
-use Validate;
+use Validate, SoftDeletes;
 
 /**
  * Убрать конвектатор атрибутов к змейке.
@@ -142,7 +143,7 @@ protected $fillable =
 		'idPageTemplate' => 'integer|digits_between:0,20',
 		'idPageReferen' => 'required|integer|digits_between:1,20',
 		'namePage' => 'required|between:1,255',
-		'nameLink' => 'required|between:1,255|alpha_dash',
+		'nameLink' => 'max:255|alpha_dash',
 		'description' => 'max:1000',
 		'keywords' => 'max:1000',
 		'title' => 'max:255',

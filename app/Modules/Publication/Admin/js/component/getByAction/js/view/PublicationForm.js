@@ -16,20 +16,20 @@ Ext.define('Publication.component.getByAction.view.PublicationForm',
 			
 				store:
 				{
-				type: "Publication.component.getByAction.store.ComponentTemplateSelect"
+				type: "Publication.component.getByAction.store.ModuleTemplateSelect"
 				},
 				
 			triggerReload: true,
 				
-			valueField: "idComponentTemplate",
+			valueField: "idModuleTemplate",
 			displayField: "labelTemplate",
 			
 			labelSeparator: "",
 			labelWidth: 160,
 			width: 450,
 			
-			name: "idComponentTemplate",
-			reference: "idComponentTemplate",
+			name: "idModuleTemplate",
+			reference: "idModuleTemplate",
 			emptyText: "[Выберите шаблон]",
 			fieldLabel: "Шаблон:<span class='needsForm'>*</span>",
 			

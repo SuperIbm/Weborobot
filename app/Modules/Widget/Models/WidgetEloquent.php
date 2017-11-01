@@ -11,6 +11,8 @@ namespace App\Modules\Widget\Models;
 use Eloquent;
 use Util;
 use App\Models\Validate;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * Класс модель для таблицы виджетов на основе Eloquent.
@@ -45,7 +47,7 @@ use App\Models\Validate;
  */
 class WidgetEloquent extends Eloquent
 {
-use Validate;
+use Validate, SoftDeletes;
     
 /**
  * Убрать конвектатор атрибутов к змейке.

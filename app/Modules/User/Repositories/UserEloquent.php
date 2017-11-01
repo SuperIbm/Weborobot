@@ -274,9 +274,9 @@ use RepositaryEloquent;
                 }
             }
 
-        Session::set('user', $data);
-        return $data;
-        }
+       Session::set('user', $data);
+       return $data;
+       }
 
     return Session::get('user');
 	}
