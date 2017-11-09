@@ -73,6 +73,11 @@ min-height: 700px;
 padding: 1em 0;
 }
 
+.masthead.segment.inside
+{
+min-height: auto;
+}
+
 .masthead h1.ui.header
 {
 margin-top: 3em;

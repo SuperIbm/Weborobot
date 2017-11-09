@@ -227,12 +227,6 @@ Ext.define('Alias.controller.Alias',
 				thisObj.getGrid().getSelectionModel().select(record);
 							
 				thisObj.WindowUpdate.down("form").getForm().loadRecord(record);
-				
-					if(record.get("idPage"))
-					{
-					thisObj.WindowUpdate.down("treepicker[name='idPage']").setValue(record.get("idPage")["idPage"]);
-					}
-				
 				thisObj.WindowUpdate.setTitle(thisObj.WindowUpdate.getTitle() + ": " + record.get("pattern"));
 				}
 			

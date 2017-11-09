@@ -162,7 +162,7 @@ trait RepositaryEloquent
 
                     if(isset($kyeOwner) && isset($keyForeign))
                     {
-                        $Query->join
+                        $Query->leftJoin
                         (
                         $tableForeign,
                         $kyeOwner,
@@ -193,7 +193,10 @@ trait RepositaryEloquent
         $data = Cache::tags($tags)->remember($cacheKey, $this->getCacheMinutes(),
             function() use ($Query, $count)
             {
-                if($count) return $Query->count();
+                if($count)
+                {
+                return $Query->count();
+                }
                 else return $Query->get()->toArray();
             }
         );

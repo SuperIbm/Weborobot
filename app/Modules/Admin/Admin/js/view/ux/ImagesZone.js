@@ -5,8 +5,8 @@ Ext.Loader.loadScript
 	}
 );
 
-Ext.Loader.setPath('Ext.ux.DataView.Draggable', 'bower_modules/extjs/packages/ux/classic/ux-debug.js');
-Ext.Loader.setPath('Ext.ux.DataView.DragSelector', 'bower_modules/extjs/packages/ux/classic/ux-debug.js');
+Ext.Loader.setPath('Ext.ux.DataView.Draggable', 'bower_modules/extjs/packages/ux/classic/src/DataView/Draggable.js');
+Ext.Loader.setPath('Ext.ux.DataView.DragSelector', 'bower_modules/extjs/packages/ux/classic/src/DataView/DragSelector.js');
 
 Ext.define("Admin.view.ux.ImagesZone",
 	{

@@ -73,8 +73,8 @@ Ext.define('Publication.component.getTagCloud.view.PublicationForm',
 			labelWidth: 160,
 			width: 450,
 			
-			name: "countElements",
-			reference: "countElements",
+			name: "limit",
+			reference: "limit",
 			
 				validator: function(value)
 				{

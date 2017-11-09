@@ -85,8 +85,9 @@ protected $defer = false;
 
         if($data)
         {
-            function setRoute($page)
+            function setRoute($page, $params)
             {
+            PageCurrent::setParams($params);
             $html = PageCurrent::render($page['path']);
 
                 if($html !== false) return (new Response($html, PageCurrent::getStatus()));
@@ -105,9 +106,9 @@ protected $defer = false;
                     if($page['modeAccess'] == 'Свободный')
                     {
                         Route::get($data[$i]['pattern'],
-                            function() use ($page)
+                            function(... $params) use ($page)
                             {
-                            return setRoute($page);
+                            return setRoute($page, $params);
                             }
                         )
                         ->where('_slug', '[0-9,a-z,A-Z]+')

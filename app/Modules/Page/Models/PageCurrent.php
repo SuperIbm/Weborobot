@@ -14,6 +14,7 @@ use Storage;
 use Block;
 use Util;
 use Config;
+use View;
 use App\Modules\Page\Repositories\Page;
 use App\Modules\PageTemplate\Repositories\PageTemplate;
 
@@ -114,6 +115,14 @@ private $_html;
  * @since 1.0
  */
 private $_status = 200;
+
+/**
+ * Параметры которые поступают вместе с роутингом.
+ * @var array
+ * @version 1.0
+ * @since 1.0
+ */
+private $_params = [];
 
 
     /**
@@ -365,6 +374,41 @@ private $_status = 200;
     }
 
     /**
+     * Установка параметров, что приходят с роутингом.
+     * @param array $params Массив параметров.
+     * @return $this
+     * @since 1.0
+     * @version 1.0
+     */
+    public function setParams($params)
+    {
+    $this->_params = $params;
+    return $this;
+    }
+
+    /**
+     * Получение параметров, что приходят с роутингом.
+     * @return array Массив параметров.
+     * @since 1.0
+     * @version 1.0
+     */
+    public function getParams()
+    {
+    return $this->_params;
+    }
+
+    /**
+     * Получение параметра по ключу, что приходят с роутингом.
+     * @return mixed Параметр.
+     * @since 1.0
+     * @version 1.0
+     */
+    public function getParam($key)
+    {
+    return $this->_params[$key];
+    }
+
+    /**
      * Рендеринг и получение страницы.
      * @param string $path Путь к странице, которую нужно отрендерить.
      * @param array $params Параметры полученные с ссылки.
@@ -424,7 +468,7 @@ private $_status = 200;
 
                     if(!Storage::disk('pages')->exists($pathFile)) Storage::disk('pages')->put($pathFile, $page['html']);
 
-                $this->_setContent(view('pages.'.$page['idPage'])->render());
+                $this->_setContent(View::make('pages.'.$page['idPage'])->render());
 
                     $html = view('app.'.$pageTemplate['nameTemplate'].'.tpl.template',
                         [

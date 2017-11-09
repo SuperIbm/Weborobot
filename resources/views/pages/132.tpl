@@ -1,0 +1,1 @@
+<div><span>{module name='Publication' controller='PublicationController' method='getArchive' idModuleTemplate='64' idPublicationSection='16' limit='2' showDate='1' idPageArchive='132' idPagePublication='133'}</span></div>

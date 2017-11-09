@@ -15,7 +15,7 @@ namespace App\Modules\Publication\Repositories;
  * @copyright Weborobot.
  * @author Инчагов Тимофей Александрович.
  */
-abstract class PublicationCommentTreeArray extends PublicationSection
+abstract class PublicationCommentTreeArray extends PublicationComment
 {
 	/**
 	 * Чтение данных и получение их в виде древовидной структуры.

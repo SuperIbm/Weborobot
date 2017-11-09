@@ -8,6 +8,7 @@
  */
 namespace App\Models;
 
+use Illuminate\Database\Query\Expression;
 
 /**
  * Абстрактный класс репозитария, для построения собственных репозитариев.
@@ -108,9 +109,9 @@ private $_cacheMinutes = 60;
     {
         for($i = 0; $i < count($sorts); $i++)
         {
-            if(in_array($sorts[$i]['property'], $allows))
+            if(in_array($sorts[$i]['property'], $allows) || @$sorts[$i]['table'] == $table)
             {
-            $sorts[$i]['property'] = $table.'.'.$sorts[$i]['property'];
+                if(($sorts[$i]['property'] instanceof Expression) == false) $sorts[$i]['property'] = $table.'.'.$sorts[$i]['property'];
             }
         }
 
@@ -148,11 +149,12 @@ private $_cacheMinutes = 60;
 
             for($i = 0, $z = 0; $i < count($filters); $i++)
             {
-                if(in_array($filters[$i]['property'], $allows))
+                if(in_array($filters[$i]['property'], $allows) || @$filters[$i]['table'] == $table)
                 {
                 $filtersNew[$z] = $filters[$i];
 
-                    if($table) $filtersNew[$i]['property'] = $table.'.'.$filtersNew[$i]['property'];
+                    if($filtersNew[$z]['property'] instanceof Expression) $filtersNew[$i]['property'] = $filtersNew[$z]['property'];
+                    else if($table) $filtersNew[$i]['property'] = $table.'.'.$filtersNew[$z]['property'];
 
                 $z++;
                 }

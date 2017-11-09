@@ -13,15 +13,16 @@ use Cache;
 use App\Models\RepositaryEloquent;
 
 /**
- * Класс репозитария комментариев публикаций в виде древовидной структуры выдающий массив на основе Eloquent.
+ * Стандартная реализация класса репозитария комментариве для древовидной структуры.
  * @version 1.0
  * @since 1.0
  * @copyright Weborobot.
  * @author Инчагов Тимофей Александрович.
  */
-class PublicationCommentTreeArrayEloquent extends PublicationCommentTreeArray
+trait PublicationCommentTreeImplement
 {
 use RepositaryEloquent;
+
 
     /**
      * Получить по первичному ключу.
@@ -33,7 +34,7 @@ use RepositaryEloquent;
      */
     public function get($id, $active = null)
     {
-        return App::make('App\Modules\Publication\Repositories\PublicationComment')->get($id, $active);
+    return App::make('App\Modules\Publication\Repositories\PublicationComment')->get($id, $active);
     }
 
     /**
@@ -50,7 +51,7 @@ use RepositaryEloquent;
      */
     public function read($filters = null, $active = null, $sorts = null, $offset = null, $limit = null, $with = null)
     {
-        return App::make('App\Modules\Publication\Repositories\PublicationComment')->read($filters, $active, $sorts, $offset, $limit, $with);
+    return App::make('App\Modules\Publication\Repositories\PublicationComment')->read($filters, $active, $sorts, $offset, $limit, $with);
     }
 
     /**
@@ -64,7 +65,7 @@ use RepositaryEloquent;
      */
     public function count($filters = null, $active = null, $with = null)
     {
-        return App::make('App\Modules\Publication\Repositories\PublicationComment')->count($filters, $active, $with);
+    return App::make('App\Modules\Publication\Repositories\PublicationComment')->count($filters, $active, $with);
     }
 
     /**
@@ -77,17 +78,17 @@ use RepositaryEloquent;
      */
     public function create(array $data, $filters = null)
     {
-        $Model = $this->newInstance();
-        $idPage = $Model->createNode($data, $filters);
+    $Model = $this->newInstance();
+    $idPage = $Model->createNode($data, $filters);
 
         if($Model->hasError())
         {
-            $this->addError($Model->getErrors());
-            return false;
+        $this->addError($Model->getErrors());
+        return false;
         }
         else Cache::tags(['PublicationComment'])->flush();
 
-        return $idPage;
+    return $idPage;
     }
 
     /**
@@ -100,12 +101,12 @@ use RepositaryEloquent;
      */
     public function update($id, array $data)
     {
-        $Model = App::make('App\Modules\Publication\Repositories\PublicationComment');
-        $id = $Model->update($id, $data);
+    $Model = App::make('App\Modules\Publication\Repositories\PublicationComment');
+    $id = $Model->update($id, $data);
 
         if($Model->hasError()) $this->addError($Model->getErrors());
 
-        return $id;
+    return $id;
     }
 
     /**
@@ -119,8 +120,8 @@ use RepositaryEloquent;
      */
     public function destroy($id, $deleteChildren = true, $filters = null)
     {
-        $Model = $this->newInstance();
-        $status = $Model->destroyNode($id, $deleteChildren, $filters);
+    $Model = $this->newInstance();
+    $status = $Model->destroyNode($id, $deleteChildren, $filters);
 
         if($status == false) $this->addError($Model->getErrors());
         else Cache::tags(['PublicationComment'])->flush();
@@ -156,16 +157,16 @@ use RepositaryEloquent;
         return Cache::tags(['Publication', 'PublicationComment'])->remember($cacheKey, $this->getCacheMinutes(),
             function() use ($data, $isOpenType, $idCurrent, $idRoot, $idReferenRoot, $params)
             {
-                $Model = $this->newInstance();
-                $Model->isOpenType($isOpenType);
-                $Model->getNode()->setParams($params);
+            $Model = $this->newInstance();
+            $Model->isOpenType($isOpenType);
+            $Model->getNode()->setParams($params);
 
                 if($idRoot) $Model->setIdRoot($idRoot);
                 else if($idReferenRoot) $Model->setReferenRoot($idReferenRoot);
 
                 if($idCurrent) $Model->setIdCurrent($idCurrent);
 
-                return $Model->tree($data);
+            return $Model->tree($data);
             }
         );
     }
@@ -182,11 +183,11 @@ use RepositaryEloquent;
      */
     public function setWeight($id, $weight, $filters = null)
     {
-        $Model = $this->newInstance()->find($id);
+    $Model = $this->newInstance()->find($id);
 
         if($Model)
         {
-            $status = $Model->setWeight($weight, null, $filters);
+        $status = $Model->setWeight($weight, null, $filters);
 
             if(!$status) $this->addError($Model->getErrors());
             else Cache::tags(['PublicationComment'])->flush();
@@ -208,7 +209,7 @@ use RepositaryEloquent;
      */
     public function setPosition($id, $idReferenNew, $filters = null)
     {
-        $Model = $this->newInstance()->find($id);
+    $Model = $this->newInstance()->find($id);
 
         if($Model)
         {
@@ -235,7 +236,7 @@ use RepositaryEloquent;
      */
     public function getPathByRoot($data, $idRoot = null, $columnValue = null)
     {
-        return $this->newInstance()->getPathByRoot($idRoot, $columnValue, $data);
+    return $this->newInstance()->getPathByRoot($idRoot, $columnValue, $data);
     }
 
 
@@ -252,7 +253,7 @@ use RepositaryEloquent;
      */
     public function getPath($data, $id, $idRoot = null, $columnValue = null)
     {
-        return $this->newInstance()->getPath($id, $idRoot, $columnValue, $data);
+    return $this->newInstance()->getPath($id, $idRoot, $columnValue, $data);
     }
 
 
@@ -267,6 +268,7 @@ use RepositaryEloquent;
      */
     public function isCurrentBranch($data, $id, $idCurrent)
     {
-        return $this->newInstance()->isCurrentBranch($id, $idCurrent, $data);
+    return $this->newInstance()->isCurrentBranch($id, $idCurrent, $data);
     }
 }
+?>

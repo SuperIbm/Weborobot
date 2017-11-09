@@ -13,13 +13,13 @@ use Cache;
 use App\Models\RepositaryEloquent;
 
 /**
- * Класс репозитария комментариев публикаций в виде древовидной структуры выдающий массив на основе Eloquent.
+ * Класс репозитария комментариев публикаций в виде древовидной структуры выдающий строку на основе Eloquent.
  * @version 1.0
  * @since 1.0
  * @copyright Weborobot.
  * @author Инчагов Тимофей Александрович.
  */
-class PublicationCommentTreeArrayEloquent extends PublicationCommentTreeArray
+class PublicationCommentTreeStringEloquent extends PublicationCommentTreeString
 {
 use RepositaryEloquent;
 

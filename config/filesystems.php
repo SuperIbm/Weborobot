@@ -98,6 +98,12 @@ return [
             'bucket' => 'your-bucket',
         ],
 
+        'publications' => [
+            'driver' => 'local',
+            'root' => resource_path('views/publications'),
+            'visibility' => 'public',
+        ],
+
     ],
 
 ];

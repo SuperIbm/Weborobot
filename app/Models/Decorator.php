@@ -44,23 +44,13 @@ private $_DecoratorParent;
  */
 private $_data = [];
 
-/**
- * Параметры декоратора.
- * @var array
- * @version 1.0
- * @since 1.0
- */
-private $_params = [];
-
 	/**
 	 * Этот абстрактный метод предназначен для проектирования собственных действий в декораторе.
-	 * @param array $params Параметры декоратора.
-	 * @param \App\Models\Decorator $ParentDecorator Родительский декоратор.
 	 * @return bool Должен вернуть true если действие выполнено успешно.
 	 * @since 1.0
 	 * @version 1.0
 	 */
-	abstract protected function _action($params, Decorator $ParentDecorator = null);
+	abstract protected function _action();
 	
 	
 	/**
@@ -71,48 +61,6 @@ private $_params = [];
 	 * @version 1.0
 	 */
 	abstract public function getIndex();
-
-	
-	/**
-	 * Конструктор.
-	 * Назначенные события:
-	 *
-	 * <strong>beforeAction</strong> - Вызвать, перед тем как выполнит действие. Передает значения:
-	 * <ul>
-	 * 	<li>Объект декоратора</li>
-	 * </ul>
-	 * Если вернет булево значение false, то остановит дальнейшее действие.
-	 *
-	 *
-	 * <strong>afterAction</strong> - Вызвать после того как выполнено действие. Передает значения:
-	 * <ul>
-	 * 	<li>Объект декоратора</li>
-	 * 	<li>Статус исполнения действия, где true это выполнено без ошибок</li>
-	 * </ul>
-	 * Если вернет булево значение false, то остановит дальнейшее действие.
-	 *
-	 * @param array|string $decorators Массив декораторов, которые нужно выполнить. Или один объект декоратор \App\Models\Decorator.
-	 * @param array $params Параметры для декоратора.
-	 * @since 1.0
-	 * @version 1.0
-	 */
-	public function __construct($decorators = null, $params = null)
-	{
-		if(!is_array($decorators)) $decorators = [$decorators];
-
-		if($decorators)
-        {
-            for($i = 0; $i < count($decorators); $i++)
-            {
-                if(isset($decorators[$i])) $this->addDecorator($decorators[$i]);
-            }
-        }
-		
-		if($params) $this->setParams($params);
-
-	$this->addEvent("beforeAction");
-	$this->addEvent("afterAction");
-	}
 	
 	
 	/**
@@ -226,88 +174,6 @@ private $_params = [];
 	
 	
 	/**
-	 * Установка параметров.
-	 * @param array $params Параметры компонента для его работы.
-	 * @return $this
-	 * @since 1.0
-	 * @version 1.0
-	 */
-	public function setParams($params)
-	{
-		foreach($params AS $k => $v)
-		{
-			if(isset($v) == false) unset($params[$k]);
-		}
-	
-	$this->_params = $params;
-	return $this;
-	}
-	
-	
-	/**
-	 * Добавление параметра.
-	 * @param string $index Индекс параметра.
-	 * @param mixed $param Параметры компонента для его работы.
-	 * @return $this
-	 * @since 1.0
-	 * @version 1.0
-	 */
-	public function addParam($index, $param)
-	{
-	$this->_params[$index] = $param;
-	return $this;
-	}
-
-
-	/**
-	 * Удаление параметра.
-	 * @param string $index Индекс параметра.
-	 * @return $this
-	 * @since 1.0
-	 * @version 1.0
-	 */
-	public function deleteParam($index)
-	{
-		if(isset($this->_params[$index])) unset($this->_params[$index]);
-
-	return $this;
-	}
-	
-	
-	/**
-	 * Получение параметров.
-	 * @param string $index Название параметра. Если не указать вернет все параметры.
-	 * @param mixed $default Если параметр не задан, то вернуть это значение по умолчанию.
-	 * @return mixed Параметр для компонента.
-	 * @since 1.0
-	 * @version 1.0
-	 */
-	public function getParams($index = null, $default = null)
-	{
-		if($index)
-		{
-			if(isset($this->_params[$index])) return $this->_params[$index];
-			else
-			{
-			$ParentDecorator = $this->getParentDecorator();
-			
-				if($ParentDecorator) $value = $ParentDecorator->getParams($index, null);
-				else $value = null;
-				
-				if($value) return $value;
-				else if(isset($default))
-                {
-                    if(@function_exists($default)) return call_user_func_array($default, []);
-                    else return $default;
-                }
-				else return null;
-			}
-		}
-		else return $this->_params;
-	}
-	
-	
-	/**
 	 * Установка данных декоратора.
 	 * @param mixed $data Данные выработанные этим декоратором.
 	 * @return $this
@@ -368,11 +234,14 @@ private $_params = [];
 	 */
 	public function run($type = "collection")
 	{
+    $this->addEvent("beforeAction");
+    $this->addEvent("afterAction");
+
 	$status = $this->untilEvent("beforeAction");
 	
 		if($status == true)
 		{
-		$status = $this->_action($this->getParams(), $this->getParentDecorator());
+		$status = $this->_action();
 		
 			if($status == true)
 			{									
@@ -404,5 +273,49 @@ private $_params = [];
 		
 	return false;	
 	}
+
+
+    /**
+     * Установка параметра.
+     * @param string $key Индекс параметра.
+     * @param mixed $value Значение параметра.
+     * @return $this
+     * @since 1.0
+     * @version 1.0
+     */
+	public function setParam($key, $value)
+    {
+    $this->$key = $value;
+    return $this;
+    }
+
+    /**
+     * Установка параметров.
+     * @param array $values Массив параметров.
+     * @return $this
+     * @since 1.0
+     * @version 1.0
+     */
+    public function setParams($values)
+    {
+        foreach($values as $key => $value)
+        {
+        $this->setParam($key, $value);
+        }
+
+    return $this;
+    }
+
+    /**
+     * Получение параметра.
+     * @param string $key Индекс параметра.
+     * @return $this
+     * @since 1.0
+     * @version 1.0
+     */
+    public function getParam($key)
+    {
+    return $this->$key;
+    }
 }
 ?>

@@ -73,8 +73,8 @@ Ext.define('Publication.component.getLenta.view.PublicationForm',
 			labelWidth: 160,
 			width: 450,
 			
-			name: "countElements",
-			reference: "countElements",
+			name: "limit",
+			reference: "limit",
 			
 				validator: function(value)
 				{
@@ -103,7 +103,7 @@ Ext.define('Publication.component.getLenta.view.PublicationForm',
 							[
 							0,
 							"Нет"
-							],
+							]
 						]
 					}
 				),
@@ -127,52 +127,52 @@ Ext.define('Publication.component.getLenta.view.PublicationForm',
 			},
 			{
 			xtype: 'treepicker',
-			
+
 			store: Ext.create('Page.store.Page'),
 			rootVisible: false,
-			
+
 			labelSeparator: "",
 			labelWidth: 160,
 			width: 450,
-			
+
 			name: 'idPageArchive',
 			fieldLabel: 'Страница архива:',
-			
+
 			displayField: 'text',
 				triggers:
 				{
-					clean: 
+					clean:
 					{
 					cls: "x-form-clean-trigger",
 						handler: function()
 						{
-						this.reset();	
+						this.reset();
 						}
 					}
 				}
 			},
 			{
 			xtype: 'treepicker',
-			
+
 			store: Ext.create('Page.store.Page'),
 			rootVisible: false,
-			
+
 			labelSeparator: "",
 			labelWidth: 160,
 			width: 450,
-			
+
 			name: 'idPagePublication',
 			fieldLabel: 'Страница публикации:',
-			
+
 			displayField: 'text',
 				triggers:
 				{
-					clean: 
+					clean:
 					{
 					cls: "x-form-clean-trigger",
 						handler: function()
 						{
-						this.reset();	
+						this.reset();
 						}
 					}
 				}

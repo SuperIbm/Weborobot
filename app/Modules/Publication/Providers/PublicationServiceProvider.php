@@ -32,6 +32,13 @@ use App\Modules\Publication\Events\Listeners\PublicationCommentListener;
 use App\Modules\Publication\Models\PublicationCommentTreeArrayEloquent as PublicationCommentTreeArray;
 use App\Modules\Publication\Repositories\PublicationCommentTreeArrayEloquent;
 
+use App\Modules\Publication\Models\PublicationCommentTreeStringEloquent as PublicationCommentTreeString;
+use App\Modules\Publication\Repositories\PublicationCommentTreeStringEloquent;
+
+use App\Modules\Publication\Decorators\PublicationItem;
+use App\Modules\Publication\Decorators\PublicationItemPagination;
+use App\Modules\Publication\Decorators\PublicationItemYear;
+
 /**
  * Класс сервис-провайдера для настройки этого модуля.
  * @version 1.0
@@ -121,6 +128,48 @@ protected $defer = false;
         );
 
     PublicationCommentTreeArray::observe(PublicationCommentListener::class);
+
+        App::singleton('App\Modules\Publication\Repositories\PublicationCommentTreeString',
+            function()
+            {
+            return new PublicationCommentTreeStringEloquent(new PublicationCommentTreeString());
+            }
+        );
+
+    PublicationCommentTreeString::observe(PublicationCommentListener::class);
+
+        $this->app->bind('App\Modules\Publication\Decorators\PublicationItem',
+            function()
+            {
+                return new PublicationItem
+                (
+                App::make('App\Modules\Publication\Repositories\Publication'),
+                App::make('App\Modules\Publication\Repositories\PublicationQueryWord'),
+                App::make('App\Modules\Publication\Repositories\PublicationCommentTreeString'),
+                App::make('App\Modules\Publication\Repositories\PublicationSection')
+                );
+            }
+        );
+
+        $this->app->bind('App\Modules\Publication\Decorators\PublicationItemPagination',
+            function()
+            {
+                return new PublicationItemPagination
+                (
+                App::make('App\Modules\Publication\Repositories\Publication')
+                );
+            }
+        );
+
+        $this->app->bind('App\Modules\Publication\Decorators\PublicationItemYear',
+            function()
+            {
+                return new PublicationItemYear
+                (
+                App::make('App\Modules\Publication\Repositories\Publication')
+                );
+            }
+        );
     }
 
     /**

@@ -27,12 +27,25 @@ function smarty_function_module($params, $template)
 	{
 	$Controller = app('App\Modules\\'.$params["name"].'\Http\Controllers\\'.$params["controller"]);
 	$Request = request();
+	$oldParams = $Request->input();
 
-		foreach($params as $k => $v)
-		{
-		$Request->request->add([$k => $v]);
-		}
+        $Reflection = new ReflectionMethod($Controller, $params["method"]);
 
-	$Controller->$params["method"]($Request);
+            foreach($Reflection->getParameters() as $key => $parameter)
+            {
+                if($parameter->getClass() && $parameter->getClass()->newInstance() instanceof \Illuminate\Http\Request)
+                {
+                $Request = $parameter->getClass()->newInstance();
+                $Request->setContainer(App::getInstance());
+                }
+            }
+
+    $params = array_merge($oldParams, $params);
+    $Request->query->add($params);
+    $Request->validate();
+
+    $method = $params["method"];
+    $prm = \PageCurrent::getParams();
+	$Controller->$method($Request, ... $prm);
 	}
 }
